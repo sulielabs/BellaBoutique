@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 600" width="1800" height="600">
+<style>@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&amp;family=Montserrat:wght@500&amp;display=swap");</style>
+
+<text x="900" y="330" font-family="Playfair Display, Georgia, serif" font-weight="500"
+      font-size="200" text-anchor="middle" fill="#C8A250">Bella Boutique</text>
+<rect x="420" y="385" width="960" height="4" fill="#C8A250"/>
+<text x="900" y="470" font-family="Montserrat, sans-serif" font-weight="500" font-size="40"
+      letter-spacing="17" text-anchor="middle" fill="#C8A250">AUTHENTIC LUXURY</text>
+</svg>

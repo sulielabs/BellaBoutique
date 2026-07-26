@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1400" width="1200" height="1400">
+<style>@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&amp;family=Montserrat:wght@500&amp;display=swap");</style>
+
+<g font-family="Playfair Display, Georgia, serif" font-weight="500" text-anchor="middle" fill="#C8A250">
+  <text x="600" y="640" font-size="260">Bella</text>
+  <text x="600" y="905" font-size="260">Boutique</text>
+</g>
+<rect x="350" y="960" width="500" height="5" fill="#C8A250"/>
+<text x="600" y="1055" font-family="Montserrat, sans-serif" font-weight="500" font-size="48"
+      letter-spacing="20" text-anchor="middle" fill="#C8A250">AUTHENTIC LUXURY</text>
+</svg>
