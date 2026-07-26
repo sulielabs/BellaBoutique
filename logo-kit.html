@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="color-scheme" content="light only" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bella Boutique — Logo Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ivory:#FBF9F5; --beige:#F1EBE1; --taupe:#B8AB99;
+  --gold:#C8A250; --gold-ink:#856419; --black:#12100E; --ink:#2B2621; --white:#fff;
+  --sans:'Tajawal',system-ui,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:var(--sans); color:var(--ink); line-height:1.7;
+  background-color:#FBF9F5; background-image:linear-gradient(#FBF9F5,#FBF9F5);
+  padding:clamp(1rem,4vw,3rem);
+}
+h1{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,4vw,2.4rem);color:var(--black);font-weight:500}
+.sub{color:#6E6459;margin:.5rem 0 2rem;font-size:.95rem}
+.note{background:#fff;border:1px solid var(--beige);border-inline-start:3px solid var(--gold);padding:1rem 1.2rem;border-radius:4px;margin-bottom:2rem;font-size:.9rem}
+h2{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--black);margin:2.5rem 0 .3rem;font-weight:500}
+h2 small{display:block;font-family:var(--sans);font-size:.8rem;color:#6E6459;font-weight:400;margin-top:.2rem}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1.2rem;margin-top:1.2rem}
+.card{background:#fff;border:1px solid var(--beige);border-radius:6px;overflow:hidden;display:flex;flex-direction:column}
+.prev{display:flex;align-items:center;justify-content:center;padding:1.5rem;min-height:150px}
+.prev.ivory{background:var(--ivory)}
+.prev.beige{background:var(--beige)}
+.prev.black{background:var(--black)}
+.prev.trans{
+  background-image:linear-gradient(45deg,#e9e5de 25%,transparent 25%),linear-gradient(-45deg,#e9e5de 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#e9e5de 75%),linear-gradient(-45deg,transparent 75%,#e9e5de 75%);
+  background-size:16px 16px;background-position:0 0,0 8px,8px -8px,-8px 0px;background-color:#fff;
+}
+.meta{padding:.8rem 1rem;border-top:1px solid var(--beige);display:flex;justify-content:space-between;align-items:center;gap:.5rem}
+.meta b{font-size:.85rem;font-weight:500;color:var(--black)}
+.meta span{font-size:.72rem;color:#6E6459}
+.dl{background:var(--gold);color:#fff;border:none;font-family:var(--sans);font-weight:700;font-size:.78rem;padding:.5rem .9rem;border-radius:3px;cursor:pointer;transition:.25s;white-space:nowrap}
+.dl:hover{background:var(--black)}
+
+/* ---- LOGO MARKS (live HTML previews) ---- */
+.lg{font-family:'Playfair Display',serif;line-height:1;text-align:center}
+.lg .word{display:block;letter-spacing:.02em;font-weight:500}
+.lg .rule{height:1px;margin:.55em auto .45em;width:70%}
+.lg .tag{font-family:'Montserrat',sans-serif;font-size:.185em;letter-spacing:.42em;text-transform:uppercase;font-weight:500;padding-inline-start:.42em}
+.stacked .word{font-size:1em}
+.stacked .word+.word{margin-top:.05em}
+.horiz{white-space:nowrap}
+.horiz .word{display:inline;font-size:1em}
+.mono{font-size:1em;letter-spacing:.04em;font-weight:500}
+
+.gold{color:var(--gold)} .blk{color:var(--black)} .ivo{color:var(--ivory)}
+.r-gold{background:var(--gold)} .r-blk{background:var(--black)} .r-ivo{background:var(--ivory)}
+
+#busy{position:fixed;inset:0;background:rgba(251,249,245,.94);display:none;align-items:center;justify-content:center;font-size:1rem;z-index:99}
+canvas{display:none}
+footer{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--beige);font-size:.85rem;color:#6E6459}
+</style>
+</head>
+<body>
+
+<h1>Bella Boutique — ملفات اللوقو</h1>
+<p class="sub">اضغطي «تنزيل PNG» تحت أي نسخة. الملفات تُصدَّر بدقة عالية بخط Playfair Display الأصلي.</p>
+
+<div class="note">
+  <b>قبل التنزيل:</b> تأكدي أن الصفحة متصلة بالإنترنت أول مرة حتى يُحمَّل خط Playfair Display، وإلا ستخرج الملفات بخط بديل. إن ظهرت المعاينات بخط رفيع كلاسيكي أنيق فالخط حُمِّل بنجاح.
+</div>
+
+<h2>١ · صورة الحساب (مربعة)
+  <small>إنستقرام · تويتر · واتساب بيزنس · سناب — ١٠٠٠ × ١٠٠٠ بكسل</small></h2>
+<div class="grid" id="g-profile"></div>
+
+<h2>٢ · اللوقو الرأسي (الأساسي)
+  <small>للمنشورات والتغليف والفواتير — خلفية شفافة متاحة</small></h2>
+<div class="grid" id="g-stacked"></div>
+
+<h2>٣ · اللوقو الأفقي
+  <small>لترويسة الموقع والغلاف والتوقيع — خلفية شفافة متاحة</small></h2>
+<div class="grid" id="g-horiz"></div>
+
+<h2>٤ · الرمز المختصر BB
+  <small>للأيقونات والمقاسات الصغيرة جداً (فافيكون، ستوري، ختم)</small></h2>
+<div class="grid" id="g-mono"></div>
+
+<h2>٥ · غلاف
+  <small>فيسبوك / تويتر / لينكدإن — ١٥٠٠ × ٥٠٠ بكسل</small></h2>
+<div class="grid" id="g-cover"></div>
+
+<footer>
+  ألوان الهوية — الذهبي الشامبين <code>#C8A250</code> · الأسود العميق <code>#12100E</code> · العاجي <code>#FBF9F5</code> · البيج <code>#F1EBE1</code>
+</footer>
+
+<div id="busy">جارٍ التجهيز…</div>
+<canvas id="cv"></canvas>
+
+<script>
+const GOLD="#C8A250", BLACK="#12100E", IVORY="#FBF9F5", BEIGE="#F1EBE1";
+
+/* ---------- preview builder ---------- */
+function markHTML(type, colour){
+  const c = colour==="gold" ? "gold" : colour==="ivory" ? "ivo" : "blk";
+  const r = colour==="gold" ? "r-gold" : colour==="ivory" ? "r-ivo" : "r-blk";
+  const tagC = colour==="ivory" ? "gold" : c;
+  if(type==="mono") return `<div class="lg mono ${c}" style="font-size:64px">BB</div>`;
+  if(type==="horiz") return `<div class="lg horiz ${c}" style="font-size:30px">
+      <span class="word">Bella Boutique</span>
+      <div class="rule ${r}" style="width:100%"></div>
+      <div class="tag ${tagC}">Authentic Luxury</div></div>`;
+  return `<div class="lg stacked ${c}" style="font-size:34px">
+      <span class="word">Bella</span><span class="word">Boutique</span>
+      <div class="rule ${r}"></div>
+      <div class="tag ${tagC}">Authentic Luxury</div></div>`;
+}
+
+function card(o){
+  const el=document.createElement("div"); el.className="card";
+  el.innerHTML = `<div class="prev ${o.bgClass}">${markHTML(o.type,o.colour)}</div>
+    <div class="meta"><div><b>${o.label}</b><br><span>${o.w} × ${o.h}</span></div>
+    <button class="dl">تنزيل PNG</button></div>`;
+  el.querySelector(".dl").addEventListener("click",()=>render(o));
+  return el;
+}
+
+/* ---------- canvas renderer (real PNG export) ---------- */
+function render(o){
+  const busy=document.getElementById("busy"); busy.style.display="flex";
+  setTimeout(()=>{
+    const cv=document.getElementById("cv"), x=cv.getContext("2d");
+    const S=2; // supersample for crisp edges
+    cv.width=o.w*S; cv.height=o.h*S;
+    x.scale(S,S);
+    x.textAlign="center"; x.textBaseline="alphabetic";
+
+    // background
+    if(o.bg!=="transparent"){ x.fillStyle=o.bg; x.fillRect(0,0,o.w,o.h); }
+
+    const ink = o.colour==="gold"?GOLD : o.colour==="ivory"?IVORY : BLACK;
+    const tagInk = o.colour==="ivory"?GOLD : ink;
+    const cx=o.w/2;
+
+    if(o.type==="mono"){
+      const fs=Math.min(o.w,o.h)*0.52;
+      x.fillStyle=ink;
+      x.font=`500 ${fs}px "Playfair Display", Georgia, serif`;
+      x.fillText("BB", cx, o.h/2 + fs*0.35);
+    }
+    else if(o.type==="horiz"){
+      const fs=o.h*0.34;
+      x.fillStyle=ink;
+      x.font=`500 ${fs}px "Playfair Display", Georgia, serif`;
+      const baseY=o.h/2 + fs*0.16;
+      x.fillText("Bella Boutique", cx, baseY);
+      const tw=x.measureText("Bella Boutique").width;
+      x.fillStyle=ink; x.fillRect(cx-tw/2, baseY+fs*0.30, tw, Math.max(1,fs*0.022));
+      const ts=fs*0.185;
+      x.fillStyle=tagInk;
+      x.font=`500 ${ts}px "Montserrat", sans-serif`;
+      x.letterSpacing = (ts*0.42)+"px";
+      x.fillText("AUTHENTIC LUXURY", cx, baseY+fs*0.30+ts*2.1);
+      x.letterSpacing="0px";
+    }
+    else{ // stacked
+      const fs=o.h*(o.type==="stackedTight"?0.20:0.185);
+      x.fillStyle=ink;
+      x.font=`500 ${fs}px "Playfair Display", Georgia, serif`;
+      const top=o.h/2 - fs*0.62;
+      x.fillText("Bella",   cx, top);
+      x.fillText("Boutique",cx, top+fs*1.05);
+      const tw=x.measureText("Boutique").width*0.86;
+      const ry=top+fs*1.05+fs*0.34;
+      x.fillRect(cx-tw/2, ry, tw, Math.max(1,fs*0.022));
+      const ts=fs*0.185;
+      x.fillStyle=tagInk;
+      x.font=`500 ${ts}px "Montserrat", sans-serif`;
+      x.letterSpacing=(ts*0.42)+"px";
+      x.fillText("AUTHENTIC LUXURY", cx, ry+ts*2.4);
+      x.letterSpacing="0px";
+    }
+
+    cv.toBlob(b=>{
+      const a=document.createElement("a");
+      a.href=URL.createObjectURL(b);
+      a.download=o.file+".png"; a.click();
+      URL.revokeObjectURL(a.href);
+      busy.style.display="none";
+    },"image/png");
+  },60);
+}
+
+/* ---------- catalogue ---------- */
+const sets = {
+ "g-profile":[
+  {label:"ذهبي على أسود", file:"bella-profile-gold-on-black", type:"stacked", colour:"gold",  bg:BLACK, bgClass:"black", w:1000,h:1000},
+  {label:"أسود على عاجي", file:"bella-profile-black-on-ivory", type:"stacked", colour:"black", bg:IVORY, bgClass:"ivory", w:1000,h:1000},
+  {label:"عاجي على أسود", file:"bella-profile-ivory-on-black", type:"stacked", colour:"ivory", bg:BLACK, bgClass:"black", w:1000,h:1000},
+  {label:"ذهبي على بيج",  file:"bella-profile-gold-on-beige",  type:"stacked", colour:"gold",  bg:BEIGE, bgClass:"beige", w:1000,h:1000},
+ ],
+ "g-stacked":[
+  {label:"أسود · شفاف",  file:"bella-stacked-black-transparent", type:"stacked", colour:"black", bg:"transparent", bgClass:"trans", w:1200,h:1400},
+  {label:"ذهبي · شفاف",  file:"bella-stacked-gold-transparent",  type:"stacked", colour:"gold",  bg:"transparent", bgClass:"trans", w:1200,h:1400},
+  {label:"عاجي · شفاف",  file:"bella-stacked-ivory-transparent", type:"stacked", colour:"ivory", bg:"transparent", bgClass:"trans", w:1200,h:1400},
+  {label:"أسود على عاجي",file:"bella-stacked-black-on-ivory",    type:"stacked", colour:"black", bg:IVORY, bgClass:"ivory", w:1200,h:1400},
+ ],
+ "g-horiz":[
+  {label:"أسود · شفاف", file:"bella-horizontal-black-transparent", type:"horiz", colour:"black", bg:"transparent", bgClass:"trans", w:1800,h:600},
+  {label:"ذهبي · شفاف", file:"bella-horizontal-gold-transparent",  type:"horiz", colour:"gold",  bg:"transparent", bgClass:"trans", w:1800,h:600},
+  {label:"عاجي · شفاف", file:"bella-horizontal-ivory-transparent", type:"horiz", colour:"ivory", bg:"transparent", bgClass:"trans", w:1800,h:600},
+  {label:"ذهبي على أسود",file:"bella-horizontal-gold-on-black",    type:"horiz", colour:"gold",  bg:BLACK, bgClass:"black", w:1800,h:600},
+ ],
+ "g-mono":[
+  {label:"ذهبي على أسود", file:"bella-mark-gold-on-black", type:"mono", colour:"gold",  bg:BLACK, bgClass:"black", w:512,h:512},
+  {label:"أسود على عاجي", file:"bella-mark-black-on-ivory",type:"mono", colour:"black", bg:IVORY, bgClass:"ivory", w:512,h:512},
+  {label:"ذهبي · شفاف",   file:"bella-mark-gold-transparent",type:"mono",colour:"gold", bg:"transparent", bgClass:"trans", w:512,h:512},
+  {label:"أسود · شفاف",   file:"bella-mark-black-transparent",type:"mono",colour:"black",bg:"transparent",bgClass:"trans", w:512,h:512},
+ ],
+ "g-cover":[
+  {label:"ذهبي على أسود", file:"bella-cover-gold-on-black",  type:"horiz", colour:"gold",  bg:BLACK, bgClass:"black", w:1500,h:500},
+  {label:"أسود على عاجي", file:"bella-cover-black-on-ivory", type:"horiz", colour:"black", bg:IVORY, bgClass:"ivory", w:1500,h:500},
+  {label:"أسود على بيج",  file:"bella-cover-black-on-beige", type:"horiz", colour:"black", bg:BEIGE, bgClass:"beige", w:1500,h:500},
+ ],
+};
+
+for(const [id,list] of Object.entries(sets)){
+  const holder=document.getElementById(id);
+  list.forEach(o=>holder.appendChild(card(o)));
+}
+</script>
+</body>
+</html>

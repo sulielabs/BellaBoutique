@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8" />
+<meta name="color-scheme" content="light only" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bella Boutique — Authentic Luxury Handbags</title>
+<meta name="description" content="Bella Boutique — 100% authentic luxury handbags, new and vintage. Every bag verified. Curated for the Saudi market." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&family=Cairo:wght@400;600;700&family=Tajawal:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --ivory:#FBF9F5;
+  --beige:#F1EBE1;
+  --taupe:#B8AB99;
+  --gold:#C8A250;
+  --gold-ink:#6F5214;
+  --gold-soft:#E4D2A6;
+  --black:#12100E;
+  --ink:#241F1B;
+  --white:#FFFFFF;
+
+  --display:'Playfair Display', Georgia, serif;
+  --serif:'Playfair Display', Georgia, serif;
+  --sans:'Montserrat', system-ui, sans-serif;
+
+  --pad:clamp(1.25rem, 5vw, 6rem);
+  --maxw:1200px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+html[lang="ar"]{
+  --display:'Cairo', sans-serif;
+  --serif:'Cairo', sans-serif;
+  --sans:'Tajawal', sans-serif;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+
+body{
+  font-family:var(--sans);
+  color:var(--ink);
+  background:var(--ivory);
+  line-height:1.72;
+  font-weight:400;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+h1,h2,h3,h4{font-family:var(--serif);color:var(--black);font-weight:500;line-height:1.15}
+h1,h2.title{font-family:var(--display);font-weight:500;letter-spacing:.005em;line-height:1.05}
+html[lang="ar"] h1,html[lang="ar"] h2.title{letter-spacing:0;line-height:1.28}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+section{padding:clamp(4rem,9vw,7.5rem) var(--pad)}
+.wrap{max-width:var(--maxw);margin:0 auto}
+
+/* --- shared bits --- */
+.eyebrow{
+  font-family:var(--sans);
+  font-size:.72rem;font-weight:600;
+  letter-spacing:.35em;text-transform:uppercase;
+  color:var(--gold-ink);
+  display:inline-flex;align-items:center;gap:.9rem;
+  margin-bottom:1.4rem;
+}
+html[lang="ar"] .eyebrow{letter-spacing:.08em}
+.eyebrow::before{content:"";width:34px;height:1px;background:var(--gold)}
+h2.title{font-size:clamp(2rem,4.4vw,3.2rem)}
+.lead{max-width:44ch;color:var(--ink);font-size:1.02rem}
+html[lang="ar"] .lead{max-width:52ch}
+
+.btn{
+  display:inline-block;
+  font-family:var(--sans);font-weight:500;font-size:.8rem;
+  letter-spacing:.18em;text-transform:uppercase;
+  padding:1rem 2.3rem;border:1px solid var(--black);
+  color:var(--black);background:transparent;cursor:pointer;
+  transition:all .4s var(--ease);
+}
+html[lang="ar"] .btn{letter-spacing:.02em;font-weight:600}
+.btn:hover{background:var(--black);color:var(--ivory)}
+.btn--gold{border-color:var(--gold);background:var(--gold);color:var(--white)}
+.btn--gold:hover{background:var(--black);border-color:var(--black)}
+.btn--light{border-color:var(--ivory);color:var(--ivory)}
+.btn--light:hover{background:var(--ivory);color:var(--black)}
+
+/* --- header --- */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.3rem var(--pad);
+  transition:background .4s var(--ease),padding .4s var(--ease),box-shadow .4s var(--ease);
+}
+header.scrolled{background:rgba(247,244,239,.92);backdrop-filter:blur(12px);padding:.85rem var(--pad);box-shadow:0 1px 0 rgba(23,19,16,.06)}
+.logo{font-family:var(--serif);font-size:1.5rem;letter-spacing:.04em;color:var(--black);line-height:1}
+.logo small{display:block;font-family:var(--sans);font-size:.52rem;letter-spacing:.5em;text-transform:uppercase;color:var(--gold);margin-top:.28rem;font-weight:500}
+html[lang="ar"] .logo small{letter-spacing:.1em}
+nav{display:flex;align-items:center;gap:2.4rem}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;font-weight:400;position:relative;padding:.3rem 0}
+html[lang="ar"] .nav-links a{letter-spacing:0;font-size:.9rem}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--gold);transition:width .35s var(--ease)}
+.nav-links a:hover::after{width:100%}
+
+.lang-toggle{
+  font-family:var(--sans);font-size:.72rem;font-weight:600;letter-spacing:.12em;
+  border:1px solid var(--taupe);background:transparent;color:var(--ink);
+  padding:.5rem .85rem;cursor:pointer;transition:all .3s var(--ease);border-radius:2px;
+}
+.lang-toggle:hover{border-color:var(--gold);color:var(--gold)}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:.4rem}
+.burger span{width:24px;height:1.5px;background:var(--black);transition:.3s var(--ease)}
+
+/* --- hero --- */
+.hero{
+  min-height:100vh;display:flex;align-items:center;
+  padding-top:6rem;position:relative;overflow:hidden;
+  background:linear-gradient(180deg,var(--ivory) 0%,var(--beige) 100%);
+}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,5rem);align-items:center;width:100%}
+.hero-copy{opacity:0;transform:translateY(24px);animation:rise 1s var(--ease) .2s forwards}
+.hero h1{font-size:clamp(2.7rem,7.2vw,5.4rem);line-height:1.02}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero .sub{margin:1.8rem 0 2.6rem;max-width:40ch;font-size:1.05rem}
+html[lang="ar"] .hero .sub{max-width:48ch}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
+.hero-visual{position:relative;opacity:0;animation:fade 1.3s var(--ease) .5s forwards}
+.hero-visual .frame{
+  aspect-ratio:4/5;background:
+    radial-gradient(120% 90% at 50% 20%, #fff 0%, var(--beige) 60%, var(--taupe) 100%);
+  position:relative;overflow:hidden;border:1px solid rgba(200,162,80,.35);
+  box-shadow:0 40px 80px -40px rgba(23,19,16,.4);
+}
+.hero-visual .frame::after{
+  content:"BB";font-family:var(--serif);font-size:clamp(6rem,14vw,11rem);
+  color:rgba(200,162,80,.16);letter-spacing:.05em;
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+}
+.hero-visual .tagline{
+  position:absolute;bottom:1.5rem;left:1.5rem;right:1.5rem;
+  font-family:var(--sans);font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--ink);display:flex;justify-content:space-between;
+}
+html[lang="ar"] .hero-visual .tagline{letter-spacing:.05em}
+
+/* --- marquee strip --- */
+.strip{background:var(--black);color:var(--gold-soft);padding:1.15rem 0;overflow:hidden;white-space:nowrap}
+.strip .track{display:inline-flex;gap:3.5rem;animation:scroll 26s linear infinite;font-family:var(--serif);font-size:1.05rem;letter-spacing:.14em;padding-inline-start:3.5rem}
+.strip span::after{content:"·";margin-inline-start:3.5rem;color:var(--gold)}
+@media (prefers-reduced-motion:reduce){.strip .track{animation:none;justify-content:center}}
+
+/* --- why --- */
+.why{background:var(--ivory)}
+.why-head{max-width:52ch;margin-bottom:3.5rem}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--taupe);border:1px solid var(--taupe)}
+.why-card{background:var(--ivory);padding:2.4rem 1.8rem;transition:background .4s var(--ease)}
+.why-card:hover{background:var(--white)}
+.why-card .no{font-family:var(--serif);font-style:italic;color:var(--gold);font-size:1.3rem;margin-bottom:1rem}
+.why-card h3{font-size:1.22rem;margin-bottom:.75rem}
+.why-card p{font-size:.92rem}
+
+/* --- authenticity --- */
+.auth{background:var(--beige);position:relative}
+.auth-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:center}
+.steps-label{font-family:var(--sans);font-size:.68rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-ink);margin-top:2.2rem;padding-bottom:.6rem}
+html[lang="ar"] .steps-label{letter-spacing:.06em;font-size:.8rem}
+.auth-steps{list-style:none;counter-reset:s;margin-top:.4rem}
+.auth-steps li{counter-increment:s;padding:1.3rem 0;border-top:1px solid var(--taupe);display:flex;gap:1.3rem;align-items:flex-start}
+.auth-steps li::before{content:"0" counter(s);font-family:var(--serif);color:var(--gold);font-size:1rem;min-width:2rem;padding-top:.15rem}
+.auth-steps h4{font-size:1.08rem;margin-bottom:.3rem}
+.auth-steps p{font-size:.9rem}
+.auth-badge{
+  aspect-ratio:1;background:radial-gradient(circle at 50% 40%,var(--white),var(--ivory));
+  border:1px solid var(--gold);display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;padding:2rem;
+  box-shadow:0 30px 60px -35px rgba(23,19,16,.35);
+}
+.auth-badge .seal{width:88px;height:88px;border:1.5px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:2rem;color:var(--gold);margin-bottom:1.4rem}
+.auth-badge strong{font-family:var(--serif);font-size:1.5rem;font-weight:500;color:var(--black);display:block;margin-bottom:.4rem}
+.auth-badge span{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--ink)}
+html[lang="ar"] .auth-badge span{letter-spacing:.05em}
+
+/* --- featured --- */
+.featured{background:var(--ivory)}
+.feat-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1.5rem;margin-bottom:3rem}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.card{background:var(--white);border:1px solid var(--beige);transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
+.card:hover{transform:translateY(-6px);box-shadow:0 30px 50px -30px rgba(23,19,16,.25)}
+.card .ph{aspect-ratio:1;background:linear-gradient(160deg,var(--beige),var(--taupe));position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.card .ph .mono{font-family:var(--serif);font-size:2.6rem;color:rgba(255,255,255,.5);letter-spacing:.1em}
+.card .tag{position:absolute;top:1rem;in-inline-start:1rem;left:1rem;background:var(--ivory);color:var(--black);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;padding:.35rem .7rem;font-weight:500}
+html[lang="ar"] .card .tag{left:auto;right:1rem;letter-spacing:.03em}
+.card .body{padding:1.5rem 1.6rem 1.8rem}
+.card .brand{font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-ink);font-weight:500}
+html[lang="ar"] .card .brand{letter-spacing:.05em}
+.card h3{font-size:1.28rem;margin:.45rem 0 .8rem}
+.card .meta{display:flex;justify-content:space-between;align-items:center;padding-top:.9rem;border-top:1px solid var(--beige);margin-top:.9rem}
+.card .price{font-family:var(--serif);font-size:1.25rem;color:var(--black)}
+.card .cond{font-size:.72rem;color:#574F45;letter-spacing:.05em}
+.card .view{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--black);border-bottom:1px solid var(--gold);padding-bottom:2px;transition:color .3s}
+.card .view:hover{color:var(--gold)}
+
+/* --- reviews --- */
+.reviews{background:var(--black);color:var(--ivory)}
+.reviews h2.title,.reviews .review q{color:var(--ivory)}
+.reviews .eyebrow{color:var(--gold-soft)}
+.reviews .eyebrow::before{background:var(--gold-soft)}
+.grid-rev{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem}
+.review{border-top:1px solid rgba(200,162,80,.4);padding-top:1.6rem}
+.review .stars{color:var(--gold);letter-spacing:.2em;font-size:.85rem;margin-bottom:1.2rem}
+.review q{font-family:var(--serif);font-style:italic;font-size:1.16rem;line-height:1.55;display:block;quotes:none}
+.review .who{margin-top:1.4rem;font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-soft)}
+html[lang="ar"] .review .who{letter-spacing:.03em}
+
+/* --- faq --- */
+.faq{background:var(--beige)}
+.faq-wrap{max-width:800px;margin:2.5rem auto 0}
+.acc{border-bottom:1px solid var(--taupe)}
+.acc button{width:100%;background:none;border:none;cursor:pointer;text-align:start;padding:1.55rem 0;display:flex;justify-content:space-between;align-items:center;gap:1.5rem;font-family:var(--serif);font-size:1.15rem;color:var(--black)}
+.acc .plus{color:var(--gold);font-size:1.5rem;transition:transform .35s var(--ease);flex-shrink:0;line-height:1}
+.acc.open .plus{transform:rotate(45deg)}
+.acc .ans{max-height:0;overflow:hidden;transition:max-height .4s var(--ease)}
+.acc .ans p{padding-bottom:1.5rem;font-size:.95rem;max-width:66ch}
+
+/* --- contact --- */
+.contact{background:var(--ivory)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem)}
+.contact form{display:flex;flex-direction:column;gap:1.1rem}
+.field label{display:block;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);margin-bottom:.5rem;font-weight:500}
+html[lang="ar"] .field label{letter-spacing:.03em}
+.field input,.field textarea{width:100%;background:var(--white);border:1px solid var(--taupe);padding:.9rem 1rem;font-family:var(--sans);font-size:.95rem;color:var(--ink);transition:border .3s}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--gold)}
+.contact-side .wa{background:var(--white);border:1px solid var(--beige);padding:2rem;margin-top:1.5rem}
+.contact-side .wa strong{font-family:var(--serif);font-size:1.3rem;display:block;margin-bottom:.5rem}
+.contact-side .wa .num{font-family:var(--serif);font-size:1.5rem;color:var(--gold);letter-spacing:.05em;direction:ltr;display:inline-block;margin:.6rem 0 1.2rem}
+
+/* --- footer --- */
+footer{background:var(--black);color:var(--taupe);padding:4rem var(--pad) 2rem}
+.foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:2.5rem;max-width:var(--maxw);margin:0 auto;padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,.08)}
+footer .logo{color:var(--ivory)}
+footer .fdesc{font-size:.9rem;margin-top:1.2rem;max-width:38ch}
+footer h4{color:var(--ivory);font-family:var(--sans);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:1.2rem;font-weight:600}
+html[lang="ar"] footer h4{letter-spacing:.04em}
+footer ul{list-style:none;display:flex;flex-direction:column;gap:.7rem}
+footer ul a{font-size:.88rem;transition:color .3s}
+footer ul a:hover{color:var(--gold)}
+.foot-bottom{max-width:var(--maxw);margin:1.8rem auto 0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-size:.75rem;letter-spacing:.05em}
+
+/* --- whatsapp float --- */
+.wa-float{position:fixed;bottom:1.5rem;inset-inline-end:1.5rem;right:1.5rem;z-index:90;background:#25D366;color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 30px -8px rgba(37,211,102,.6);transition:transform .3s var(--ease)}
+html[lang="ar"] .wa-float{right:auto;left:1.5rem}
+.wa-float:hover{transform:scale(1.08)}
+.wa-float svg{width:28px;height:28px;fill:#fff}
+
+@keyframes rise{to{opacity:1;transform:translateY(0)}}
+@keyframes fade{to{opacity:1}}
+@keyframes scroll{to{transform:translateX(-50%)}}
+html[dir="rtl"] @keyframes scroll{to{transform:translateX(50%)}}
+
+/* reveal on scroll */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+/* --- responsive --- */
+@media(max-width:900px){
+  .hero-grid,.auth-grid,.contact-grid{grid-template-columns:1fr}
+  .hero-visual{order:-1;max-width:340px;margin:0 auto}
+  .grid-4{grid-template-columns:repeat(2,1fr)}
+  .grid-3,.grid-rev{grid-template-columns:repeat(2,1fr)}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  .nav-links,.lang-toggle.desktop{display:none}
+  .burger{display:flex}
+  nav{gap:1rem}
+  .mobile-open .nav-links{display:flex;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--ivory);flex-direction:column;align-items:center;justify-content:center;gap:2rem;z-index:200}
+  .mobile-open .nav-links a{font-size:1.3rem;font-family:var(--serif);letter-spacing:.05em}
+  .mobile-open .lang-toggle.mobile{display:block;position:fixed;top:1.4rem;inset-inline-end:4rem;right:4rem;z-index:201}
+  .mobile-open .burger{position:fixed;top:1.3rem;inset-inline-end:1.3rem;right:1.3rem;z-index:201}
+  .mobile-open .burger span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+  .mobile-open .burger span:nth-child(2){opacity:0}
+  .mobile-open .burger span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+  .grid-4,.grid-3,.grid-rev,.foot-grid{grid-template-columns:1fr}
+  .feat-head{flex-direction:column;align-items:flex-start}
+}
+.lang-toggle.mobile{display:none}
+
+/* FORCE-LIGHT: keep the boutique palette even when the device is in dark mode */
+:root{color-scheme:light;}
+@media (prefers-color-scheme: dark){
+  :root{
+    --ivory:#FBF9F5;--beige:#F1EBE1;--taupe:#B8AB99;
+    --gold:#C8A250;--gold-ink:#6F5214;--black:#12100E;--ink:#241F1B;--white:#FFFFFF;
+  }
+  body{background:var(--ivory);color:var(--ink);}
+  h1,h2,h3,h4{color:var(--black);}
+}
+
+/* ===== DARK-MODE ARMOR =====================================================
+   Some in-app browsers force a dark theme and override solid background-colors.
+   They do NOT touch background-images, so every surface below is painted with a
+   flat gradient (renders identically to a solid fill but survives forced dark).
+   Text colours are additionally locked with -webkit-text-fill-color.        */
+
+html, body{
+  background-color:#FBF9F5 !important;
+  background-image:linear-gradient(#FBF9F5,#FBF9F5) !important;
+  color:#241F1B !important;
+  -webkit-text-fill-color:#241F1B;
+}
+
+/* light surfaces */
+.hero, .why, .featured, .contact, body > section{
+  background-image:linear-gradient(#FBF9F5,#FBF9F5) !important;
+}
+.auth, .faq{ background-image:linear-gradient(#F1EBE1,#F1EBE1) !important; }
+.hero{ background-image:linear-gradient(#FBF9F5 0%,#F1EBE1 100%) !important; }
+header{
+  background-color:#FBF9F5 !important;
+  background-image:linear-gradient(#FBF9F5,#FBF9F5) !important;
+}
+.card, .verify, .wa, .contact-side .wa, .auth-badge, .why-card,
+.field input, .field textarea, .main-img, .thumb, .badge{
+  background-image:linear-gradient(#FFFFFF,#FFFFFF) !important;
+}
+.chip{ background-image:linear-gradient(#F1EBE1,#F1EBE1) !important; }
+.card .ph{ background-image:linear-gradient(160deg,#F1EBE1,#B8AB99) !important; }
+
+/* intentionally dark surfaces stay dark */
+.reviews, footer, .strip{
+  background-color:#12100E !important;
+  background-image:linear-gradient(#12100E,#12100E) !important;
+}
+.reviews, .reviews q, .reviews .title{ color:#FBF9F5 !important; -webkit-text-fill-color:#FBF9F5; }
+footer{ color:#B8AB99 !important; -webkit-text-fill-color:#B8AB99; }
+footer .logo, footer h4{ color:#FBF9F5 !important; -webkit-text-fill-color:#FBF9F5; }
+.strip{ color:#E4D2A6 !important; -webkit-text-fill-color:#E4D2A6; }
+.reviews .eyebrow{ color:#E4D2A6 !important; -webkit-text-fill-color:#E4D2A6; }
+.reviews .review .who, .review .stars{ color:#E4D2A6 !important; -webkit-text-fill-color:#E4D2A6; }
+
+/* text lock on light surfaces */
+h1, h2, h3, h4, .price, .logo, .acc button, .card h3, .card .price{
+  color:#12100E !important; -webkit-text-fill-color:#12100E;
+}
+p, .desc, .lead, .specs .row .v, .acc .ans p, .why-card p, .auth-steps p, .fdesc{
+  color:#241F1B !important; -webkit-text-fill-color:#241F1B;
+}
+.specs .row .k, .assurance, .crumb, .card .cond, .price small, .field label{
+  color:#574F45 !important; -webkit-text-fill-color:#574F45;
+}
+.eyebrow, .info .brand, .card .brand, .logo small, .auth-steps li::before,
+.why-card .no, .acc .plus, .seal{
+  color:#6F5214 !important; -webkit-text-fill-color:#6F5214;
+}
+.badge{ color:#12100E !important; -webkit-text-fill-color:#12100E; }
+.badge.solid{
+  background-image:linear-gradient(#C8A250,#C8A250) !important;
+  color:#FFFFFF !important; -webkit-text-fill-color:#FFFFFF;
+}
+.btn{ color:#12100E !important; -webkit-text-fill-color:#12100E; }
+.btn--gold, .btn--wa{
+  color:#FFFFFF !important; -webkit-text-fill-color:#FFFFFF;
+}
+.btn--gold{ background-image:linear-gradient(#C8A250,#C8A250) !important; }
+.btn--wa{ background-image:linear-gradient(#25D366,#25D366) !important; }
+.back, .nav-links a{ color:#241F1B !important; -webkit-text-fill-color:#241F1B; }
+.lang-toggle{ color:#241F1B !important; -webkit-text-fill-color:#241F1B;
+  background-image:linear-gradient(#FFFFFF,#FFFFFF) !important; }
+.card .view{ color:#12100E !important; -webkit-text-fill-color:#12100E; }
+.field input, .field textarea{ color:#241F1B !important; -webkit-text-fill-color:#241F1B; }
+.burger span{ background-image:linear-gradient(#12100E,#12100E) !important; }
+/* ===== END DARK-MODE ARMOR ===== */
+
+.social{display:flex;gap:.9rem;justify-content:center;margin:1.5rem 0 .4rem}
+.social a{width:38px;height:38px;border:1px solid rgba(200,162,80,.55);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;transition:all .3s var(--ease)}
+.social a:hover{background:var(--gold);border-color:var(--gold)}
+.social svg{width:17px;height:17px;fill:var(--gold)}
+.social a:hover svg{fill:#12100E}
+html[lang="ar"] 
+.social a{background-image:linear-gradient(#12100E,#12100E)!important}
+.social a:hover{background-image:linear-gradient(#C8A250,#C8A250)!important}
+.social svg{fill:#C8A250!important}
+.social a:hover svg{fill:#12100E!important}
+
+.filters{display:flex;flex-wrap:wrap;gap:.55rem;margin:0 0 2.2rem}
+.filters button{
+  font-family:var(--sans);font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+  padding:.6rem 1.15rem;border:1px solid var(--taupe);background:var(--white);color:var(--ink);
+  cursor:pointer;transition:all .3s var(--ease);border-radius:2px;white-space:nowrap;
+}
+html[lang="ar"] .filters button{letter-spacing:.02em;font-size:.85rem;font-weight:600}
+.filters button:hover{border-color:var(--gold);color:var(--gold-ink)}
+.filters button.on{background:var(--black);border-color:var(--black);color:var(--ivory)}
+.filters .count{font-size:.68rem;opacity:.65;margin-inline-start:.4rem}
+.no-results{grid-column:1/-1;text-align:center;padding:3rem 1rem;color:#574F45;font-size:.95rem}
+@media(max-width:640px){.filters{gap:.45rem}.filters button{padding:.5rem .85rem;font-size:.68rem}}
+
+.filters button{background-image:linear-gradient(#FFFFFF,#FFFFFF)!important;color:#241F1B!important;-webkit-text-fill-color:#241F1B}
+.filters button.on{background-image:linear-gradient(#12100E,#12100E)!important;color:#FBF9F5!important;-webkit-text-fill-color:#FBF9F5}
+.no-results{color:#574F45!important;-webkit-text-fill-color:#574F45}
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header id="header">
+  <a href="#home" class="logo" aria-label="Bella Boutique home">Bella Boutique<small data-i18n="tag_authentic">Authentic Luxury</small></a>
+  <nav id="nav">
+    <ul class="nav-links">
+      <li><a href="#home" data-i18n="nav_home">Home</a></li>
+      <li><a href="#featured" data-i18n="nav_shop">Shop</a></li>
+      <li><a href="#authenticity" data-i18n="nav_auth">Authenticity</a></li>
+      <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+    </ul>
+    <button class="lang-toggle desktop" id="langBtn" aria-label="Switch language">العربية</button>
+    <button class="lang-toggle mobile" id="langBtnM" aria-label="Switch language">ع</button>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="home">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow" data-i18n="hero_eyebrow">New & Vintage · Authenticated</span>
+      <h1 data-i18n="hero_title">Luxury, <em>verified</em> with care.</em> with care.</h1>
+      <p class="sub" data-i18n="hero_sub">Authentic designer handbags — new and vintage — each piece authenticated, documented, and presented to high standards.</p>
+      <div class="hero-actions">
+        <a href="#featured" class="btn btn--gold" data-i18n="hero_shop">Shop Now</a>
+        <a href="#why" class="btn" data-i18n="hero_learn">Learn More</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="frame">
+        <div class="tagline"><span data-i18n="hero_v1">Est. Riyadh</span><span data-i18n="hero_v2">100% Authentic</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STRIP ================= -->
+<div class="strip" aria-hidden="true">
+  <div class="track">
+    <span>Louis Vuitton</span><span>Gucci</span><span>Dior</span><span>Yves Saint Laurent</span><span>Chanel</span><span>Hermès</span><span>Prada</span><span>Céline</span>
+    <span>Louis Vuitton</span><span>Gucci</span><span>Dior</span><span>Yves Saint Laurent</span><span>Chanel</span><span>Hermès</span><span>Prada</span><span>Céline</span>
+  </div>
+</div>
+
+<!-- ================= WHY ================= -->
+<section class="why reveal" id="why">
+  <div class="wrap">
+    <div class="why-head">
+      <span class="eyebrow" data-i18n="why_eyebrow">Why Bella Boutique</span>
+      <h2 class="title" data-i18n="why_title">Trust, at every step.</h2>
+    </div>
+    <div class="grid-4">
+      <div class="why-card">
+        <div class="no">I</div>
+        <h3 data-i18n="why1_t">100% Authentic</h3>
+        <p data-i18n="why1_p">Every bag is confirmed genuine. We only offer pieces that have been fully verified.</p>
+      </div>
+      <div class="why-card">
+        <div class="no">II</div>
+        <h3 data-i18n="why2_t">Carefully Curated</h3>
+        <p data-i18n="why2_p">Iconic houses and timeless designs, selected with expertise and attention.</p>
+      </div>
+      <div class="why-card">
+        <div class="no">III</div>
+        <h3 data-i18n="why3_t">Trusted Suppliers</h3>
+        <p data-i18n="why3_p">We work exclusively with approved, reliable suppliers to ensure the authenticity and quality of every piece.</p>
+      </div>
+      <div class="why-card">
+        <div class="no">IV</div>
+        <h3 data-i18n="why4_t">Accurate Condition Details</h3>
+        <p data-i18n="why4_p">Clear photos, complete information, and precise condition grading — so you know exactly what you’re receiving.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= AUTHENTICITY ================= -->
+<section class="auth reveal" id="authenticity">
+  <div class="wrap auth-grid">
+    <div>
+      <span class="eyebrow" data-i18n="auth_eyebrow">Authenticity & Verification</span>
+      <h2 class="title" data-i18n="auth_title">Verified before it reaches you.</h2>
+      <div class="steps-label" data-i18n="auth_steps_label">Verification Steps</div>
+      <ol class="auth-steps">
+        <li><div><h4 data-i18n="auth1_t">Sourcing & Intake</h4><p data-i18n="auth1_p">Pieces are received only from trusted suppliers, with provenance reviewed upon arrival.</p></div></li>
+        <li><div><h4 data-i18n="auth2_t">Detail Inspection</h4><p data-i18n="auth2_p">Hardware, stitching, date codes, leather, and lining are examined according to each brand’s standards.</p></div></li>
+        <li><div><h4 data-i18n="auth3_t">Independent Authentication</h4><p data-i18n="auth3_p">A certified third-party luxury authenticator inspects every piece and issues an official certificate.</p></div></li>
+        <li><div><h4 data-i18n="auth4_t">Documented & Listed</h4><p data-i18n="auth4_p">Condition is graded accurately and photographed fully before the item is listed.</p></div></li>
+      </ol>
+    </div>
+    <div class="auth-badge">
+      <div class="seal">✓</div>
+      <strong data-i18n="auth_badge_t">Authenticity Guarantee</strong>
+      <span data-i18n="auth_badge_s">Genuine · Certified · Documented</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FEATURED ================= -->
+<section class="featured reveal" id="featured">
+  <div class="wrap">
+    <div class="feat-head">
+      <div>
+        <span class="eyebrow" data-i18n="feat_eyebrow">Featured Bags</span>
+        <h2 class="title" data-i18n="feat_title">A selection worth carrying.</h2>
+      </div>
+      <a href="#contact" class="btn" data-i18n="feat_all">View Full Collection</a>
+    </div>
+    <div class="filters" id="brandFilters"></div>
+    <div class="grid-3" id="productGrid"></div>
+  </div>
+</section>
+
+<!-- ================= REVIEWS ================= -->
+<section class="reviews reveal" id="reviews">
+  <div class="wrap">
+    <span class="eyebrow" data-i18n="rev_eyebrow">Customer Reviews</span>
+    <h2 class="title" data-i18n="rev_title">Words from our clients.</h2>
+    <div class="grid-rev">
+      <div class="review"><div class="stars">★★★★★</div><q data-i18n="rev1_q">Exactly as described — pristine, every detail as promised. I felt at ease throughout.</q><div class="who" data-i18n="rev1_w">— Noura, Riyadh</div></div>
+      <div class="review"><div class="stars">★★★★★</div><q data-i18n="rev2_q">Finally a boutique I trust for vintage. The documentation gave me total peace of mind.</q><div class="who" data-i18n="rev2_w">— Sarah, Jeddah</div></div>
+      <div class="review"><div class="stars">★★★★★</div><q data-i18n="rev3_q">Elegant from first message to delivery. The condition grading was honest and accurate.</q><div class="who" data-i18n="rev3_w">— Latifa, Dammam</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="faq reveal" id="faq">
+  <div class="wrap">
+    <span class="eyebrow" data-i18n="faq_eyebrow">FAQ</span>
+    <h2 class="title" data-i18n="faq_title">Questions, answered.</h2>
+    <div class="faq-wrap" id="faqWrap"></div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact reveal" id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <span class="eyebrow" data-i18n="con_eyebrow">Contact Us</span>
+      <h2 class="title" data-i18n="con_title">Let's find yours.</h2>
+      <p class="lead" data-i18n="con_lead" style="margin-top:1.2rem">Message us here, or reach us on WhatsApp for the fastest reply. Ask us anything — condition, availability, details.</p>
+      <form id="contactForm">
+        <div class="field"><label data-i18n="con_name">Name</label><input type="text" id="cName" required></div>
+        <div class="field"><label data-i18n="con_email">Email</label><input type="email" id="cEmail" required></div>
+        <div class="field"><label data-i18n="con_msg">Message</label><textarea id="cMsg" rows="4" required></textarea></div>
+        <button type="submit" class="btn btn--gold" data-i18n="con_send">Send via WhatsApp</button>
+      </form>
+    </div>
+    <div class="contact-side">
+      <div class="auth-badge" style="aspect-ratio:auto;padding:2.5rem 2rem">
+        <div class="seal">✓</div>
+        <strong data-i18n="con_guarantee">Authenticity Guaranteed</strong>
+        <span data-i18n="con_guarantee_s">On every single order</span>
+      </div>
+      <div class="wa">
+        <strong data-i18n="con_wa_t">Order or ask directly</strong>
+        <p data-i18n="con_wa_p" style="font-size:.9rem">Message us on WhatsApp and we'll reply promptly.</p>
+        <div class="num">+966 53 838 2378</div><br>
+        <a href="#" class="btn btn--gold wa-link" data-i18n="con_wa_btn">Chat on WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="foot-grid">
+    <div>
+      <div class="logo">Bella Boutique<small data-i18n="tag_authentic">Authentic Luxury</small></div>
+      <p class="fdesc" data-i18n="foot_desc">Authentic luxury handbags, new and vintage. Curated, verified, delivered with care.</p>
+    </div>
+    <div>
+      <h4 data-i18n="foot_explore">Explore</h4>
+      <ul>
+        <li><a href="#home" data-i18n="nav_home">Home</a></li>
+        <li><a href="#featured" data-i18n="nav_shop">Shop</a></li>
+        <li><a href="#authenticity" data-i18n="nav_auth">Authenticity</a></li>
+        <li><a href="#faq" data-i18n="faq_eyebrow">FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 data-i18n="foot_policies">Policies</h4>
+      <ul>
+        <li><a href="authenticity.html" data-i18n="pol_auth2">Authenticity Assurance</a></li>
+        <li><a href="shipping.html" data-i18n="pol_ship">Shipping Policy</a></li>
+        <li><a href="authenticity.html#refund" data-i18n="pol_refund">Refund Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="social"><a href="https://instagram.com/Bella.storeksa" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.3-1.46.72-2.13 1.38C1.35 2.68.93 3.35.63 4.14.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.3.79.72 1.46 1.38 2.13.67.66 1.34 1.08 2.13 1.38.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.3 1.46-.72 2.13-1.38.66-.67 1.08-1.34 1.38-2.13.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.3-.79-.72-1.46-1.38-2.13C21.32 1.35 20.65.93 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0z"/><path d="M12 5.84A6.16 6.16 0 1018.16 12 6.16 6.16 0 0012 5.84zM12 16a4 4 0 114-4 4 4 0 01-4 4z"/><circle cx="18.41" cy="5.59" r="1.44"/></svg></a><a href="https://tiktok.com/@Bella.storeksa" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 5.82A4.28 4.28 0 0115.54 3h-3.09v12.4a2.59 2.59 0 01-2.59 2.5 2.59 2.59 0 01-2.59-2.59 2.59 2.59 0 013.35-2.48V9.7a5.67 5.67 0 00-.76-.05A5.68 5.68 0 004.2 15.3a5.68 5.68 0 005.66 5.7 5.68 5.68 0 005.68-5.68V9.01a7.35 7.35 0 004.28 1.37V7.3a4.28 4.28 0 01-3.22-1.48z"/></svg></a></div>
+  <div class="foot-bottom">
+    <span data-i18n="foot_copy">© 2026 Bella Boutique. All rights reserved.</span>
+    <span data-i18n="foot_made">Riyadh · Kingdom of Saudi Arabia</span>
+  </div>
+</footer>
+
+<a href="#" class="wa-float wa-link" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.6.1-.2.3-.7 1-.9 1.1-.2.2-.3.2-.6.1-1.7-.8-2.8-1.5-3.9-3.4-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.1-.6-1.5-.8-2.1-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 2 3 4.8 4.2 1.8.8 2.5.8 3.4.7.5-.1 1.7-.7 1.9-1.4.2-.6.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 00-8.6 15l-1.3 4.7 4.9-1.3A10 10 0 1012 2z"/></svg>
+</a>
+
+<script>
+/* ============ DATA ============ */
+const WHATSAPP = "966538382378"; // 0538382378 in international format
+
+const products = [
+  {id:"lv-dauphine", brand:"Louis Vuitton", name:{en:"Dauphine MM",ar:"دوفين MM"}, cond:{en:"Excellent · 95%",ar:"ممتازة · ٩٥٪"}, price:"7,800 SAR", img:"assets/dauphine/front.jpg", page:"product-dauphine.html", tag:{en:"Authentic",ar:"أصلية"}},
+  {id:"gucci-ophidia", brand:"Gucci", name:{en:"Ophidia GG Tote",ar:"أوفيديا GG توت"}, cond:{en:"99% · Unused",ar:"٩٩٪ · غير مستخدمة"}, price:"7,800 SAR", img:"assets/ophidia/front.jpg", page:"product-ophidia.html", tag:{en:"Authentic",ar:"أصلية"}},
+  {id:"lv-speedy-nano", brand:"Louis Vuitton", name:{en:"Speedy Nano",ar:"سبيدي نانو"}, cond:{en:"Brand New · Unused",ar:"جديدة تماماً · غير مستخدمة"}, price:"8,800 SAR", img:"assets/speedy/front.jpg", page:"product-speedy.html", tag:{en:"New Arrival",ar:"وصل حديثاً"}},
+  {id:"ysl-cassandre", brand:"Saint Laurent", name:{en:"Cassandre Chain Wallet",ar:"كاساندر تشين واليت"}, cond:{en:"98% · Like New",ar:"٩٨٪ · شبه جديدة"}, price:"5,500 SAR", img:"assets/cassandre/front.jpg", page:"product-cassandre.html", tag:{en:"Authentic",ar:"أصلية"}},
+  {id:"gucci-bamboo", brand:"Gucci", name:{en:"Bamboo Basket Bag",ar:"بامبو باسكِت"}, cond:{en:"99% · Unused",ar:"٩٩٪ · غير مستخدمة"}, price:"9,800 SAR", img:"assets/bamboo/front.jpg", page:"product-bamboo.html", tag:{en:"Authentic",ar:"أصلية"}},
+  {id:"gucci-horsebit", brand:"Gucci", name:{en:"Horsebit 1955 Mini",ar:"هورسبيت ١٩٥٥ ميني"}, cond:{en:"99% · Unused",ar:"٩٩٪ · غير مستخدمة"}, price:"7,800 SAR", img:"assets/horsebit/front.jpg", page:"product-horsebit.html", tag:{en:"Authentic",ar:"أصلية"}},
+  {id:"balenciaga-hourglass", brand:"Balenciaga", name:{en:"Hourglass Wallet on Chain",ar:"أورغلاس واليت أون تشين"}, cond:{en:"99% · Unused",ar:"٩٩٪ · غير مستخدمة"}, price:"4,500 SAR", img:"assets/hourglass/front.jpg", page:"product-hourglass.html", tag:{en:"Authentic",ar:"أصلية"}},
+];
+
+const faqs = [
+  {q:{en:"Are all bags 100% authentic?",ar:"هل جميع الحقائب أصلية ١٠٠٪؟"}, a:{en:"Yes. Every bag is guaranteed genuine and passes a strict verification process before listing. We stand behind each piece we sell.",ar:"نعم. كل حقيبة مضمونة أصلية وتخضع لتحقق دقيق قبل عرضها. نضمن كل قطعة نبيعها."}},
+  {q:{en:"How do you verify authenticity?",ar:"كيف تتحققون من الأصالة؟"}, a:{en:"We inspect hardware, stitching, date codes and leather against each house's standards, with independent third-party verification.",ar:"نفحص الإكسسوارات والخياطة ورموز التاريخ والجلد وفق معايير كل دار، مع تحقق مستقل من جهة خارجية."}},
+  {q:{en:"What does the condition percentage mean?",ar:"ماذا تعني نسبة الحالة؟"}, a:{en:"Each bag is graded honestly, from Like New to Gently Used, with clear photos and notes.",ar:"تُصنَّف كل حقيبة بصدق — من شبه جديدة إلى استعمال خفيف — مع صور وملاحظات واضحة."}},
+  {q:{en:"How do I order and receive my bag?",ar:"كيف أطلب وأستلم حقيبتي؟"}, a:{en:"Tap 'Order via WhatsApp' on any bag. We confirm details and availability, then arrange secure delivery.",ar:"اضغطي «اطلبي عبر واتساب» لأي حقيبة. نؤكد التفاصيل والتوفر ثم نرتب توصيلاً آمناً."}},
+  {q:{en:"What is your return policy?",ar:"ما هي سياسة الإرجاع؟"}, a:{en:"If a bag is not as described, contact us right away. We handle every case with care and fairness.",ar:"إذا لم تكن الحقيبة كما وُصفت، تواصلي معنا فوراً. نتعامل مع كل حالة بعناية وإنصاف."}},
+];
+
+/* ============ i18n STRINGS ============ */
+const i18n = {
+  tag_authentic:{en:"Authentic Luxury",ar:"فخامة أصلية"},
+  nav_home:{en:"Home",ar:"الرئيسية"}, nav_shop:{en:"Shop",ar:"المتجر"}, nav_auth:{en:"Authenticity",ar:"الأصالة"}, nav_contact:{en:"Contact",ar:"تواصلي"},
+  hero_eyebrow:{en:"New & Vintage · Authenticated",ar:"جديدة وفينتاج · موثّقة"},
+  hero_title:{en:'Luxury, <em>verified</em> with care.',ar:'الفخامة، <em>موثّقة</em> بعناية.'},
+  hero_sub:{en:"Authentic designer handbags — new and vintage — each piece authenticated, documented, and presented to high standards.",ar:"حقائب مصممين أصلية — جديدة وفينتاج — كل قطعة موثّقة ومقدّمة بمعايير عالية."},
+  hero_shop:{en:"Shop Now",ar:"تسوّقي الآن"}, hero_learn:{en:"Learn More",ar:"اعرفي المزيد"},
+  hero_v1:{en:"Est. Riyadh",ar:"الرياض"}, hero_v2:{en:"100% Authentic",ar:"أصلية ١٠٠٪"},
+  why_eyebrow:{en:"Why Bella Boutique",ar:"لماذا Bella Boutique"}, why_title:{en:"Trust, at every step.",ar:"ثقة، في كل خطوة."},
+  why1_t:{en:"100% Authentic",ar:"أصلية 100٪"}, why1_p:{en:"Every bag is confirmed genuine. We only offer pieces that have been fully verified.",ar:"كل حقيبة أصلية ومؤكدة. نلتزم بعرض القطع التي تم التحقق منها بالكامل."},
+  why2_t:{en:"Carefully Curated",ar:"انتقاء دقيق"}, why2_p:{en:"Iconic houses and timeless designs, selected with expertise and attention.",ar:"علامات أيقونية وتصاميم خالدة، يتم اختيارها بعناية وبخبرة."},
+  why3_t:{en:"Trusted Suppliers",ar:"موردون موثوقون"}, why3_p:{en:"We work exclusively with approved, reliable suppliers to ensure the authenticity and quality of every piece.",ar:"نتعامل فقط مع موردين معتمدين وموثوقين لضمان جودة وأصالة كل قطعة."},
+  why4_t:{en:"Accurate Condition Details",ar:"وصف دقيق للحالة"}, why4_p:{en:"Clear photos, complete information, and precise condition grading — so you know exactly what you’re receiving.",ar:"صور واضحة، وتفاصيل كاملة، وتصنيف دقيق للحالة… لتعرفي تمامًا ما تحصلين عليه."},
+  auth_eyebrow:{en:"Authenticity & Verification",ar:"الأصالة والتوثيق"}, auth_title:{en:"Verified before it reaches you.",ar:"موثّقة قبل أن تصلك."},
+  auth1_t:{en:"Sourcing & Intake",ar:"المصدر والاستلام"}, auth1_p:{en:"Pieces are received only from trusted suppliers, with provenance reviewed upon arrival.",ar:"استقبال القطع من موردين موثوقين، مع مراجعة بيانات المصدر عند الوصول."},
+  auth2_t:{en:"Detail Inspection",ar:"فحص التفاصيل"}, auth2_p:{en:"Hardware, stitching, date codes, leather, and lining are examined according to each brand’s standards.",ar:"فحص الإكسسوارات، الخياطة، رموز التاريخ، الجلد، والبطانة وفق معايير العلامة."},
+  auth3_t:{en:"Independent Authentication",ar:"توثيق مستقل"}, auth3_p:{en:"A certified third-party luxury authenticator inspects every piece and issues an official certificate.",ar:"جهة مستقلة متخصصة في توثيق المنتجات الفاخرة تفحص كل قطعة وتصدر شهادة رسمية."},
+  auth4_t:{en:"Documented & Listed",ar:"التوثيق والعرض"}, auth4_p:{en:"Condition is graded accurately and photographed fully before the item is listed.",ar:"تصنيف الحالة بدقة وتصوير كامل قبل عرض القطعة."},
+  auth_badge_t:{en:"Authenticity Guarantee",ar:"ضمان الأصالة"}, auth_badge_s:{en:"Genuine · Certified · Documented",ar:"أصلية · معتمدة · موثّقة"},
+  feat_eyebrow:{en:"Featured Bags",ar:"حقائب مختارة"}, feat_title:{en:"A selection worth carrying.",ar:"تشكيلة تستحق أن تُحمَل."}, feat_all:{en:"View Full Collection",ar:"شاهدي المجموعة كاملة"},
+  filter_all:{en:"All",ar:"الكل"}, no_results:{en:"No bags in this category yet.",ar:"لا توجد حقائب في هذا القسم حالياً."},
+  auth_steps_label:{en:"Verification Steps",ar:"خطوات التوثيق"},
+  view_details:{en:"View Details",ar:"عرض التفاصيل"}, order_wa:{en:"Order via WhatsApp",ar:"اطلبي عبر واتساب"},
+  rev_eyebrow:{en:"Customer Reviews",ar:"آراء العميلات"}, rev_title:{en:"Words from our clients.",ar:"كلمات من عميلاتنا."},
+  rev1_q:{en:"Exactly as described — pristine, every detail as promised. I felt at ease throughout.",ar:"وصلت تماماً كما وُصفت — بحالة مثالية وكل تفصيل كما وُعدت به. اطمأننت من البداية."},
+  rev1_w:{en:"— Noura, Riyadh",ar:"— نورة، الرياض"},
+  rev2_q:{en:"Finally a boutique I trust for vintage. The documentation gave me total peace of mind.",ar:"أخيراً بوتيك أثق به للفينتاج. التوثيق منحني راحة بال تامة."},
+  rev2_w:{en:"— Sarah, Jeddah",ar:"— سارة، جدة"},
+  rev3_q:{en:"Elegant from first message to delivery. The condition grading was honest and accurate.",ar:"أناقة من أول رسالة حتى التوصيل. تصنيف الحالة كان صادقاً ودقيقاً."},
+  rev3_w:{en:"— Latifa, Dammam",ar:"— لطيفة، الدمام"},
+  faq_eyebrow:{en:"FAQ",ar:"الأسئلة الشائعة"}, faq_title:{en:"Questions, answered.",ar:"أسئلتك، مُجابة."},
+  con_eyebrow:{en:"Contact Us",ar:"تواصلي معنا"}, con_title:{en:"Let's find yours.",ar:"لنجد حقيبتك."},
+  con_lead:{en:"Message us here, or reach us on WhatsApp for the fastest reply. Ask us anything — condition, availability, details.",ar:"راسلينا هنا، أو عبر واتساب للرد الأسرع. اسألينا عن أي شيء — الحالة، التوفر، التفاصيل."},
+  con_name:{en:"Name",ar:"الاسم"}, con_email:{en:"Email",ar:"البريد الإلكتروني"}, con_msg:{en:"Message",ar:"الرسالة"}, con_send:{en:"Send via WhatsApp",ar:"إرسال عبر واتساب"},
+  con_guarantee:{en:"Authenticity Guaranteed",ar:"الأصالة مضمونة"}, con_guarantee_s:{en:"On every single order",ar:"في كل طلب"},
+  con_wa_t:{en:"Order or ask directly",ar:"اطلبي أو استفسري مباشرة"}, con_wa_p:{en:"Message us on WhatsApp and we'll reply promptly.",ar:"راسلينا عبر واتساب وسنرد عليك سريعاً."}, con_wa_btn:{en:"Chat on WhatsApp",ar:"محادثة واتساب"},
+  foot_desc:{en:"Authentic luxury handbags, new and vintage. Curated, verified, delivered with care.",ar:"حقائب فاخرة أصلية، جديدة وفينتاج. مُنتقاة وموثّقة وتُسلَّم بعناية."},
+  foot_explore:{en:"Explore",ar:"استكشفي"}, foot_policies:{en:"Policies",ar:"السياسات"},
+  pol_auth2:{en:"Authenticity Assurance",ar:"إثبات الأصالة"}, pol_ship:{en:"Shipping Policy",ar:"سياسة الشحن"}, pol_refund:{en:"Refund Policy",ar:"سياسة الاسترداد"}, pol_auth:{en:"Authenticity Policy",ar:"سياسة الأصالة"}, pol_terms:{en:"Terms & Conditions",ar:"الشروط والأحكام"},
+  foot_copy:{en:"© 2026 Bella Boutique. All rights reserved.",ar:"© ٢٠٢٦ بيلا بوتيك. جميع الحقوق محفوظة."},
+  foot_made:{en:"Riyadh · Kingdom of Saudi Arabia",ar:"الرياض · المملكة العربية السعودية"},
+};
+
+let LANG = "en";
+
+/* ============ RENDER PRODUCTS ============ */
+function waLink(text){return `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`;}
+
+let ACTIVE_BRAND = "all";
+
+function brandList(){
+  const seen = [];
+  products.forEach(p => { if(!seen.includes(p.brand)) seen.push(p.brand); });
+  return seen.sort((a,b)=>a.localeCompare(b));
+}
+
+function renderFilters(){
+  const holder = document.getElementById("brandFilters");
+  if(!holder) return;
+  const brands = brandList();
+  // hide the filter bar entirely when there is nothing to filter
+  if(brands.length < 2){ holder.innerHTML = ""; holder.style.display = "none"; return; }
+  holder.style.display = "flex";
+
+  const count = b => b === "all" ? products.length : products.filter(p => p.brand === b).length;
+  const btn = (val,label) =>
+    `<button data-brand="${val}" class="${ACTIVE_BRAND===val?"on":""}">${label}<span class="count">${count(val)}</span></button>`;
+
+  holder.innerHTML = btn("all", i18n.filter_all[LANG]) + brands.map(b => btn(b,b)).join("");
+
+  holder.querySelectorAll("button").forEach(b => {
+    b.addEventListener("click", () => {
+      ACTIVE_BRAND = b.getAttribute("data-brand");
+      renderFilters();
+      renderProducts();
+    });
+  });
+}
+
+function renderProducts(){
+  const grid = document.getElementById("productGrid");
+  const list = ACTIVE_BRAND === "all" ? products : products.filter(p => p.brand === ACTIVE_BRAND);
+
+  if(!list.length){
+    grid.innerHTML = `<p class="no-results">${i18n.no_results[LANG]}</p>`;
+    return;
+  }
+
+  grid.innerHTML = list.map(p=>{
+    const name = p.name[LANG], cond = p.cond[LANG], tag = p.tag[LANG];
+    const msg = LANG==="ar"
+      ? `مرحباً بيلا بوتيك، أرغب في الاستفسار عن حقيبة ${p.brand} ${name} (${p.price}).`
+      : `Hello Bella Boutique, I'm interested in the ${p.brand} ${name} (${p.price}).`;
+    const arrow = LANG==="ar" ? "\u2190" : "\u2192";
+    const media = p.img
+      ? `<img src="${p.img}" alt="${p.brand} ${name}" loading="lazy" style="width:100%;height:100%;object-fit:cover">`
+      : `<span class="mono">${p.mono}</span>`;
+    const cta = p.page
+      ? `<a class="view" href="${p.page}">${i18n.view_details[LANG]} ${arrow}</a>`
+      : `<a class="view" href="${waLink(msg)}" target="_blank" rel="noopener">${i18n.order_wa[LANG]} ${arrow}</a>`;
+    const wrapOpen = p.page ? `<a href="${p.page}" style="display:block">` : "";
+    const wrapClose = p.page ? `</a>` : "";
+    return `<article class="card">
+      ${wrapOpen}<div class="ph"><span class="tag">${tag}</span>${media}</div>${wrapClose}
+      <div class="body">
+        <div class="brand">${p.brand}</div>
+        <h3>${name}</h3>
+        <div class="cond">${cond}</div>
+        <div class="meta">
+          <span class="price">${p.price}</span>
+          ${cta}
+        </div>
+      </div>
+    </article>`;
+  }).join("");
+}
+
+/* ============ RENDER FAQ ============ */
+function renderFaq(){
+  const wrap = document.getElementById("faqWrap");
+  wrap.innerHTML = faqs.map(f=>`
+    <div class="acc">
+      <button aria-expanded="false"><span>${f.q[LANG]}</span><span class="plus">+</span></button>
+      <div class="ans"><p>${f.a[LANG]}</p></div>
+    </div>`).join("");
+  wrap.querySelectorAll(".acc button").forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      const acc = btn.parentElement, ans = acc.querySelector(".ans"), open = acc.classList.toggle("open");
+      btn.setAttribute("aria-expanded", open);
+      ans.style.maxHeight = open ? ans.scrollHeight+"px" : null;
+    });
+  });
+}
+
+/* ============ APPLY LANGUAGE ============ */
+function applyLang(){
+  const html = document.documentElement;
+  html.lang = LANG;
+  html.dir = LANG==="ar" ? "rtl" : "ltr";
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const key = el.getAttribute("data-i18n");
+    if(i18n[key]) el.innerHTML = i18n[key][LANG];
+  });
+  document.getElementById("langBtn").textContent = LANG==="en" ? "العربية" : "English";
+  document.getElementById("langBtnM").textContent = LANG==="en" ? "ع" : "EN";
+  document.title = LANG==="ar" ? "بيلا بوتيك — حقائب فاخرة أصلية" : "Bella Boutique — Authentic Luxury Handbags";
+  renderFilters();
+  renderProducts();
+  renderFaq();
+  updateWaLinks();
+}
+
+function toggleLang(){ LANG = LANG==="en" ? "ar" : "en"; applyLang(); }
+
+/* ============ WHATSAPP GENERAL LINKS ============ */
+function updateWaLinks(){
+  const msg = LANG==="ar" ? "مرحباً بيلا بوتيك، أرغب في الاستفسار عن حقائبكم." : "Hello Bella Boutique, I'd like to ask about your handbags.";
+  document.querySelectorAll(".wa-link").forEach(a=>{a.href = waLink(msg); a.target="_blank"; a.rel="noopener";});
+}
+
+/* ============ CONTACT FORM → WHATSAPP ============ */
+document.getElementById("contactForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const n=document.getElementById("cName").value, em=document.getElementById("cEmail").value, m=document.getElementById("cMsg").value;
+  const msg = LANG==="ar"
+    ? `مرحباً بيلا بوتيك،\nالاسم: ${n}\nالبريد: ${em}\nالرسالة: ${m}`
+    : `Hello Bella Boutique,\nName: ${n}\nEmail: ${em}\nMessage: ${m}`;
+  window.open(waLink(msg), "_blank", "noopener");
+});
+
+/* ============ HEADER / MENU / SCROLL ============ */
+const header=document.getElementById("header"), nav=document.getElementById("nav"), burger=document.getElementById("burger");
+addEventListener("scroll",()=>header.classList.toggle("scrolled", scrollY>40));
+function closeMenu(){nav.classList.remove("mobile-open"); burger.setAttribute("aria-expanded","false");}
+burger.addEventListener("click",()=>{const open=nav.classList.toggle("mobile-open"); burger.setAttribute("aria-expanded",open);});
+document.querySelectorAll(".nav-links a").forEach(a=>a.addEventListener("click",closeMenu));
+
+document.getElementById("langBtn").addEventListener("click",toggleLang);
+document.getElementById("langBtnM").addEventListener("click",toggleLang);
+
+/* ============ SCROLL REVEAL ============ */
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(en=>{ if(en.isIntersecting){en.target.classList.add("in"); io.unobserve(en.target);} });
+},{threshold:.12});
+document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+
+/* ============ INIT ============ */
+applyLang();
+</script>
+</body>
+</html>
