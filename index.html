@@ -422,6 +422,23 @@ html[dir="rtl"] .cnav.n{right:auto;left:.5rem}
 
 .cnav{background-image:linear-gradient(#FBF9F5,#FBF9F5)!important;color:#12100E!important;-webkit-text-fill-color:#12100E}
 .dots i.on{background-image:linear-gradient(#C8A250,#C8A250)!important}
+
+/* ===== REDUCED-MOTION SAFETY =====
+   When the visitor's device has animations turned off, entrance animations are
+   disabled - so anything that starts at opacity:0 would stay invisible forever.
+   These rules make the content visible immediately instead. */
+@media (prefers-reduced-motion: reduce){
+  .hero-copy, .hero-visual, .reveal{
+    opacity:1 !important;
+    transform:none !important;
+    animation:none !important;
+  }
+}
+/* Safety net: if animations never run for any reason, reveal the content anyway */
+.hero-copy, .hero-visual{animation-fill-mode:forwards}
+html.no-anim .hero-copy,
+html.no-anim .hero-visual,
+html.no-anim .reveal{opacity:1 !important;transform:none !important}
 </style>
 </head>
 <body>
@@ -886,6 +903,23 @@ const io = new IntersectionObserver(entries=>{
   entries.forEach(en=>{ if(en.isIntersecting){en.target.classList.add("in"); io.unobserve(en.target);} });
 },{threshold:.12});
 document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+
+
+/* ---------- visibility safety net ---------- */
+(function(){
+  const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if(reduce) document.documentElement.classList.add("no-anim");
+  // if anything is still hidden after 2.5s, show it
+  setTimeout(()=>{
+    document.querySelectorAll(".reveal:not(.in)").forEach(el=>el.classList.add("in"));
+    const hero = document.querySelector(".hero-copy"), vis = document.querySelector(".hero-visual");
+    [hero,vis].forEach(el=>{
+      if(el && getComputedStyle(el).opacity === "0"){
+        el.style.opacity = "1"; el.style.transform = "none";
+      }
+    });
+  }, 2500);
+})();
 
 /* ============ INIT ============ */
 applyLang();
