@@ -445,6 +445,15 @@ html.no-anim .reveal{opacity:1 !important;transform:none !important}
 .card .ph img{object-fit:contain !important;padding:.9rem}
 
 .card .ph{background-image:linear-gradient(#FFFFFF,#F1EBE1)!important}
+
+/* ===== OVERFLOW GUARD =====
+   Nothing may ever make the page wider than the screen - including the alt
+   text a browser shows when a photo fails to load. */
+html,body{max-width:100%;overflow-x:hidden}
+.product,.gallery,.info{max-width:100%;min-width:0}
+.main-img img{max-width:100%;font-size:.7rem;color:#8A8177;text-align:center;overflow:hidden}
+.thumbs .thumb img{font-size:0}
+.info h1,.specs .row .v,.desc{overflow-wrap:anywhere}
 </style>
 </head>
 <body>
