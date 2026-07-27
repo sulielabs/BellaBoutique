@@ -255,6 +255,21 @@ html[lang="ar"] .swipe-hint{letter-spacing:.02em;font-size:.78rem}
 }
 /* the hint is decoration - never let it steal a grid column */
 .swipe-hint{grid-column:auto}
+
+/* ===== SHOW THE WHOLE BAG =====
+   object-fit:cover was filling the frame by cropping the photo. contain keeps
+   the entire product visible; the soft ivory field around it reads as a studio
+   backdrop rather than empty space. */
+.main-img{background:linear-gradient(#FFFFFF,#FBF9F5)}
+.main-img img{object-fit:contain !important;padding:1.2rem}
+.thumb{background:#FFFFFF}
+.thumb img{object-fit:contain !important;padding:3px}
+@media (min-width:861px){
+  .main-img img{padding:1.6rem}
+}
+
+.main-img{background-image:linear-gradient(#FFFFFF,#FBF9F5)!important}
+.thumb{background-image:linear-gradient(#FFFFFF,#FFFFFF)!important}
 </style>
 </head>
 <body>
