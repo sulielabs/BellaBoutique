@@ -403,6 +403,25 @@ html[lang="ar"] .filters button{letter-spacing:.02em;font-size:.85rem;font-weigh
 .filters button{background-image:linear-gradient(#FFFFFF,#FFFFFF)!important;color:#241F1B!important;-webkit-text-fill-color:#241F1B}
 .filters button.on{background-image:linear-gradient(#12100E,#12100E)!important;color:#FBF9F5!important;-webkit-text-fill-color:#FBF9F5}
 .no-results{color:#574F45!important;-webkit-text-fill-color:#574F45}
+
+/* ===== CARD IMAGE SWIPE ===== */
+.card .ph{touch-action:pan-y;user-select:none}
+.card .ph img{transition:opacity .2s ease}
+.card .ph.fade img{opacity:0}
+.dots{position:absolute;bottom:.6rem;left:0;right:0;display:flex;gap:5px;justify-content:center;z-index:3}
+.dots i{width:5px;height:5px;border-radius:50%;background:rgba(251,249,245,.55);transition:all .25s;display:block}
+.dots i.on{background:#C8A250;width:14px;border-radius:3px}
+.cnav{position:absolute;top:50%;transform:translateY(-50%);width:30px;height:30px;border:none;border-radius:50%;
+  background:rgba(251,249,245,.9);color:#12100E;font-size:.8rem;cursor:pointer;display:flex;align-items:center;
+  justify-content:center;opacity:0;transition:opacity .25s;z-index:4;padding:0}
+.card:hover .cnav{opacity:1}
+.cnav.p{left:.5rem}.cnav.n{right:.5rem}
+html[dir="rtl"] .cnav.p{left:auto;right:.5rem}
+html[dir="rtl"] .cnav.n{right:auto;left:.5rem}
+@media(hover:none){.cnav{display:none}}
+
+.cnav{background-image:linear-gradient(#FBF9F5,#FBF9F5)!important;color:#12100E!important;-webkit-text-fill-color:#12100E}
+.dots i.on{background-image:linear-gradient(#C8A250,#C8A250)!important}
 </style>
 </head>
 <body>
@@ -599,7 +618,7 @@ html[lang="ar"] .filters button{letter-spacing:.02em;font-size:.85rem;font-weigh
       </ul>
     </div>
   </div>
-  <div class="social"><a href="https://instagram.com/Bella.storeksa" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.3-1.46.72-2.13 1.38C1.35 2.68.93 3.35.63 4.14.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.3.79.72 1.46 1.38 2.13.67.66 1.34 1.08 2.13 1.38.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.3 1.46-.72 2.13-1.38.66-.67 1.08-1.34 1.38-2.13.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.3-.79-.72-1.46-1.38-2.13C21.32 1.35 20.65.93 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0z"/><path d="M12 5.84A6.16 6.16 0 1018.16 12 6.16 6.16 0 0012 5.84zM12 16a4 4 0 114-4 4 4 0 01-4 4z"/><circle cx="18.41" cy="5.59" r="1.44"/></svg></a><a href="https://tiktok.com/@Bella.storeksa" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 5.82A4.28 4.28 0 0115.54 3h-3.09v12.4a2.59 2.59 0 01-2.59 2.5 2.59 2.59 0 01-2.59-2.59 2.59 2.59 0 013.35-2.48V9.7a5.67 5.67 0 00-.76-.05A5.68 5.68 0 004.2 15.3a5.68 5.68 0 005.66 5.7 5.68 5.68 0 005.68-5.68V9.01a7.35 7.35 0 004.28 1.37V7.3a4.28 4.28 0 01-3.22-1.48z"/></svg></a></div>
+  <div class="social"><a href="https://instagram.com/bella.boutique.sa" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.3-1.46.72-2.13 1.38C1.35 2.68.93 3.35.63 4.14.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.3.79.72 1.46 1.38 2.13.67.66 1.34 1.08 2.13 1.38.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.3 1.46-.72 2.13-1.38.66-.67 1.08-1.34 1.38-2.13.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.3-.79-.72-1.46-1.38-2.13C21.32 1.35 20.65.93 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0z"/><path d="M12 5.84A6.16 6.16 0 1018.16 12 6.16 6.16 0 0012 5.84zM12 16a4 4 0 114-4 4 4 0 01-4 4z"/><circle cx="18.41" cy="5.59" r="1.44"/></svg></a><a href="https://tiktok.com/@bella.boutiquesa" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 5.82A4.28 4.28 0 0115.54 3h-3.09v12.4a2.59 2.59 0 01-2.59 2.5 2.59 2.59 0 01-2.59-2.59 2.59 2.59 0 013.35-2.48V9.7a5.67 5.67 0 00-.76-.05A5.68 5.68 0 004.2 15.3a5.68 5.68 0 005.66 5.7 5.68 5.68 0 005.68-5.68V9.01a7.35 7.35 0 004.28 1.37V7.3a4.28 4.28 0 01-3.22-1.48z"/></svg></a></div>
   <div class="foot-bottom">
     <span data-i18n="foot_copy">© 2026 Bella Boutique. All rights reserved.</span>
     <span data-i18n="foot_made">Riyadh · Kingdom of Saudi Arabia</span>
@@ -615,13 +634,13 @@ html[lang="ar"] .filters button{letter-spacing:.02em;font-size:.85rem;font-weigh
 const WHATSAPP = "966538382378"; // 0538382378 in international format
 
 const products = [
-  {id:"lv-dauphine", brand:"Louis Vuitton", name:{en:"Dauphine MM",ar:"دوفين MM"}, cond:{en:"Excellent · 95%",ar:"ممتازة · ٩٥٪"}, price:"7,800 SAR", img:"assets/dauphine/front.jpg", page:"product-dauphine.html", tag:{en:"Authentic",ar:"أصلية"}},
-  {id:"gucci-ophidia", brand:"Gucci", name:{en:"Ophidia GG Tote",ar:"أوفيديا GG توت"}, cond:{en:"99% · Unused",ar:"٩٩٪ · غير مستخدمة"}, price:"7,800 SAR", img:"assets/ophidia/front.jpg", page:"product-ophidia.html", tag:{en:"Authentic",ar:"أصلية"}},
-  {id:"lv-speedy-nano", brand:"Louis Vuitton", name:{en:"Speedy Nano",ar:"سبيدي نانو"}, cond:{en:"Brand New · Unused",ar:"جديدة تماماً · غير مستخدمة"}, price:"8,800 SAR", img:"assets/speedy/front.jpg", page:"product-speedy.html", tag:{en:"New Arrival",ar:"وصل حديثاً"}},
-  {id:"ysl-cassandre", brand:"Saint Laurent", name:{en:"Cassandre Chain Wallet",ar:"كاساندر تشين واليت"}, cond:{en:"98% · Like New",ar:"٩٨٪ · شبه جديدة"}, price:"5,500 SAR", img:"assets/cassandre/front.jpg", page:"product-cassandre.html", tag:{en:"Authentic",ar:"أصلية"}},
-  {id:"gucci-bamboo", brand:"Gucci", name:{en:"Bamboo Basket Bag",ar:"بامبو باسكِت"}, cond:{en:"99% · Unused",ar:"٩٩٪ · غير مستخدمة"}, price:"9,800 SAR", img:"assets/bamboo/front.jpg", page:"product-bamboo.html", tag:{en:"Authentic",ar:"أصلية"}},
-  {id:"gucci-horsebit", brand:"Gucci", name:{en:"Horsebit 1955 Mini",ar:"هورسبيت ١٩٥٥ ميني"}, cond:{en:"99% · Unused",ar:"٩٩٪ · غير مستخدمة"}, price:"7,800 SAR", img:"assets/horsebit/front.jpg", page:"product-horsebit.html", tag:{en:"Authentic",ar:"أصلية"}},
-  {id:"balenciaga-hourglass", brand:"Balenciaga", name:{en:"Hourglass Wallet on Chain",ar:"أورغلاس واليت أون تشين"}, cond:{en:"99% · Unused",ar:"٩٩٪ · غير مستخدمة"}, price:"4,500 SAR", img:"assets/hourglass/front.jpg", page:"product-hourglass.html", tag:{en:"Authentic",ar:"أصلية"}},
+  {id:"lv-dauphine", brand:"Louis Vuitton", name:{en:"Dauphine MM",ar:"دوفين MM"}, cond:{en:"Excellent · 95%",ar:"ممتازة · ٩٥٪"}, price:"7,800 SAR", img:"assets/dauphine/front.jpg", gallery:["assets/dauphine/front.jpg","assets/dauphine/angle.jpg","assets/dauphine/angle2.jpg","assets/dauphine/side.jpg","assets/dauphine/back.jpg"], page:"product-dauphine.html", tag:{en:"Authentic",ar:"أصلية"}},
+  {id:"gucci-ophidia", brand:"Gucci", name:{en:"Ophidia GG Tote",ar:"أوفيديا GG توت"}, cond:{en:"99% · Unused",ar:"٩٩٪ · غير مستخدمة"}, price:"7,800 SAR", img:"assets/ophidia/front.jpg", gallery:["assets/ophidia/front.jpg","assets/ophidia/angle.jpg","assets/ophidia/angle2.jpg","assets/ophidia/strap.jpg","assets/ophidia/base.jpg"], page:"product-ophidia.html", tag:{en:"Authentic",ar:"أصلية"}},
+  {id:"lv-speedy-nano", brand:"Louis Vuitton", name:{en:"Speedy Nano",ar:"سبيدي نانو"}, cond:{en:"Brand New · Unused",ar:"جديدة تماماً · غير مستخدمة"}, price:"8,800 SAR", img:"assets/speedy/front.jpg", gallery:["assets/speedy/front.jpg","assets/speedy/angle.jpg","assets/speedy/angle2.jpg","assets/speedy/top.jpg","assets/speedy/set.jpg"], page:"product-speedy.html", tag:{en:"New Arrival",ar:"وصل حديثاً"}},
+  {id:"ysl-cassandre", brand:"Saint Laurent", name:{en:"Cassandre Chain Wallet",ar:"كاساندر تشين واليت"}, cond:{en:"98% · Like New",ar:"٩٨٪ · شبه جديدة"}, price:"5,500 SAR", img:"assets/cassandre/front.jpg", gallery:["assets/cassandre/front.jpg","assets/cassandre/angle.jpg","assets/cassandre/angle2.jpg","assets/cassandre/side.jpg","assets/cassandre/back.jpg"], page:"product-cassandre.html", tag:{en:"Authentic",ar:"أصلية"}},
+  {id:"gucci-bamboo", brand:"Gucci", name:{en:"Bamboo Basket Bag",ar:"بامبو باسكِت"}, cond:{en:"99% · Unused",ar:"٩٩٪ · غير مستخدمة"}, price:"9,800 SAR", img:"assets/bamboo/front.jpg", gallery:["assets/bamboo/front.jpg","assets/bamboo/angle.jpg","assets/bamboo/angle2.jpg","assets/bamboo/handles.jpg","assets/bamboo/base.jpg"], page:"product-bamboo.html", tag:{en:"Authentic",ar:"أصلية"}},
+  {id:"gucci-horsebit", brand:"Gucci", name:{en:"Horsebit 1955 Mini",ar:"هورسبيت ١٩٥٥ ميني"}, cond:{en:"99% · Unused",ar:"٩٩٪ · غير مستخدمة"}, price:"7,800 SAR", img:"assets/horsebit/front.jpg", gallery:["assets/horsebit/front.jpg","assets/horsebit/angle.jpg","assets/horsebit/angle2.jpg","assets/horsebit/back.jpg","assets/horsebit/base.jpg"], page:"product-horsebit.html", tag:{en:"Authentic",ar:"أصلية"}},
+  {id:"balenciaga-hourglass", brand:"Balenciaga", name:{en:"Hourglass Wallet on Chain",ar:"أورغلاس واليت أون تشين"}, cond:{en:"99% · Unused",ar:"٩٩٪ · غير مستخدمة"}, price:"4,500 SAR", img:"assets/hourglass/front.jpg", gallery:["assets/hourglass/front.jpg","assets/hourglass/angle.jpg","assets/hourglass/angle2.jpg","assets/hourglass/back.jpg","assets/hourglass/top.jpg"], page:"product-hourglass.html", tag:{en:"Authentic",ar:"أصلية"}},
 ];
 
 const faqs = [
@@ -727,8 +746,14 @@ function renderProducts(){
       ? `مرحباً بيلا بوتيك، أرغب في الاستفسار عن حقيبة ${p.brand} ${name} (${p.price}).`
       : `Hello Bella Boutique, I'm interested in the ${p.brand} ${name} (${p.price}).`;
     const arrow = LANG==="ar" ? "\u2190" : "\u2192";
-    const media = p.img
-      ? `<img src="${p.img}" alt="${p.brand} ${name}" loading="lazy" style="width:100%;height:100%;object-fit:cover">`
+    const gal = p.gallery && p.gallery.length ? p.gallery : (p.img ? [p.img] : []);
+    const dots = gal.length > 1
+      ? `<span class="dots">${gal.map((_,n)=>`<i class="${n===0?"on":""}"></i>`).join("")}</span>
+         <button class="cnav p" aria-label="Previous">&#10094;</button>
+         <button class="cnav n" aria-label="Next">&#10095;</button>`
+      : "";
+    const media = gal.length
+      ? `<img src="${gal[0]}" alt="${p.brand} ${name}" loading="lazy" style="width:100%;height:100%;object-fit:cover">${dots}`
       : `<span class="mono">${p.mono}</span>`;
     const cta = p.page
       ? `<a class="view" href="${p.page}">${i18n.view_details[LANG]} ${arrow}</a>`
@@ -736,7 +761,7 @@ function renderProducts(){
     const wrapOpen = p.page ? `<a href="${p.page}" style="display:block">` : "";
     const wrapClose = p.page ? `</a>` : "";
     return `<article class="card">
-      ${wrapOpen}<div class="ph"><span class="tag">${tag}</span>${media}</div>${wrapClose}
+      ${wrapOpen}<div class="ph" data-gal='${JSON.stringify(gal)}'><span class="tag">${tag}</span>${media}</div>${wrapClose}
       <div class="body">
         <div class="brand">${p.brand}</div>
         <h3>${name}</h3>
@@ -748,6 +773,48 @@ function renderProducts(){
       </div>
     </article>`;
   }).join("");
+}
+
+
+/* ---------- card image swipe ---------- */
+function bindCardGalleries(){
+  document.querySelectorAll("#productGrid .ph[data-gal]").forEach(ph=>{
+    let list; try{ list = JSON.parse(ph.getAttribute("data-gal")); }catch(e){ return; }
+    if(!list || list.length < 2) return;
+    const img = ph.querySelector("img");
+    const dots = [...ph.querySelectorAll(".dots i")];
+    let i = 0, busy = false;
+
+    function go(n){
+      if(busy) return; busy = true;
+      i = (n + list.length) % list.length;
+      ph.classList.add("fade");
+      setTimeout(()=>{ img.src = list[i]; ph.classList.remove("fade"); busy = false; }, 120);
+      dots.forEach((d,k)=>d.classList.toggle("on", k===i));
+    }
+
+    const prev = ph.querySelector(".cnav.p"), next = ph.querySelector(".cnav.n");
+    if(prev) prev.addEventListener("click", e=>{e.preventDefault();e.stopPropagation();go(i-1);});
+    if(next) next.addEventListener("click", e=>{e.preventDefault();e.stopPropagation();go(i+1);});
+
+    let x0=null,y0=null,lock=false,moved=false;
+    ph.addEventListener("touchstart", e=>{x0=e.touches[0].clientX;y0=e.touches[0].clientY;lock=false;moved=false;}, {passive:true});
+    ph.addEventListener("touchmove", e=>{
+      if(x0===null) return;
+      const dx=e.touches[0].clientX-x0, dy=e.touches[0].clientY-y0;
+      if(Math.abs(dx)>8||Math.abs(dy)>8) moved=true;
+      if(!lock && Math.abs(dx)>Math.abs(dy)+6) lock=true;
+    }, {passive:true});
+    ph.addEventListener("touchend", e=>{
+      if(x0===null) return;
+      const dx=e.changedTouches[0].clientX-x0;
+      if(lock && Math.abs(dx)>40){ go(dx<0 ? i+1 : i-1); }
+      x0=null;lock=false;
+    }, {passive:true});
+    // a horizontal swipe should not follow the product link
+    const link = ph.closest("a");
+    if(link) link.addEventListener("click", e=>{ if(lock||moved){ e.preventDefault(); } });
+  });
 }
 
 /* ============ RENDER FAQ ============ */
@@ -781,6 +848,7 @@ function applyLang(){
   document.title = LANG==="ar" ? "بيلا بوتيك — حقائب فاخرة أصلية" : "Bella Boutique — Authentic Luxury Handbags";
   renderFilters();
   renderProducts();
+  bindCardGalleries();
   renderFaq();
   updateWaLinks();
 }
