@@ -66,6 +66,8 @@ html[lang="ar"] .info .brand{letter-spacing:.05em}
 .badge{font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;padding:.4rem .8rem;border:1px solid var(--gold);color:var(--black);background:#FFF;font-weight:500}
 html[lang="ar"] .badge{letter-spacing:.03em}
 .badge.solid{background:var(--gold);color:#fff;border-color:var(--gold)}
+.badge.drop{background:#8C2F39;border-color:#8C2F39;color:#fff}
+.price .was{font-size:1.15rem;color:var(--taupe);text-decoration:line-through;text-decoration-thickness:1px;margin-inline-end:.5rem;font-weight:400}
 .price{font-family:var(--serif);font-size:2rem;color:var(--black);margin-bottom:.4rem}
 .price small{font-size:.8rem;font-family:var(--sans);color:#6E6459;letter-spacing:.1em}
 .desc{font-size:1rem;max-width:46ch;margin:1.4rem 0}
@@ -175,6 +177,7 @@ p, .desc, .lead, .specs .row .v, .acc .ans p, .why-card p, .auth-steps p, .fdesc
   color:#856419 !important; -webkit-text-fill-color:#856419;
 }
 .badge{ color:#12100E !important; -webkit-text-fill-color:#12100E; }
+.badge.drop{ color:#FFFFFF !important; -webkit-text-fill-color:#FFFFFF; }
 .badge.solid{
   background-image:linear-gradient(#C8A250,#C8A250) !important;
   color:#FFFFFF !important; -webkit-text-fill-color:#FFFFFF;
@@ -345,9 +348,10 @@ html,body{max-width:100%;overflow-x:hidden}
       <span class="badge solid" data-i18n="b_auth">Authentic</span>
       <span class="badge" data-i18n="b_cond">99% · Unused</span>
       <span class="badge" data-i18n="b_ccic">Certified Authentic</span>
+      <span class="badge drop" data-i18n="b_drop">Price Drop &middot; 20% Off</span>
     </div>
 
-    <div class="price">9,800 SAR <small data-i18n="incl">/ incl. certificate</small></div>
+    <div class="price"><s class="was">9,800 SAR</s> 7,800 SAR <small data-i18n="incl">/ incl. certificate</small></div>
 
     <p class="desc" data-i18n="p_desc">A sculpted basket silhouette in deep burgundy brushed leather, lifted by Gucci&rsquo;s heritage bamboo handles and finished with a suede-lined interior. Structured, glossy, and quietly dramatic &mdash; carried by hand or worn crossbody on the matching leather strap.</p>
 
@@ -399,7 +403,7 @@ const i18n={
   back:{en:"← Back to Shop",ar:"→ العودة للمتجر"},
   c_home:{en:"Home",ar:"الرئيسية"}, c_shop:{en:"Shop",ar:"المتجر"}, c_name:{en:"Gucci Bamboo Basket Bag",ar:"غوتشي بامبو باسكِت"},
   p_name:{en:"Bamboo Basket Bag — Burgundy",ar:"بامبو باسكِت — عنابي"},
-  b_auth:{en:"Authentic",ar:"أصلية"}, b_cond:{en:"99% · Unused",ar:"٩٩٪ · غير مستخدمة"}, b_ccic:{en:"Certified Authentic",ar:"موثّقة بشهادة"},
+  b_auth:{en:"Authentic",ar:"أصلية"}, b_cond:{en:"99% · Unused",ar:"٩٩٪ · غير مستخدمة"}, b_ccic:{en:"Certified Authentic",ar:"موثّقة بشهادة"}, b_drop:{en:"Price Drop · 20% Off",ar:"سعر مخفّض · خصم ٢٠٪"},
   incl:{en:"/ incl. certificate",ar:"/ شاملة الشهادة"},
   p_desc:{en:"A sculpted basket silhouette in deep burgundy brushed leather, lifted by Gucci's heritage bamboo handles and finished with a suede-lined interior. Structured, glossy, and quietly dramatic — carried by hand or worn crossbody on the matching leather strap.",ar:"تصميم منحوت على شكل سلة من الجلد المصقول العنابي الغامق، بمقابض البامبو التراثية من غوتشي وبطانة داخلية من الشامواه. مهيكلة ولامعة وأنيقة بهدوء — تُحمل باليد أو كروس بالحزام الجلدي المطابق."},
   s_brand:{en:"Brand",ar:"العلامة"}, s_model:{en:"Model",ar:"الموديل"}, s_model_v:{en:"Bamboo Basket Bag",ar:"بامبو باسكِت"},
@@ -424,8 +428,8 @@ function applyLang(){
   document.getElementById("langBtn").textContent=LANG==="en"?"العربية":"English";
   document.title=LANG==="ar"?"غوتشي بامبو باسكِت — بيلا بوتيك":"Gucci Bamboo Basket Bag — Bella Boutique";
   const msg=LANG==="ar"
-    ? "مرحباً بيلا بوتيك، أرغب في طلب حقيبة Gucci Bamboo Basket (عنابي) — الحالة ٩٩٪ غير مستخدمة — السعر 8.500ريال."
-    : "Hello Bella Boutique, I'd like to order the Gucci Bamboo Basket Bag (Burgundy) — 99% unused — 8,500 SAR.";
+    ? "مرحباً بيلا بوتيك، أرغب في طلب حقيبة Gucci Bamboo Basket (عنابي) — الحالة ٩٩٪ غير مستخدمة — السعر 7,800 ريال."
+    : "Hello Bella Boutique, I'd like to order the Gucci Bamboo Basket Bag (Burgundy) — 99% unused — 7,800 SAR.";
   document.getElementById("waBtn").href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`;
 }
 

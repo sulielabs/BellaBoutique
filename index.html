@@ -200,6 +200,9 @@ html[lang="ar"] .card .brand{letter-spacing:.05em}
 .card h3{font-size:1.28rem;margin:.45rem 0 .8rem}
 .card .meta{display:flex;justify-content:space-between;align-items:center;padding-top:.9rem;border-top:1px solid var(--beige);margin-top:.9rem}
 .card .price{font-family:var(--serif);font-size:1.25rem;color:var(--black)}
+.card .price .was{font-size:.85rem;color:var(--taupe);text-decoration:line-through;text-decoration-thickness:1px;font-weight:400}
+.card .drop{position:absolute;top:1rem;right:1rem;background:#8C2F39;color:#fff;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;padding:.35rem .7rem;font-weight:500;z-index:2}
+html[lang="ar"] .card .drop{right:auto;left:1rem;letter-spacing:.03em}
 .card .cond{font-size:.72rem;color:#574F45;letter-spacing:.05em}
 .card .view{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--black);border-bottom:1px solid var(--gold);padding-bottom:2px;transition:color .3s}
 .card .view:hover{color:var(--gold)}
@@ -678,15 +681,15 @@ const WHATSAPP = "966538382378"; // 0538382378 in international format
 
 const products = [
   {id:"lv-dauphine", brand:"Louis Vuitton", name:{en:"Dauphine MM",ar:"دوفين MM"}, cond:{en:"Excellent · 95%",ar:"ممتازة · ٩٥٪"}, price:"7,800 SAR", img:"assets/dauphine/front.jpg", gallery:["assets/dauphine/front.jpg","assets/dauphine/angle.jpg","assets/dauphine/angle2.jpg","assets/dauphine/side.jpg","assets/dauphine/back.jpg"], page:"product-dauphine.html", tag:{en:"Authentic",ar:"أصلية"}},
-  {id:"gucci-ophidia", brand:"Gucci", name:{en:"Ophidia GG Tote",ar:"أوفيديا GG توت"}, cond:{en:"99% · Unused",ar:"٩٩٪ · غير مستخدمة"}, price:"7,800 SAR", img:"assets/ophidia/front.jpg", gallery:["assets/ophidia/front.jpg","assets/ophidia/angle.jpg","assets/ophidia/angle2.jpg","assets/ophidia/strap.jpg","assets/ophidia/base.jpg"], page:"product-ophidia.html", tag:{en:"Authentic",ar:"أصلية"}},
-  {id:"lv-speedy-nano", brand:"Louis Vuitton", name:{en:"Speedy Nano",ar:"سبيدي نانو"}, cond:{en:"Brand New · Unused",ar:"جديدة تماماً · غير مستخدمة"}, price:"8,800 SAR", img:"assets/speedy/front.jpg", gallery:["assets/speedy/front.jpg","assets/speedy/angle.jpg","assets/speedy/angle2.jpg","assets/speedy/top.jpg","assets/speedy/set.jpg"], page:"product-speedy.html", tag:{en:"New Arrival",ar:"وصل حديثاً"}},
-  {id:"ysl-cassandre", brand:"Saint Laurent", name:{en:"Cassandre Chain Wallet",ar:"كاساندر تشين واليت"}, cond:{en:"98% · Like New",ar:"٩٨٪ · شبه جديدة"}, price:"5,500 SAR", img:"assets/cassandre/front.jpg", gallery:["assets/cassandre/front.jpg","assets/cassandre/angle.jpg","assets/cassandre/angle2.jpg","assets/cassandre/side.jpg","assets/cassandre/back.jpg"], page:"product-cassandre.html", tag:{en:"Authentic",ar:"أصلية"}},
-  {id:"gucci-bamboo", brand:"Gucci", name:{en:"Bamboo Basket Bag",ar:"بامبو باسكِت"}, cond:{en:"99% · Unused",ar:"٩٩٪ · غير مستخدمة"}, price:"9,800 SAR", img:"assets/bamboo/front.jpg", gallery:["assets/bamboo/front.jpg","assets/bamboo/angle.jpg","assets/bamboo/angle2.jpg","assets/bamboo/handles.jpg","assets/bamboo/base.jpg"], page:"product-bamboo.html", tag:{en:"Authentic",ar:"أصلية"}},
+  {id:"gucci-ophidia", brand:"Gucci", name:{en:"Ophidia GG Tote",ar:"أوفيديا GG توت"}, cond:{en:"99% · Unused",ar:"٩٩٪ · غير مستخدمة"}, price:"6,200 SAR", was:"7,800 SAR", img:"assets/ophidia/front.jpg", gallery:["assets/ophidia/front.jpg","assets/ophidia/angle.jpg","assets/ophidia/angle2.jpg","assets/ophidia/strap.jpg","assets/ophidia/base.jpg"], page:"product-ophidia.html", tag:{en:"Authentic",ar:"أصلية"}},
+  {id:"lv-speedy-nano", brand:"Louis Vuitton", name:{en:"Speedy Nano",ar:"سبيدي نانو"}, cond:{en:"Brand New · Unused",ar:"جديدة تماماً · غير مستخدمة"}, price:"7,900 SAR", was:"8,800 SAR", img:"assets/speedy/front.jpg", gallery:["assets/speedy/front.jpg","assets/speedy/angle.jpg","assets/speedy/angle2.jpg","assets/speedy/top.jpg","assets/speedy/set.jpg"], page:"product-speedy.html", tag:{en:"New Arrival",ar:"وصل حديثاً"}},
+  {id:"ysl-cassandre", brand:"Saint Laurent", name:{en:"Cassandre Chain Wallet",ar:"كاساندر تشين واليت"}, cond:{en:"98% · Like New",ar:"٩٨٪ · شبه جديدة"}, price:"4,800 SAR", was:"5,500 SAR", img:"assets/cassandre/front.jpg", gallery:["assets/cassandre/front.jpg","assets/cassandre/angle.jpg","assets/cassandre/angle2.jpg","assets/cassandre/side.jpg","assets/cassandre/back.jpg"], page:"product-cassandre.html", tag:{en:"Authentic",ar:"أصلية"}},
+  {id:"gucci-bamboo", brand:"Gucci", name:{en:"Bamboo Basket Bag",ar:"بامبو باسكِت"}, cond:{en:"99% · Unused",ar:"٩٩٪ · غير مستخدمة"}, price:"7,800 SAR", was:"9,800 SAR", img:"assets/bamboo/front.jpg", gallery:["assets/bamboo/front.jpg","assets/bamboo/angle.jpg","assets/bamboo/angle2.jpg","assets/bamboo/handles.jpg","assets/bamboo/base.jpg"], page:"product-bamboo.html", tag:{en:"Authentic",ar:"أصلية"}},
   {id:"gucci-blondie", brand:"Gucci", name:{en:"Blondie Cylindrical",ar:"بلوندي الأسطوانية"}, cond:{en:"99% · Unused",ar:"٩٩٪ · غير مستخدمة"}, price:"3,200 SAR", img:"assets/blondie/front.jpg", gallery:["assets/blondie/front.jpg","assets/blondie/angle.jpg","assets/blondie/angle2.jpg","assets/blondie/side.jpg","assets/blondie/lifestyle2.jpg"], page:"product-blondie.html", tag:{en:"Authentic",ar:"أصلية"}},
   {id:"gucci-horsebit", brand:"Gucci", name:{en:"Horsebit 1955 Mini",ar:"هورسبيت ١٩٥٥ ميني"}, cond:{en:"99% · Unused",ar:"٩٩٪ · غير مستخدمة"}, price:"7,800 SAR", img:"assets/horsebit/front.jpg", gallery:["assets/horsebit/front.jpg","assets/horsebit/angle.jpg","assets/horsebit/angle2.jpg","assets/horsebit/back.jpg","assets/horsebit/base.jpg"], page:"product-horsebit.html", tag:{en:"Authentic",ar:"أصلية"}},
   {id:"gucci-half-horsebit", brand:"Gucci", name:{en:"Half Horsebit Shoulder Bag",ar:"هورسبيت بنصف لجام"}, cond:{en:"99% · Unused",ar:"٩٩٪ · غير مستخدمة"}, price:"7,200 SAR", img:"assets/half-horsebit/front.jpg", gallery:["assets/half-horsebit/front.jpg","assets/half-horsebit/angle.jpg","assets/half-horsebit/angle2.jpg","assets/half-horsebit/styled.jpg","assets/half-horsebit/lifestyle2.jpg"], page:"product-half-horsebit.html", tag:{en:"Authentic",ar:"أصلية"}},
   {id:"lv-pochette", brand:"Louis Vuitton", name:{en:"Mini Pochette",ar:"ميني بوشيت"}, cond:{en:"95%",ar:"٩٥٪"}, price:"1,550 SAR", img:"assets/pochette/front.jpg", gallery:["assets/pochette/front.jpg","assets/pochette/angle.jpg","assets/pochette/set.jpg","assets/pochette/styled.jpg","assets/pochette/lifestyle.jpg"], page:"product-pochette.html", sold:true, tag:{en:"Sold Out",ar:"نفدت الكمية"}},
-  {id:"balenciaga-hourglass", brand:"Balenciaga", name:{en:"Hourglass Wallet on Chain",ar:"أورغلاس واليت أون تشين"}, cond:{en:"99% · Unused",ar:"٩٩٪ · غير مستخدمة"}, price:"4,500 SAR", img:"assets/hourglass/front.jpg", gallery:["assets/hourglass/front.jpg","assets/hourglass/angle.jpg","assets/hourglass/angle2.jpg","assets/hourglass/back.jpg","assets/hourglass/top.jpg"], page:"product-hourglass.html", tag:{en:"Authentic",ar:"أصلية"}},
+  {id:"balenciaga-hourglass", brand:"Balenciaga", name:{en:"Hourglass Wallet on Chain",ar:"أورغلاس واليت أون تشين"}, cond:{en:"99% · Unused",ar:"٩٩٪ · غير مستخدمة"}, price:"4,200 SAR", was:"4,500 SAR", img:"assets/hourglass/front.jpg", gallery:["assets/hourglass/front.jpg","assets/hourglass/angle.jpg","assets/hourglass/angle2.jpg","assets/hourglass/back.jpg","assets/hourglass/top.jpg"], page:"product-hourglass.html", tag:{en:"Authentic",ar:"أصلية"}},
 ];
 
 const faqs = [
@@ -719,6 +722,7 @@ const i18n = {
   auth_badge_t:{en:"Authenticity Guarantee",ar:"ضمان الأصالة"}, auth_badge_s:{en:"Genuine · Certified · Documented",ar:"أصلية · معتمدة · موثّقة"},
   feat_eyebrow:{en:"Featured Bags",ar:"حقائب مختارة"}, feat_title:{en:"A selection worth carrying.",ar:"تشكيلة تستحق أن تُحمَل."}, feat_all:{en:"View Full Collection",ar:"شاهدي المجموعة كاملة"},
   sold_badge:{en:"Sold Out",ar:"نفدت الكمية"},
+  price_drop:{en:"Price Drop",ar:"سعر مخفّض"},
   filter_all:{en:"All",ar:"الكل"}, no_results:{en:"No bags in this category yet.",ar:"لا توجد حقائب في هذا القسم حالياً."},
   auth_steps_label:{en:"Verification Steps",ar:"خطوات التوثيق"},
   view_details:{en:"View Details",ar:"عرض التفاصيل"}, order_wa:{en:"Order via WhatsApp",ar:"اطلبي عبر واتساب"},
@@ -794,6 +798,8 @@ function renderProducts(){
       : `Hello Bella Boutique, I'm interested in the ${p.brand} ${name} (${p.price}).`;
     const arrow = LANG==="ar" ? "\u2190" : "\u2192";
     const gal = p.gallery && p.gallery.length ? p.gallery : (p.img ? [p.img] : []);
+    const off = p.was ? Math.round((parseInt(p.was.replace(/[^0-9]/g,"")) - parseInt(p.price.replace(/[^0-9]/g,""))) * 100 / parseInt(p.was.replace(/[^0-9]/g,""))) : 0;
+    const dropTag = (p.was && !p.sold) ? `<span class="drop">${i18n.price_drop[LANG]} · ${off}%</span>` : "";
     const dots = gal.length > 1
       ? `<span class="dots">${gal.map((_,n)=>`<i class="${n===0?"on":""}"></i>`).join("")}</span>
          <button class="cnav p" aria-label="Previous">&#10094;</button>
@@ -808,13 +814,13 @@ function renderProducts(){
     const wrapOpen = p.page ? `<a href="${p.page}" style="display:block">` : "";
     const wrapClose = p.page ? `</a>` : "";
     return `<article class="card${p.sold ? " is-sold" : ""}">
-      ${wrapOpen}<div class="ph" data-gal='${JSON.stringify(gal)}'><span class="tag">${tag}</span>${media}${p.sold ? `<span class="sold-ribbon"><span>${i18n.sold_badge[LANG]}</span></span>` : ""}</div>${wrapClose}
+      ${wrapOpen}<div class="ph" data-gal='${JSON.stringify(gal)}'><span class="tag">${tag}</span>${dropTag}${media}${p.sold ? `<span class="sold-ribbon"><span>${i18n.sold_badge[LANG]}</span></span>` : ""}</div>${wrapClose}
       <div class="body">
         <div class="brand">${p.brand}</div>
         <h3>${name}</h3>
         <div class="cond">${cond}</div>
         <div class="meta">
-          <span class="price">${p.price}</span>
+          <span class="price">${p.was ? `<s class="was">${p.was}</s> ` : ""}${p.price}</span>
           ${cta}
         </div>
       </div>

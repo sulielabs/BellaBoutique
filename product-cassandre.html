@@ -66,6 +66,8 @@ html[lang="ar"] .info .brand{letter-spacing:.05em}
 .badge{font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;padding:.4rem .8rem;border:1px solid var(--gold);color:var(--black);background:#FFF;font-weight:500}
 html[lang="ar"] .badge{letter-spacing:.03em}
 .badge.solid{background:var(--gold);color:#fff;border-color:var(--gold)}
+.badge.drop{background:#8C2F39;border-color:#8C2F39;color:#fff}
+.price .was{font-size:1.15rem;color:var(--taupe);text-decoration:line-through;text-decoration-thickness:1px;margin-inline-end:.5rem;font-weight:400}
 .price{font-family:var(--serif);font-size:2rem;color:var(--black);margin-bottom:.4rem}
 .price small{font-size:.8rem;font-family:var(--sans);color:#6E6459;letter-spacing:.1em}
 .desc{font-size:1rem;max-width:46ch;margin:1.4rem 0}
@@ -175,6 +177,7 @@ p, .desc, .lead, .specs .row .v, .acc .ans p, .why-card p, .auth-steps p, .fdesc
   color:#856419 !important; -webkit-text-fill-color:#856419;
 }
 .badge{ color:#12100E !important; -webkit-text-fill-color:#12100E; }
+.badge.drop{ color:#FFFFFF !important; -webkit-text-fill-color:#FFFFFF; }
 .badge.solid{
   background-image:linear-gradient(#C8A250,#C8A250) !important;
   color:#FFFFFF !important; -webkit-text-fill-color:#FFFFFF;
@@ -345,9 +348,10 @@ html,body{max-width:100%;overflow-x:hidden}
       <span class="badge solid" data-i18n="b_auth">Authentic</span>
       <span class="badge" data-i18n="b_cond">98% · Like New</span>
       <span class="badge" data-i18n="b_ccic">Certified Authentic</span>
+      <span class="badge drop" data-i18n="b_drop">Price Drop &middot; 13% Off</span>
     </div>
 
-    <div class="price">5,500 SAR <small data-i18n="incl">/ incl. box</small></div>
+    <div class="price"><s class="was">5,500 SAR</s> 4,800 SAR <small data-i18n="incl">/ incl. box</small></div>
 
     <p class="desc" data-i18n="p_desc">The Cassandre chain wallet in black grain de poudre leather, quilted in the signature chevron matelass&eacute; and finished with the polished gold YSL monogram. An envelope silhouette that carries as a clutch, a shoulder bag, or crossbody &mdash; the most versatile piece in the house.</p>
 
@@ -402,7 +406,7 @@ const i18n={
   back:{en:"← Back to Shop",ar:"→ العودة للمتجر"},
   c_home:{en:"Home",ar:"الرئيسية"}, c_shop:{en:"Shop",ar:"المتجر"}, c_name:{en:"Saint Laurent Cassandre Chain Wallet",ar:"سان لوران كاساندر تشين واليت"},
   p_name:{en:"Cassandre Chain Wallet — Matelassé Leather",ar:"كاساندر تشين واليت — جلد ماتلاسيه"},
-  b_auth:{en:"Authentic",ar:"أصلية"}, b_cond:{en:"98% · Like New",ar:"٩٨٪ · شبه جديدة"}, b_ccic:{en:"Certified Authentic",ar:"موثّقة بشهادة"},
+  b_auth:{en:"Authentic",ar:"أصلية"}, b_cond:{en:"98% · Like New",ar:"٩٨٪ · شبه جديدة"}, b_ccic:{en:"Certified Authentic",ar:"موثّقة بشهادة"}, b_drop:{en:"Price Drop · 13% Off",ar:"سعر مخفّض · خصم ١٣٪"},
   incl:{en:"/ incl. box",ar:"/ شاملة العلبة"},
   p_desc:{en:"The Cassandre chain wallet in black grain de poudre leather, quilted in the signature chevron matelassé and finished with the polished gold YSL monogram. An envelope silhouette that carries as a clutch, a shoulder bag, or crossbody — the most versatile piece in the house.",ar:"محفظة كاساندر بالسلسلة من جلد جران دو بودر الأسود، مبطنة بنقشة الشيفرون الماتلاسيه المميزة ومزينة بشعار YSL الذهبي المصقول. تصميم بشكل الظرف يمكن حملها كـكلتش أو على الكتف أو كروس — الأكثر تنوعاً في الدار."},
   s_brand:{en:"Brand",ar:"العلامة"}, s_model:{en:"Model",ar:"الموديل"}, s_model_v:{en:"Cassandre Chain Wallet",ar:"كاساندر تشين واليت"},
