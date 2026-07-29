@@ -13,8 +13,18 @@ const PORT = process.env.PORT || 3000;
 const PUBLIC_DIR = path.resolve(process.env.PUBLIC_DIR || __dirname);
 const DATA_DIR = path.resolve(process.env.DATA_DIR || path.join(__dirname, 'data'));
 const STATS_FILE = path.join(DATA_DIR, 'stats.json');
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || '';
-const SESSION_SECRET = process.env.SESSION_SECRET || '';
+// Trailing spaces, stray newlines and wrapping quotes are the classic
+// copy-paste artefacts when setting a variable in a hosting dashboard.
+function cleanEnv(v) {
+  let out = (v || '').trim();
+  if (out.length > 1 && ((out[0] === '"' && out.endsWith('"')) || (out[0] === "'" && out.endsWith("'")))) {
+    out = out.slice(1, -1).trim();
+  }
+  return out;
+}
+
+const ADMIN_PASSWORD = cleanEnv(process.env.ADMIN_PASSWORD);
+const SESSION_SECRET = cleanEnv(process.env.SESSION_SECRET);
 const SESSION_HOURS = 12;
 const SITE_URL = (process.env.SITE_URL || '').replace(/\/+$/, '');
 
@@ -25,7 +35,14 @@ function siteUrl(req) {
 }
 
 if (!ADMIN_PASSWORD) {
-  console.error('[bella] ADMIN_PASSWORD is not set. The dashboard stays locked until you set it.');
+  console.error('[bella] ADMIN_PASSWORD is NOT SET — the dashboard cannot be opened. Add it in Variables, then redeploy.');
+} else {
+  const raw = process.env.ADMIN_PASSWORD || '';
+  console.log(`[bella] admin password loaded — ${ADMIN_PASSWORD.length} characters`);
+  if (raw !== ADMIN_PASSWORD) {
+    console.warn(`[bella] NOTE: the stored value had ${raw.length - ADMIN_PASSWORD.length} extra character(s) `
+      + '(spaces, a newline, or quotes). They were ignored — type the password without them.');
+  }
 }
 if (!SESSION_SECRET) {
   console.warn('[bella] SESSION_SECRET is not set — sessions will end on every restart.');
@@ -309,7 +326,7 @@ const server = http.createServer(async (req, res) => {
           { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store' });
       }
       const body = await readBody(req);
-      const password = new URLSearchParams(body).get('password') || '';
+      const password = (new URLSearchParams(body).get('password') || '').trim();
       if (!passwordMatches(password)) {
         noteAttempt(ip);
         return send(res, 401, loginPage('كلمة المرور غير صحيحة.'),
