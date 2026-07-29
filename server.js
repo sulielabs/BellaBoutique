@@ -9,10 +9,6 @@ const path = require('path');
 const crypto = require('crypto');
 
 // ---------------------------------------------------------------- config
-const PORT = process.env.PORT || 3000;
-const PUBLIC_DIR = path.resolve(process.env.PUBLIC_DIR || __dirname);
-const DATA_DIR = path.resolve(process.env.DATA_DIR || path.join(__dirname, 'data'));
-const STATS_FILE = path.join(DATA_DIR, 'stats.json');
 // Trailing spaces, stray newlines and wrapping quotes are the classic
 // copy-paste artefacts when setting a variable in a hosting dashboard.
 function cleanEnv(v) {
@@ -23,10 +19,29 @@ function cleanEnv(v) {
   return out;
 }
 
-const ADMIN_PASSWORD = cleanEnv(process.env.ADMIN_PASSWORD);
-const SESSION_SECRET = cleanEnv(process.env.SESSION_SECRET);
+// A stray space or wrong case in the variable NAME is just as common as in its
+// value, so match forgivingly rather than failing silently.
+const rawEnv = {};
+function readEnv(name) {
+  let raw = process.env[name];
+  if (raw == null) {
+    for (const key of Object.keys(process.env)) {
+      if (key.trim().toUpperCase() === name) { raw = process.env[key]; break; }
+    }
+  }
+  if (raw == null) return '';
+  rawEnv[name] = raw;
+  return cleanEnv(raw);
+}
+
+const PORT = process.env.PORT || 3000;
+const PUBLIC_DIR = path.resolve(process.env.PUBLIC_DIR || __dirname);
+const DATA_DIR = path.resolve(readEnv('DATA_DIR') || path.join(__dirname, 'data'));
+const STATS_FILE = path.join(DATA_DIR, 'stats.json');
+const ADMIN_PASSWORD = readEnv('ADMIN_PASSWORD');
+const SESSION_SECRET = readEnv('SESSION_SECRET');
 const SESSION_HOURS = 12;
-const SITE_URL = (process.env.SITE_URL || '').replace(/\/+$/, '');
+const SITE_URL = readEnv('SITE_URL').replace(/\/+$/, '');
 
 function siteUrl(req) {
   if (SITE_URL) return SITE_URL;
@@ -35,9 +50,14 @@ function siteUrl(req) {
 }
 
 if (!ADMIN_PASSWORD) {
-  console.error('[bella] ADMIN_PASSWORD is NOT SET — the dashboard cannot be opened. Add it in Variables, then redeploy.');
+  console.error('[bella] ADMIN_PASSWORD is NOT SET — the dashboard cannot be opened.');
+  const seen = Object.keys(process.env)
+    .filter(k => /ADMIN|PASS|SECRET|SESSION|SITE|DATA_DIR/i.test(k))
+    .map(k => JSON.stringify(k));
+  console.error('[bella] related variable NAMES this service can see (values hidden): '
+    + (seen.length ? seen.join(', ') : 'NONE — no variables reached the container at all'));
 } else {
-  const raw = process.env.ADMIN_PASSWORD || '';
+  const raw = rawEnv.ADMIN_PASSWORD || '';
   console.log(`[bella] admin password loaded — ${ADMIN_PASSWORD.length} characters`);
   if (raw !== ADMIN_PASSWORD) {
     console.warn(`[bella] NOTE: the stored value had ${raw.length - ADMIN_PASSWORD.length} extra character(s) `
