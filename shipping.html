@@ -10,6 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600&family=Montserrat:wght@300;400;500;600&family=Cairo:wght@400;600;700&family=Tajawal:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@emran-alhaddad/saudi-riyal-font/index.css">
 
 <style>
 :root{
@@ -113,6 +114,7 @@ html,body{max-width:100%;overflow-x:hidden}
 .main-img img{max-width:100%;font-size:.7rem;color:#8A8177;text-align:center;overflow:hidden}
 .thumbs .thumb img{font-size:0}
 .info h1,.specs .row .v,.desc{overflow-wrap:anywhere}
+.riyal{font-family:"saudi_riyal",sans-serif;font-style:normal;font-weight:400;display:inline-block;vertical-align:-.04em;margin-inline-end:.16em;letter-spacing:0}
 </style>
 </head>
 <body>
@@ -137,7 +139,7 @@ html,body{max-width:100%;overflow-x:hidden}
     <div class="n">01</div>
     <div>
       <h2 data-i18n="s1h">Shipping Fee</h2>
-      <p data-i18n="s1a">A flat shipping fee of 200 SAR applies to all orders.</p>
+      <p data-i18n="s1a">A flat shipping fee of <span class="riyal" title="ريال سعودي">&#x20C1;</span>200 applies to all orders.</p>
       <p data-i18n="s1b">This includes secure packaging and insured shipping for luxury handbags. We currently deliver within the Kingdom of Saudi Arabia.</p>
     </div>
   </div>
@@ -192,7 +194,7 @@ const i18n={
   lede:{en:"We currently ship within the Kingdom of Saudi Arabia. Every order is packed with care, insured, and tracked.",ar:"نشحن حالياً داخل المملكة العربية السعودية. كل طلب يُغلّف بعناية ويُؤمّن ويُتابَع."},
 
   s1h:{en:"Shipping Fee",ar:"تكلفة الشحن"},
-  s1a:{en:"A flat shipping fee of 200 SAR applies to all orders.",ar:"رسوم الشحن ثابتة بقيمة ٢٠٠ ريال على جميع الطلبات."},
+  s1a:{en:"A flat shipping fee of <span class='riyal' title='ريال سعودي'>&#x20C1;</span>200 applies to all orders.",ar:"رسوم الشحن ثابتة بقيمة <span class='riyal' title='ريال سعودي'>&#x20C1;</span>٢٠٠ على جميع الطلبات."},
   s1b:{en:"This includes secure packaging and insured shipping for luxury handbags. We currently deliver within the Kingdom of Saudi Arabia.",ar:"وتشمل التغليف الآمن والتأمين الكامل على الحقائب الثمينة. نوصل حالياً داخل المملكة العربية السعودية."},
 
   s2h:{en:"Shipping Method",ar:"طريقة الشحن"},

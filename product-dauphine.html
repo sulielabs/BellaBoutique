@@ -10,6 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&family=Cairo:wght@400;600;700&family=Tajawal:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@emran-alhaddad/saudi-riyal-font/index.css">
 
 <style>
 :root{
@@ -66,6 +67,8 @@ html[lang="ar"] .info .brand{letter-spacing:.05em}
 .badge{font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;padding:.4rem .8rem;border:1px solid var(--gold);color:var(--black);background:#FFF;font-weight:500}
 html[lang="ar"] .badge{letter-spacing:.03em}
 .badge.solid{background:var(--gold);color:#fff;border-color:var(--gold)}
+.badge.drop{background:#8C2F39;border-color:#8C2F39;color:#FFFFFF;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;padding:.4rem .8rem;font-weight:500}
+.price .was{font-size:1.15rem;color:#8A8078;text-decoration:line-through;text-decoration-thickness:1px;margin-inline-end:.5rem;font-weight:400}
 .price{font-family:var(--serif);font-size:2rem;color:var(--black);margin-bottom:.4rem}
 .price small{font-size:.8rem;font-family:var(--sans);color:#6E6459;letter-spacing:.1em}
 .desc{font-size:1rem;max-width:46ch;margin:1.4rem 0}
@@ -175,6 +178,11 @@ p, .desc, .lead, .specs .row .v, .acc .ans p, .why-card p, .auth-steps p, .fdesc
   color:#856419 !important; -webkit-text-fill-color:#856419;
 }
 .badge{ color:#12100E !important; -webkit-text-fill-color:#12100E; }
+.badge.drop{
+  background-image:linear-gradient(#8C2F39,#8C2F39) !important;
+  color:#FFFFFF !important; -webkit-text-fill-color:#FFFFFF;
+}
+.price .was{ color:#8A8078 !important; -webkit-text-fill-color:#8A8078; }
 .badge.solid{
   background-image:linear-gradient(#C8A250,#C8A250) !important;
   color:#FFFFFF !important; -webkit-text-fill-color:#FFFFFF;
@@ -303,6 +311,7 @@ html,body{max-width:100%;overflow-x:hidden}
 .main-img img{max-width:100%;font-size:.7rem;color:#8A8177;text-align:center;overflow:hidden}
 .thumbs .thumb img{font-size:0}
 .info h1,.specs .row .v,.desc{overflow-wrap:anywhere}
+.riyal{font-family:"saudi_riyal",sans-serif;font-style:normal;font-weight:400;display:inline-block;vertical-align:-.04em;margin-inline-end:.16em;letter-spacing:0}
 </style>
 </head>
 <body>
@@ -345,9 +354,10 @@ html,body{max-width:100%;overflow-x:hidden}
       <span class="badge solid" data-i18n="b_auth">Authentic</span>
       <span class="badge" data-i18n="b_cond">Excellent · 95%</span>
       <span class="badge" data-i18n="b_ccic">Certified Authentic</span>
+      <span class="badge drop" data-i18n="b_drop">Price Drop &middot; 21% Off</span>
     </div>
 
-    <div class="price">7,800 SAR <small data-i18n="incl">/ incl. certificate</small></div>
+    <div class="price"><s class="was"><span class="riyal" title="ريال سعودي">&#x20C1;</span>7,800</s> <span class="riyal" title="ريال سعودي">&#x20C1;</span>6,200 <small data-i18n="incl">/ incl. certificate</small></div>
 
     <p class="desc" data-i18n="p_desc">The iconic Dauphine in reverse Monogram canvas with rich caramel leather trim and the signature LV twist lock. A structured shoulder and crossbody silhouette finished with an antique-gold chain — timeless, poised, and instantly recognizable.</p>
 
@@ -402,7 +412,7 @@ const i18n={
   back:{en:"← Back to Shop",ar:"→ العودة للمتجر"},
   c_home:{en:"Home",ar:"الرئيسية"}, c_shop:{en:"Shop",ar:"المتجر"}, c_name:{en:"Louis Vuitton Dauphine MM",ar:"لويس فيتون دوفين MM"},
   p_name:{en:"Dauphine MM — Reverse Monogram",ar:"دوفين MM — مونوغرام معكوس"},
-  b_auth:{en:"Authentic",ar:"أصلية"}, b_cond:{en:"Excellent · 95%",ar:"ممتازة · ٩٥٪"}, b_ccic:{en:"Certified Authentic",ar:"موثّقة بشهادة"},
+  b_auth:{en:"Authentic",ar:"أصلية"}, b_cond:{en:"Excellent · 95%",ar:"ممتازة · ٩٥٪"}, b_ccic:{en:"Certified Authentic",ar:"موثّقة بشهادة"}, b_drop:{en:"Price Drop · 21% Off",ar:"سعر مخفّض · خصم ٢١٪"},
   incl:{en:"/ incl. certificate",ar:"/ شاملة الشهادة"},
   p_desc:{en:"The iconic Dauphine in reverse Monogram canvas with rich caramel leather trim and the signature LV twist lock. A structured shoulder and crossbody silhouette finished with an antique-gold chain — timeless, poised, and instantly recognizable.",ar:"حقيبة دوفين الأيقونية بقماش المونوغرام المعكوس وحواف جلدية بلون الكراميل الغني وقفل LV الملتوي المميز. تصميم مهيكل للكتف والكروس بسلسلة ذهبية عتيقة — خالدة وأنيقة وسهلة التمييز."},
   s_brand:{en:"Brand",ar:"العلامة"}, s_model:{en:"Model",ar:"الموديل"}, s_model_v:{en:"Dauphine MM (Medium)",ar:"دوفين MM (وسط)"},
@@ -430,8 +440,8 @@ function applyLang(){
   document.getElementById("langBtn").textContent=LANG==="en"?"العربية":"English";
   document.title=LANG==="ar"?"لويس فيتون دوفين MM — بيلا بوتيك":"Louis Vuitton Dauphine MM — Bella Boutique";
   const msg=LANG==="ar"
-    ? "مرحباً بيلا بوتيك، أرغب في طلب حقيبة Louis Vuitton Dauphine MM (مونوغرام معكوس) — الحالة ممتازة ٩٥٪ — السعر 7,800 ريال."
-    : "Hello Bella Boutique, I'd like to order the Louis Vuitton Dauphine MM (Reverse Monogram) — Excellent 95% — 7,800 SAR.";
+    ? "مرحباً بيلا بوتيك، أرغب في طلب حقيبة Louis Vuitton Dauphine MM (مونوغرام معكوس) — الحالة ممتازة ٩٥٪ — السعر 6,200 ريال."
+    : "Hello Bella Boutique, I'd like to order the Louis Vuitton Dauphine MM (Reverse Monogram) — Excellent 95% — 6,200 SAR.";
   document.getElementById("waBtn").href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`;
 }
 
