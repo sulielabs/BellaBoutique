@@ -367,6 +367,7 @@ p, .desc, .lead, .specs .row .v, .acc .ans p, .why-card p, .auth-steps p, .fdesc
   color:#FFFFFF !important; -webkit-text-fill-color:#FFFFFF;
 }
 .btn{ color:#12100E !important; -webkit-text-fill-color:#12100E; }
+.btn-more{ color:#12100E !important; -webkit-text-fill-color:#12100E; }
 .btn--gold, .btn--wa{
   color:#FFFFFF !important; -webkit-text-fill-color:#FFFFFF;
 }
@@ -398,6 +399,15 @@ html[lang="ar"]
 .social a:hover svg{fill:#12100E!important}
 
 .filters{display:flex;flex-wrap:wrap;gap:.55rem;margin:0 0 2.2rem}
+.more-wrap{display:flex;justify-content:center;margin-top:2.6rem}
+.more-wrap:empty{display:none}
+.btn-more{font-family:var(--sans);font-weight:500;font-size:.76rem;letter-spacing:.16em;
+  text-transform:uppercase;padding:.9rem 2.1rem;border:1px solid var(--black);
+  color:var(--black);background:transparent;cursor:pointer;transition:all .4s var(--ease)}
+.btn-more:hover{background:var(--black);color:var(--ivory)}
+.btn-more:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.btn-more .n{opacity:.55;margin-inline-start:.5rem;font-size:.72rem}
+html[lang="ar"] .btn-more{letter-spacing:.02em;text-transform:none;font-size:.85rem;font-weight:600}
 .filters button{
   font-family:var(--sans);font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
   padding:.6rem 1.15rem;border:1px solid var(--taupe);background:var(--white);color:var(--ink);
@@ -611,6 +621,7 @@ html[lang="ar"] .sold-ribbon span{letter-spacing:.06em;font-size:.8rem}
     </div>
     <div class="filters" id="brandFilters"></div>
     <div class="grid-3" id="productGrid"></div>
+    <div class="more-wrap" id="moreWrap"></div>
   </div>
 </section>
 
@@ -757,6 +768,7 @@ const i18n = {
   sold_badge:{en:"Sold Out",ar:"نفدت الكمية"},
   price_drop:{en:"Price Drop",ar:"سعر مخفّض"},
   price_off:{en:"Off",ar:"خصم"},
+  view_more:{en:"View More",ar:"عرض المزيد"},
   filter_all:{en:"All",ar:"الكل"}, no_results:{en:"No bags in this category yet.",ar:"لا توجد حقائب في هذا القسم حالياً."},
   auth_steps_label:{en:"Verification Steps",ar:"خطوات التوثيق"},
   view_details:{en:"View Details",ar:"عرض التفاصيل"}, order_wa:{en:"Order via WhatsApp",ar:"اطلبي عبر واتساب"},
@@ -786,6 +798,8 @@ let LANG = "en";
 function waLink(text){return `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`;}
 
 let ACTIVE_BRAND = "all";
+let SHOW_ALL = false;
+const PAGE_SIZE = 6;
 
 function brandList(){
   const seen = [];
@@ -810,8 +824,10 @@ function renderFilters(){
   holder.querySelectorAll("button").forEach(b => {
     b.addEventListener("click", () => {
       ACTIVE_BRAND = b.getAttribute("data-brand");
+      SHOW_ALL = false;
       renderFilters();
       renderProducts();
+      bindCardGalleries();
     });
   });
 }
@@ -821,14 +837,19 @@ const arNum = n => String(n).replace(/[0-9]/g, d => "٠١٢٣٤٥٦٧٨٩"[d]);
 
 function renderProducts(){
   const grid = document.getElementById("productGrid");
+  const moreWrap = document.getElementById("moreWrap");
   const list = ACTIVE_BRAND === "all" ? products : products.filter(p => p.brand === ACTIVE_BRAND);
 
   if(!list.length){
     grid.innerHTML = `<p class="no-results">${i18n.no_results[LANG]}</p>`;
+    if(moreWrap) moreWrap.innerHTML = "";
     return;
   }
 
-  grid.innerHTML = list.map(p=>{
+  const hidden = Math.max(0, list.length - PAGE_SIZE);
+  const shown  = SHOW_ALL ? list : list.slice(0, PAGE_SIZE);
+
+  grid.innerHTML = shown.map(p=>{
     const name = p.name[LANG], cond = p.cond[LANG], tag = p.tag[LANG];
     const msg = LANG==="ar"
       ? `مرحباً بيلا بوتيك، أرغب في الاستفسار عن حقيبة ${p.brand} ${name} (${p.price}).`
@@ -863,6 +884,22 @@ function renderProducts(){
       </div>
     </article>`;
   }).join("");
+
+  if(!moreWrap) return;
+  if(SHOW_ALL || !hidden){ moreWrap.innerHTML = ""; return; }
+
+  const n = LANG === "ar" ? arNum(hidden) : hidden;
+  moreWrap.innerHTML = `<button type="button" class="btn-more" id="moreBtn">`
+    + `${i18n.view_more[LANG]}<span class="n">${n}</span></button>`;
+  document.getElementById("moreBtn").addEventListener("click", () => {
+    SHOW_ALL = true;
+    renderProducts();
+    bindCardGalleries();
+    // keep the reader where they were rather than jumping to the top
+    const cards = document.querySelectorAll("#productGrid .card");
+    const first = cards[PAGE_SIZE];
+    if(first) first.scrollIntoView({ behavior: "smooth", block: "center" });
+  });
 }
 
 
@@ -997,5 +1034,9 @@ document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
 /* ============ INIT ============ */
 applyLang();
 </script>
+
+<!-- شارة التوثيق — المركز السعودي للأعمال -->
+<div class="sbc-verify-seal" data-token="WVlWR3dTdFc5NW0xVEhvVERjSFhGdz09" data-position="bottomleft"></div>
+<script src="https://eauthenticate.saudibusiness.gov.sa/EAuthSealApi/seal.js" async></script>
 </body>
 </html>
