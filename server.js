@@ -277,6 +277,10 @@ function safePath(urlPath) {
 
 function serveStatic(req, res, urlPath) {
   const lower = urlPath.toLowerCase();
+  // internal documentation (.md) is never served publicly
+  if (lower.endsWith('.md')) {
+    return send(res, 404, 'Not found', { 'Content-Type': 'text/plain; charset=utf-8' });
+  }
   if (BLOCKED.has(lower) || BLOCKED_DIRS.some(d => lower.startsWith(d)) || lower.split('/').some(s => s.startsWith('.'))) {
     return send(res, 404, 'Not found', { 'Content-Type': 'text/plain; charset=utf-8' });
   }
@@ -375,9 +379,21 @@ const server = http.createServer(async (req, res) => {
     }
 
     if (urlPath === '/robots.txt') {
+      const base = siteUrl(req);
       const body = [
-        'User-agent: *', 'Allow: /', 'Disallow: /admin', 'Disallow: /logo-kit.html', '',
-        `Sitemap: ${siteUrl(req)}/sitemap.xml`, ''
+        'User-agent: *',
+        'Allow: /',
+        'Disallow: /admin',
+        'Disallow: /logo-kit.html',
+        'Disallow: /*.md$',
+        '',
+        '# AI assistants and answer engines are welcome',
+        ...['GPTBot', 'OAI-SearchBot', 'ChatGPT-User', 'ClaudeBot', 'Claude-SearchBot',
+            'PerplexityBot', 'Perplexity-User', 'Google-Extended', 'Applebot-Extended',
+            'Bingbot', 'YandexBot', 'Amazonbot', 'meta-externalagent']
+          .flatMap(ua => [`User-agent: ${ua}`, 'Allow: /', '']),
+        `# Structured summary for language models: ${base}/llms.txt`,
+        `Sitemap: ${base}/sitemap.xml`, ''
       ].join('\n');
       return send(res, 200, body, { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'public, max-age=3600' });
     }
