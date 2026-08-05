@@ -333,6 +333,15 @@ html,body{max-width:100%;overflow-x:hidden}
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Gucci أوفيديا GG توت","alternateName":"Gucci Ophidia GG Tote","description":"حقيبة أوفيديا GG توت من غوتشي (Gucci) — أصلية ١٠٠٪، الحالة ٩٩٪ · غير مستخدمة، المقاس 25 × 17 × 10.5 cm. السعر 6,200 ريال مع شهادة أصالة وشحن داخل السعودية.","sku":"gucci-ophidia","brand":{"@type":"Brand","name":"Gucci"},"image":["{{SITE_URL}}/assets/ophidia/front.jpg","{{SITE_URL}}/assets/ophidia/angle.jpg","{{SITE_URL}}/assets/ophidia/angle2.jpg","{{SITE_URL}}/assets/ophidia/strap.jpg","{{SITE_URL}}/assets/ophidia/base.jpg"],"itemCondition":"https://schema.org/UsedCondition","offers":{"@type":"Offer","url":"{{SITE_URL}}/product-ophidia.html","priceCurrency":"SAR","price":"6200","itemCondition":"https://schema.org/UsedCondition","availability":"https://schema.org/InStock","seller":{"@type":"Organization","name":"Bella Boutique"},"priceValidUntil":"2027-08-03","shippingDetails":{"@type":"OfferShippingDetails","shippingRate":{"@type":"MonetaryAmount","value":"200","currency":"SAR"},"shippingDestination":{"@type":"DefinedRegion","addressCountry":"SA"},"deliveryTime":{"@type":"ShippingDeliveryTime","handlingTime":{"@type":"QuantitativeValue","minValue":1,"maxValue":2,"unitCode":"DAY"},"transitTime":{"@type":"QuantitativeValue","minValue":7,"maxValue":14,"unitCode":"DAY"}}},"areaServed":{"@type":"Country","name":"Saudi Arabia"},"warranty":{"@type":"WarrantyPromise","name":"ضمان الأصالة","description":"ضمان أصالة القطعة. إذا ثبت أن القطعة غير أصلية خلال سبعة أيام من الاستلام، يُسترد المبلغ كاملاً. لا يشمل الضمان الإرجاع بسبب تغيير الرأي.","durationOfWarranty":{"@type":"QuantitativeValue","value":7,"unitCode":"DAY"}}},"size":"25 × 17 × 10.5 cm","@id":"{{SITE_URL}}/product-ophidia.html#product","inLanguage":"ar","url":"{{SITE_URL}}/product-ophidia.html"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"بيلا بوتيك","item":"{{SITE_URL}}/"},{"@type":"ListItem","position":2,"name":"Gucci","item":"{{SITE_URL}}/#featured"},{"@type":"ListItem","position":3,"name":"Gucci أوفيديا GG توت"}]}</script>
   <!-- /seo -->
+<!-- TikTok Pixel Code Start -->
+<script>
+!function (w, d, t) {
+  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+  ttq.load('D9P7S4BC77U1C011RLD0');
+  ttq.page();
+}(window, document, 'ttq');
+</script>
+<!-- TikTok Pixel Code End -->
 </head>
 <body>
 
@@ -679,5 +688,84 @@ applyLang();
 })();
 </script>
 
+<!-- TikTok Contact Tracking Start -->
+<script>
+(function(){
+  function num(s){ var n = parseFloat(String(s).replace(/[^0-9.]/g,"")); return isNaN(n) ? 0 : n; }
+
+  /* product pages: read the Product JSON-LD already on the page */
+  function fromLD(){
+    var s = document.querySelectorAll('script[type="application/ld+json"]');
+    for(var i=0;i<s.length;i++){
+      try{
+        var d = JSON.parse(s[i].textContent);
+        if(d && d["@type"] === "Product"){
+          return {
+            content_id: d.sku || "",
+            content_name: d.alternateName || d.name || "",
+            brand: (d.brand && d.brand.name) || "",
+            value: d.offers ? num(d.offers.price) : 0,
+            currency: (d.offers && d.offers.priceCurrency) || "SAR"
+          };
+        }
+      }catch(e){}
+    }
+    return null;
+  }
+
+  /* home page: read the product card the button sits in */
+  function fromCard(a){
+    var c = a.closest && a.closest(".card");
+    if(!c) return null;
+    var nameEl = c.querySelector("h3"),
+        brandEl = c.querySelector(".brand"),
+        priceEl = c.querySelector(".price"),
+        val = 0;
+    if(priceEl){
+      var clone = priceEl.cloneNode(true);
+      var was = clone.querySelector("s");        /* drop the struck-through old price */
+      if(was && was.parentNode) was.parentNode.removeChild(was);
+      val = num(clone.textContent);
+    }
+    var brand = brandEl ? brandEl.textContent.trim() : "";
+    var name  = nameEl ? nameEl.textContent.trim() : "";
+    return {
+      content_id: "",
+      content_name: (brand + " " + name).trim(),
+      brand: brand,
+      value: val,
+      currency: "SAR"
+    };
+  }
+
+  function send(p){
+    if(typeof ttq === "undefined") return;
+    p = p || {};
+    ttq.track("Contact", {
+      content_type: "product",
+      content_id: p.content_id || location.pathname.replace(/^\//,"") || "home",
+      content_name: p.content_name || document.title,
+      value: p.value || 0,
+      currency: p.currency || "SAR"
+    });
+  }
+
+  /* delegated: also catches cards rendered after page load */
+  document.addEventListener("click", function(e){
+    var a = e.target.closest ? e.target.closest('a[href*="wa.me"]') : null;
+    if(!a) return;
+    send(fromCard(a) || fromLD());
+  }, true);
+
+  /* contact form opens WhatsApp via window.open, so it needs its own hook */
+  document.addEventListener("DOMContentLoaded", function(){
+    var f = document.getElementById("contactForm");
+    if(f) f.addEventListener("submit", function(){
+      send({ content_type:"lead", content_name:"Contact form", content_id:"contact-form" });
+    });
+  });
+})();
+</script>
+<!-- TikTok Contact Tracking End -->
 </body>
 </html>
