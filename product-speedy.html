@@ -5,7 +5,7 @@
 <meta name="color-scheme" content="light only" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Louis Vuitton سبيدي نانو أصلية | بيلا بوتيك</title>
-<meta name="description" content="حقيبة سبيدي نانو من لوي فيتون (Louis Vuitton) — أصلية ١٠٠٪، الحالة جديدة تماماً · غير مستخدمة، المقاس 16 × 10 × 7.5 cm. السعر 7,900 ريال مع شهادة أصالة وشحن داخل السعودية.">
+<meta name="description" content="حقيبة سبيدي نانو من لوي فيتون (Louis Vuitton) — أصلية ١٠٠٪، جديدة تماماً · غير مستخدمة. نفدت الكمية. تابعي بيلا بوتيك للاطلاع على القطع الجديدة.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -311,6 +311,22 @@ html,body{max-width:100%;overflow-x:hidden}
 .main-img img{max-width:100%;font-size:.7rem;color:#8A8177;text-align:center;overflow:hidden}
 .thumbs .thumb img{font-size:0}
 .info h1,.specs .row .v,.desc{overflow-wrap:anywhere}
+/* ===== SOLD OUT ===== */
+.badge.sold{background:#12100E !important;background-image:linear-gradient(#12100E,#12100E) !important;
+  border-color:#12100E !important;color:#FBF9F5 !important;-webkit-text-fill-color:#FBF9F5}
+.soldout-note{background:linear-gradient(#F1EBE1,#F1EBE1);border:1px solid var(--taupe);
+  padding:1.1rem 1.3rem;border-radius:3px;margin-bottom:.4rem}
+.soldout-note strong{font-family:var(--serif);font-size:1.1rem;color:var(--black);display:block;margin-bottom:.25rem;font-weight:500}
+.soldout-note p{font-size:.9rem;color:#574F45;margin:0}
+.main-img::after{content:attr(data-sold);position:absolute;top:1rem;inset-inline-start:1rem;left:1rem;
+  background:#12100E;color:#FBF9F5;font-family:var(--sans);font-size:.62rem;font-weight:600;
+  letter-spacing:.22em;text-transform:uppercase;padding:.4rem .8rem;z-index:5}
+html[lang="ar"] .main-img::after{letter-spacing:.04em;font-size:.72rem}
+html[dir="rtl"] .main-img::after{left:auto;right:1rem}
+.soldout-note{background-image:linear-gradient(#F1EBE1,#F1EBE1) !important}
+.soldout-note strong{color:#12100E !important;-webkit-text-fill-color:#12100E}
+.soldout-note p{color:#574F45 !important;-webkit-text-fill-color:#574F45}
+.price.is-sold{color:#574F45 !important;-webkit-text-fill-color:#574F45}
 .riyal{font-family:"saudi_riyal",sans-serif;font-style:normal;font-weight:400;display:inline-block;vertical-align:-.04em;margin-inline-end:.16em;letter-spacing:0}
 </style>
   <!-- seo -->
@@ -321,16 +337,16 @@ html,body{max-width:100%;overflow-x:hidden}
   <meta property="og:locale:alternate" content="en_US">
   <meta property="og:url" content="{{SITE_URL}}/product-speedy.html">
   <meta property="og:title" content="Louis Vuitton سبيدي نانو أصلية | بيلا بوتيك">
-  <meta property="og:description" content="حقيبة سبيدي نانو من لوي فيتون (Louis Vuitton) — أصلية ١٠٠٪، الحالة جديدة تماماً · غير مستخدمة، المقاس 16 × 10 × 7.5 cm. السعر 7,900 ريال مع شهادة أصالة وشحن داخل السعودية.">
+  <meta property="og:description" content="حقيبة سبيدي نانو من لوي فيتون (Louis Vuitton) — أصلية ١٠٠٪، جديدة تماماً · غير مستخدمة. نفدت الكمية. تابعي بيلا بوتيك للاطلاع على القطع الجديدة.">
   <meta property="og:image" content="{{SITE_URL}}/assets/og/lv-speedy-nano.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Louis Vuitton سبيدي نانو أصلية | بيلا بوتيك">
-  <meta name="twitter:description" content="حقيبة سبيدي نانو من لوي فيتون (Louis Vuitton) — أصلية ١٠٠٪، الحالة جديدة تماماً · غير مستخدمة، المقاس 16 × 10 × 7.5 cm. السعر 7,900 ريال مع شهادة أصالة وشحن داخل السعودية.">
+  <meta name="twitter:description" content="حقيبة سبيدي نانو من لوي فيتون (Louis Vuitton) — أصلية ١٠٠٪، جديدة تماماً · غير مستخدمة. نفدت الكمية. تابعي بيلا بوتيك للاطلاع على القطع الجديدة.">
   <meta name="twitter:image" content="{{SITE_URL}}/assets/og/lv-speedy-nano.jpg">
   <meta name="theme-color" content="#12100E">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Louis Vuitton سبيدي نانو","alternateName":"Louis Vuitton Speedy Nano","description":"حقيبة سبيدي نانو من لوي فيتون (Louis Vuitton) — أصلية ١٠٠٪، الحالة جديدة تماماً · غير مستخدمة، المقاس 16 × 10 × 7.5 cm. السعر 7,900 ريال مع شهادة أصالة وشحن داخل السعودية.","sku":"lv-speedy-nano","brand":{"@type":"Brand","name":"Louis Vuitton"},"image":["{{SITE_URL}}/assets/speedy/front.jpg","{{SITE_URL}}/assets/speedy/angle.jpg","{{SITE_URL}}/assets/speedy/angle2.jpg","{{SITE_URL}}/assets/speedy/top.jpg","{{SITE_URL}}/assets/speedy/set.jpg"],"itemCondition":"https://schema.org/NewCondition","offers":{"@type":"Offer","url":"{{SITE_URL}}/product-speedy.html","priceCurrency":"SAR","price":"7900","itemCondition":"https://schema.org/NewCondition","availability":"https://schema.org/InStock","seller":{"@type":"Organization","name":"Bella Boutique"},"priceValidUntil":"2027-08-03","shippingDetails":{"@type":"OfferShippingDetails","shippingRate":{"@type":"MonetaryAmount","value":"200","currency":"SAR"},"shippingDestination":{"@type":"DefinedRegion","addressCountry":"SA"},"deliveryTime":{"@type":"ShippingDeliveryTime","handlingTime":{"@type":"QuantitativeValue","minValue":1,"maxValue":2,"unitCode":"DAY"},"transitTime":{"@type":"QuantitativeValue","minValue":7,"maxValue":14,"unitCode":"DAY"}}},"areaServed":{"@type":"Country","name":"Saudi Arabia"},"warranty":{"@type":"WarrantyPromise","name":"ضمان الأصالة","description":"ضمان أصالة القطعة. إذا ثبت أن القطعة غير أصلية خلال سبعة أيام من الاستلام، يُسترد المبلغ كاملاً. لا يشمل الضمان الإرجاع بسبب تغيير الرأي.","durationOfWarranty":{"@type":"QuantitativeValue","value":7,"unitCode":"DAY"}}},"size":"16 × 10 × 7.5 cm","@id":"{{SITE_URL}}/product-speedy.html#product","inLanguage":"ar","url":"{{SITE_URL}}/product-speedy.html"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Louis Vuitton سبيدي نانو","alternateName":"Louis Vuitton Speedy Nano","description":"حقيبة سبيدي نانو من لوي فيتون (Louis Vuitton) — أصلية ١٠٠٪، جديدة تماماً · غير مستخدمة. نفدت الكمية. تابعي بيلا بوتيك للاطلاع على القطع الجديدة.","sku":"lv-speedy-nano","brand":{"@type":"Brand","name":"Louis Vuitton"},"image":["{{SITE_URL}}/assets/speedy/front.jpg","{{SITE_URL}}/assets/speedy/angle.jpg","{{SITE_URL}}/assets/speedy/angle2.jpg","{{SITE_URL}}/assets/speedy/top.jpg","{{SITE_URL}}/assets/speedy/set.jpg"],"itemCondition":"https://schema.org/NewCondition","offers":{"@type":"Offer","url":"{{SITE_URL}}/product-speedy.html","priceCurrency":"SAR","price":"6000","itemCondition":"https://schema.org/NewCondition","availability":"https://schema.org/SoldOut","seller":{"@type":"Organization","name":"Bella Boutique"},"priceValidUntil":"2027-08-03","shippingDetails":{"@type":"OfferShippingDetails","shippingRate":{"@type":"MonetaryAmount","value":"200","currency":"SAR"},"shippingDestination":{"@type":"DefinedRegion","addressCountry":"SA"},"deliveryTime":{"@type":"ShippingDeliveryTime","handlingTime":{"@type":"QuantitativeValue","minValue":1,"maxValue":2,"unitCode":"DAY"},"transitTime":{"@type":"QuantitativeValue","minValue":7,"maxValue":14,"unitCode":"DAY"}}},"areaServed":{"@type":"Country","name":"Saudi Arabia"},"warranty":{"@type":"WarrantyPromise","name":"ضمان الأصالة","description":"ضمان أصالة القطعة. إذا ثبت أن القطعة غير أصلية خلال سبعة أيام من الاستلام، يُسترد المبلغ كاملاً. لا يشمل الضمان الإرجاع بسبب تغيير الرأي.","durationOfWarranty":{"@type":"QuantitativeValue","value":7,"unitCode":"DAY"}}},"size":"16 × 10 × 7.5 cm","@id":"{{SITE_URL}}/product-speedy.html#product","inLanguage":"ar","url":"{{SITE_URL}}/product-speedy.html"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"بيلا بوتيك","item":"{{SITE_URL}}/"},{"@type":"ListItem","position":2,"name":"Louis Vuitton","item":"{{SITE_URL}}/#featured"},{"@type":"ListItem","position":3,"name":"Louis Vuitton سبيدي نانو"}]}</script>
   <!-- /seo -->
 <!-- TikTok Pixel Code Start -->
@@ -360,7 +376,7 @@ html,body{max-width:100%;overflow-x:hidden}
 <section class="product">
   <!-- GALLERY -->
   <div class="gallery">
-    <div class="main-img"><img id="mainImg" fetchpriority="high" decoding="async" src="assets/speedy/front.jpg" alt="شنطة Louis Vuitton سبيدي نانو أصلية — المنظر الأمامي"></div>
+    <div class="main-img" data-sold="Sold Out"><img id="mainImg" fetchpriority="high" decoding="async" src="assets/speedy/front.jpg" alt="شنطة Louis Vuitton سبيدي نانو أصلية — المنظر الأمامي"></div>
     <div class="thumbs" id="thumbs">
       <div class="thumb active"><img loading="lazy" decoding="async" src="assets/speedy/front.jpg" alt="شنطة Louis Vuitton سبيدي نانو أصلية — المنظر الأمامي"></div>
       <div class="thumb"><img loading="lazy" decoding="async" src="assets/speedy/angle.jpg" alt="شنطة Louis Vuitton سبيدي نانو أصلية — من زاوية جانبية"></div>
@@ -381,10 +397,10 @@ html,body{max-width:100%;overflow-x:hidden}
       <span class="badge solid" data-i18n="b_auth">Authentic</span>
       <span class="badge" data-i18n="b_cond">Brand New · Unused</span>
       <span class="badge" data-i18n="b_ccic">Certified Authentic</span>
-      <span class="badge drop" data-i18n="b_drop">Price Drop &middot; 10% Off</span>
+      <span class="badge sold" data-i18n="b_sold">Sold Out</span>
     </div>
 
-    <div class="price"><s class="was"><span class="riyal" title="ريال سعودي">&#x20C1;</span>8,800</s> <span class="riyal" title="ريال سعودي">&#x20C1;</span>7,900 <small data-i18n="incl">/ incl. box &amp; dust bag</small></div>
+    <div class="price is-sold"><span class="riyal" title="ريال سعودي">&#x20C1;</span>6,000 <small data-i18n="incl">/ incl. box &amp; dust bag</small></div>
 
     <p class="desc" data-i18n="p_desc">The Speedy in its smallest, softest form &mdash; the Nano pillow silhouette in Monogram canvas with natural cowhide handles and trim that will patina beautifully with time. Carried by the top handles or worn crossbody on the adjustable leather strap.</p>
 
@@ -405,6 +421,10 @@ html,body{max-width:100%;overflow-x:hidden}
     </div>
 
     <div class="order">
+      <div class="soldout-note">
+        <strong data-i18n="sold_h">This piece has found its owner.</strong>
+        <p data-i18n="sold_p">Message us and we will let you know when a similar piece arrives.</p>
+      </div>
       <a class="btn btn--wa" id="waBtn" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.6.1-.2.3-.7 1-.9 1.1-.2.2-.3.2-.6.1-1.7-.8-2.8-1.5-3.9-3.4-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.1-.6-1.5-.8-2.1-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 2 3 4.8 4.2 1.8.8 2.5.8 3.4.7.5-.1 1.7-.7 1.9-1.4.2-.6.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 00-8.6 15l-1.3 4.7 4.9-1.3A10 10 0 1012 2z"/></svg>
         <span data-i18n="order">Order via WhatsApp</span>
@@ -439,8 +459,10 @@ const i18n={
   back:{en:"← Back to Shop",ar:"→ العودة للمتجر"},
   c_home:{en:"Home",ar:"الرئيسية"}, c_shop:{en:"Shop",ar:"المتجر"}, c_name:{en:"Louis Vuitton Speedy Nano",ar:"لويس فيتون سبيدي نانو"},
   p_name:{en:"Speedy Nano Monogram — Pillow Bag",ar:"سبيدي نانو مونوغرام — بيلو باق"},
-  b_auth:{en:"Authentic",ar:"أصلية"}, b_cond:{en:"Brand New · Unused",ar:"جديدة تماماً · غير مستخدمة"}, b_ccic:{en:"Certified Authentic",ar:"موثّقة بشهادة"}, b_drop:{en:"Price Drop · 10% Off",ar:"سعر مخفّض · خصم ١٠٪"},
+  b_auth:{en:"Authentic",ar:"أصلية"}, b_cond:{en:"Brand New · Unused",ar:"جديدة تماماً · غير مستخدمة"}, b_ccic:{en:"Certified Authentic",ar:"موثّقة بشهادة"}, b_sold:{en:"Sold Out",ar:"نفدت الكمية"},
   incl:{en:"/ incl. box & dust bag",ar:"/ شاملة العلبة وكيس الحفظ"},
+  sold_h:{en:"This piece has found its owner.",ar:"هذه القطعة وجدت صاحبتها."},
+  sold_p:{en:"Message us and we will let you know when a similar piece arrives.",ar:"راسلينا ونخبرك فور توفر قطعة مشابهة."},
   p_desc:{en:"The Speedy in its smallest, softest form — the Nano pillow silhouette in Monogram canvas with natural cowhide handles and trim that will patina beautifully with time. Carried by the top handles or worn crossbody on the adjustable leather strap.",ar:"سبيدي بأصغر وأنعم أشكالها — تصميم النانو الوسادي من قماش المونوغرام بمقابض وحواف من جلد البقر الطبيعي التي تكتسب باتينا جميلة مع الوقت. تُحمل باليد أو كروس بالحزام الجلدي القابل للتعديل."},
   s_brand:{en:"Brand",ar:"العلامة"}, s_model:{en:"Model",ar:"الموديل"}, s_model_v:{en:"Speedy Nano (2023)",ar:"سبيدي نانو (٢٠٢٣)"},
   s_material:{en:"Material",ar:"الخامة"}, s_material_v:{en:"Monogram canvas · natural cowhide trim",ar:"قماش مونوغرام · حواف جلد بقر طبيعي"},
@@ -464,8 +486,8 @@ function applyLang(){
   document.getElementById("langBtn").textContent=LANG==="en"?"العربية":"English";
   document.title=LANG==="ar"?"لويس فيتون سبيدي نانو — بيلا بوتيك":"Louis Vuitton Speedy Nano — Bella Boutique";
   const msg=LANG==="ar"
-    ? "مرحباً بيلا بوتيك، أرغب في طلب حقيبة LV Speedy Nano Monogram — جديدة تماماً غير مستخدمة — السعر 7,900 ريال."
-    : "Hello Bella Boutique, I'd like to order the LV Speedy Nano Monogram — brand new, unused — 7,900 SAR.";
+    ? "مرحباً بيلا بوتيك، أرغب في السؤال عن حقيبة LV Speedy Nano Monogram — نفدت الكمية. أرجو إبلاغي عند توفر قطعة مشابهة."
+    : "Hello Bella Boutique, I'm asking about the LV Speedy Nano Monogram — sold out. Please let me know when a similar piece arrives.";
   document.getElementById("waBtn").href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`;
 }
 
