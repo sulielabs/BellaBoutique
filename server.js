@@ -372,6 +372,14 @@ const server = http.createServer(async (req, res) => {
       });
     }
 
+    if (urlPath === '/admin/deal' || urlPath === '/admin/deal/') {
+      if (!authed) {
+        return send(res, 200, loginPage(''), { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store' });
+      }
+      const html = fs.readFileSync(path.join(__dirname, 'admin', 'deal-check.html'), 'utf8');
+      return send(res, 200, html, { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store' });
+    }
+
     if (urlPath === '/admin/api/stats') {
       if (!authed) return sendJson(res, 401, { error: 'unauthorized' });
       const range = Math.min(365, Math.max(7, Number(new URL(req.url, 'http://x').searchParams.get('range')) || 30));
