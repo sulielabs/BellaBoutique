@@ -342,6 +342,23 @@ html,body{max-width:100%;overflow-x:hidden}
 }(window, document, 'ttq');
 </script>
 <!-- TikTok Pixel Code End -->
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1027274056723662');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1027274056723662&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 </head>
 <body>
 
@@ -688,10 +705,12 @@ applyLang();
 })();
 </script>
 
-<!-- TikTok Contact Tracking Start -->
+<!-- Bella Tracking (TikTok + Meta) Start -->
 <script>
 (function(){
   function num(s){ var n = parseFloat(String(s).replace(/[^0-9.]/g,"")); return isNaN(n) ? 0 : n; }
+  function tt(){ return typeof ttq !== "undefined" ? ttq : null; }
+  function fb(){ return typeof fbq !== "undefined" ? fbq : null; }
 
   /* product pages: read the Product JSON-LD already on the page */
   function fromLD(){
@@ -738,34 +757,56 @@ applyLang();
     };
   }
 
-  function send(p){
-    if(typeof ttq === "undefined") return;
+  function norm(p){
     p = p || {};
-    ttq.track("Contact", {
+    return {
+      id:   p.content_id || location.pathname.replace(/^\//,"").replace(/\.html$/,"") || "home",
+      name: p.content_name || document.title,
+      val:  p.value || 0,
+      cur:  p.currency || "SAR"
+    };
+  }
+
+  function fire(event, p){
+    var d = norm(p);
+    var t = tt();
+    if(t) t.track(event, {
       content_type: "product",
-      content_id: p.content_id || location.pathname.replace(/^\//,"") || "home",
-      content_name: p.content_name || document.title,
-      value: p.value || 0,
-      currency: p.currency || "SAR"
+      content_id: d.id,
+      content_name: d.name,
+      value: d.val,
+      currency: d.cur
+    });
+    var f = fb();
+    if(f) f("track", event, {
+      content_type: "product",
+      content_ids: [d.id],
+      content_name: d.name,
+      value: d.val,
+      currency: d.cur
     });
   }
 
-  /* delegated: also catches cards rendered after page load */
+  /* ViewContent — product pages only, on load */
+  var prod = fromLD();
+  if(prod) fire("ViewContent", prod);
+
+  /* Contact — delegated, so it also catches cards rendered after page load */
   document.addEventListener("click", function(e){
     var a = e.target.closest ? e.target.closest('a[href*="wa.me"]') : null;
     if(!a) return;
-    send(fromCard(a) || fromLD());
+    fire("Contact", fromCard(a) || fromLD());
   }, true);
 
-  /* contact form opens WhatsApp via window.open, so it needs its own hook */
+  /* the contact form opens WhatsApp via window.open, so it needs its own hook */
   document.addEventListener("DOMContentLoaded", function(){
     var f = document.getElementById("contactForm");
     if(f) f.addEventListener("submit", function(){
-      send({ content_type:"lead", content_name:"Contact form", content_id:"contact-form" });
+      fire("Contact", { content_id:"contact-form", content_name:"Contact form" });
     });
   });
 })();
 </script>
-<!-- TikTok Contact Tracking End -->
+<!-- Bella Tracking (TikTok + Meta) End -->
 </body>
 </html>
