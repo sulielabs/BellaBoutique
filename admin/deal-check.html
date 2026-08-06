@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1A1218">
+<title>فحص الصفقة · بيلا بوتيك</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1A1218;
+  --ink-2:#241A22;
+  --ink-3:#2F2330;
+  --line:#3D2E3B;
+  --sand:#EDE4DA;
+  --sand-dim:#A2938C;
+  --brass:#C8A265;
+  --brass-dim:#8A7043;
+  --go:#7FA36B;
+  --wait:#D4913F;
+  --stop:#B5544D;
+  --sans:"IBM Plex Sans Arabic",system-ui,sans-serif;
+  --serif:"Amiri",Georgia,serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--ink);
+  color:var(--sand);
+  font-family:var(--sans);
+  font-weight:300;
+  line-height:1.6;
+  min-height:100vh;
+  padding:0 0 3rem;
+  background-image:radial-gradient(ellipse 120% 60% at 50% 0%,#2A1D28 0%,var(--ink) 62%);
+}
+.wrap{max-width:31rem;margin:0 auto;padding:0 1.15rem}
+
+/* ---------- masthead ---------- */
+.back{display:inline-block;margin-top:1.15rem;font-size:.78rem;color:var(--brass-dim);text-decoration:none}
+.back:hover,.back:focus-visible{color:var(--brass)}
+.top{padding:1.3rem 0 1.5rem;text-align:center}
+.eyebrow{
+  font-size:.62rem;font-weight:600;letter-spacing:.34em;
+  color:var(--brass-dim);text-transform:uppercase;
+  font-family:var(--mono);
+}
+.top h1{
+  font-family:var(--serif);font-weight:700;
+  font-size:2.35rem;line-height:1.1;margin-top:.5rem;
+  color:var(--sand);
+}
+.top p{font-size:.82rem;color:var(--sand-dim);margin-top:.5rem}
+
+/* ---------- form ---------- */
+.field{margin-bottom:1.15rem}
+.field > label{
+  display:block;font-size:.74rem;font-weight:500;
+  color:var(--sand-dim);margin-bottom:.45rem;letter-spacing:.02em;
+}
+.hint{color:var(--brass-dim);font-weight:400}
+input[type=number],select{
+  width:100%;background:var(--ink-2);color:var(--sand);
+  border:1px solid var(--line);border-radius:2px;
+  padding:.85rem .9rem;font-size:1.05rem;font-family:var(--mono);
+  font-weight:500;appearance:none;-webkit-appearance:none;
+}
+select{font-family:var(--sans);font-weight:400;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='none'><path d='M1 1.5 6 6.5 11 1.5' stroke='%23C8A265' stroke-width='1.4'/></svg>");
+  background-repeat:no-repeat;background-position:left .9rem center;background-size:.7rem}
+input:focus,select:focus,button:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+input[type=number]{-moz-appearance:textfield}
+
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem}
+.seg button{
+  background:var(--ink-2);border:1px solid var(--line);color:var(--sand-dim);
+  border-radius:2px;padding:.62rem .3rem;font-family:var(--sans);
+  font-size:.78rem;font-weight:500;cursor:pointer;line-height:1.25;
+  transition:border-color .15s,color .15s,background .15s;
+}
+.seg button small{display:block;font-size:.62rem;font-weight:400;opacity:.72;margin-top:.1rem}
+.seg button[aria-pressed=true]{
+  background:var(--ink-3);border-color:var(--brass);color:var(--sand);
+}
+
+/* ---------- verdict ---------- */
+.verdict{
+  margin:1.9rem 0 0;padding:1.6rem 1.2rem 1.4rem;text-align:center;
+  border:1px solid var(--line);border-radius:3px;background:var(--ink-2);
+  position:relative;overflow:hidden;
+}
+.verdict::before{
+  content:"";position:absolute;inset-inline:0;top:0;height:3px;
+  background:var(--tone,var(--line));transition:background .25s;
+}
+.verdict.is-idle{opacity:.55}
+.v-word{
+  font-family:var(--serif);font-weight:700;font-size:2.6rem;line-height:1;
+  color:var(--tone,var(--sand-dim));transition:color .25s;
+}
+.v-why{font-size:.83rem;color:var(--sand-dim);margin-top:.55rem;min-height:1.3em}
+.v-stats{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;
+  margin-top:1.15rem;padding-top:1.15rem;border-top:1px solid var(--line);
+}
+.v-stats div span{display:block;font-family:var(--mono);font-size:1.12rem;font-weight:600;color:var(--sand)}
+.v-stats div em{
+  display:block;font-style:normal;font-size:.62rem;letter-spacing:.12em;
+  color:var(--sand-dim);text-transform:uppercase;margin-top:.2rem;font-family:var(--mono);
+}
+
+.caution{
+  margin-top:.95rem;padding-top:.85rem;border-top:1px solid var(--line);
+  font-size:.72rem;color:var(--wait);line-height:1.55;
+}
+.caution[hidden]{display:none}
+/* ---------- signature: the negotiation tag ---------- */
+.tag{
+  margin-top:1.15rem;position:relative;
+  background:linear-gradient(158deg,#D8B478 0%,#C8A265 42%,#A78347 100%);
+  color:#2A1D12;border-radius:3px;padding:1.25rem 1.15rem 1.1rem 2.55rem;
+  box-shadow:0 10px 26px -14px #000;
+}
+.tag[hidden]{display:none}
+.tag::before{ /* punched hole */
+  content:"";position:absolute;inset-inline-end:auto;inset-inline-start:1.05rem;top:50%;
+  width:.62rem;height:.62rem;border-radius:50%;
+  background:var(--ink);transform:translateY(-50%);
+  box-shadow:inset 0 1px 2px rgba(0,0,0,.55);
+}
+.tag h2{
+  font-size:.63rem;font-family:var(--mono);font-weight:600;
+  letter-spacing:.2em;text-transform:uppercase;color:#5A4423;
+}
+.tag .big{font-family:var(--mono);font-size:2.15rem;font-weight:600;line-height:1.15;margin-top:.15rem}
+.tag .big i{font-style:normal;font-size:.95rem;font-weight:500;margin-inline-start:.3rem}
+.tag p{font-size:.75rem;color:#4A3719;margin-top:.15rem;line-height:1.5}
+.tag button{
+  margin-top:.85rem;width:100%;background:#2A1D12;color:#E8D3A8;
+  border:0;border-radius:2px;padding:.68rem;font-family:var(--sans);
+  font-size:.82rem;font-weight:600;cursor:pointer;
+}
+.tag button:active{background:#1A1208}
+
+/* ---------- breakdown ---------- */
+details{margin-top:1.15rem;border:1px solid var(--line);border-radius:3px;background:var(--ink-2)}
+summary{
+  padding:.85rem 1rem;cursor:pointer;font-size:.8rem;font-weight:500;
+  color:var(--sand-dim);list-style:none;display:flex;justify-content:space-between;align-items:center;
+}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--mono);color:var(--brass);font-size:1.1rem}
+details[open] summary::after{content:"−"}
+.rows{padding:0 1rem 1rem}
+.row{display:flex;justify-content:space-between;gap:1rem;padding:.42rem 0;font-size:.82rem;border-top:1px solid var(--line)}
+.row:first-child{border-top:0}
+.row span{font-family:var(--mono);font-weight:500}
+.row.total{border-top:1px solid var(--brass-dim);margin-top:.3rem;padding-top:.6rem;font-weight:600;color:var(--sand)}
+.row.warn span{color:var(--stop)}
+.set{padding:0 1rem 1rem;display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+.set label{display:block;font-size:.68rem;color:var(--sand-dim);margin-bottom:.28rem}
+.set input{padding:.55rem .6rem;font-size:.88rem}
+
+.ref{padding:0 1rem 1.1rem}
+.ref-lead{font-size:.8rem;color:var(--sand-dim);line-height:1.7;margin-bottom:.9rem}
+.ref-lead b,.ref-note b{color:var(--sand);font-weight:600}
+.ref-note{font-size:.72rem;color:var(--sand-dim);line-height:1.7;margin-top:.9rem}
+.mono{font-family:var(--mono);color:var(--brass)}
+.ref h3{font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--brass-dim);margin:1rem 0 .35rem;padding-top:.7rem;border-top:1px solid var(--line)}
+.ref h3:first-child{margin-top:0;padding-top:0;border-top:0}
+.rrow{display:flex;justify-content:space-between;gap:.8rem;padding:.3rem 0;font-size:.8rem;align-items:baseline}
+.rrow b{font-family:var(--mono);font-weight:600;color:var(--sand);font-size:.86rem}
+.rrow em{font-style:normal;font-size:.6rem;color:var(--brass-dim);font-family:var(--mono);
+  letter-spacing:.08em;margin-inline-start:.4rem}
+footer{margin-top:1.6rem;font-size:.7rem;color:var(--sand-dim);line-height:1.75;text-align:center}
+footer b{color:var(--brass-dim);font-weight:600}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="/admin">‹ لوحة التحكم</a>
+
+  <header class="top">
+    <div class="eyebrow">Bella Boutique</div>
+    <h1>فحص الصفقة</h1>
+    <p>قبل ما ترسلين للمورد — اعرفي إذا تستاهل</p>
+  </header>
+
+  <main>
+    <div class="field">
+      <label for="brand">الماركة</label>
+      <select id="brand">
+        <option value="" selected>اختاري الماركة</option>
+      </select>
+    </div>
+
+    <div class="field" id="modelField" hidden>
+      <label for="model">الموديل</label>
+      <select id="model"></select>
+    </div>
+
+    <div class="field">
+      <label for="retail">سعر التجزئة الرسمي <span class="hint">— باليوان الصيني</span></label>
+      <input id="retail" type="number" inputmode="numeric" placeholder="مثال 17910">
+    </div>
+
+    <div class="field">
+      <label for="cost">سعر المورد <span class="hint">— باليوان الصيني</span></label>
+      <input id="cost" type="number" inputmode="numeric" placeholder="مثال 5000">
+    </div>
+
+    <div class="field">
+      <label>حالة القطعة</label>
+      <div class="seg" id="cond"></div>
+    </div>
+
+    <section class="verdict is-idle" id="verdict" aria-live="polite">
+      <div class="v-word" id="vword">—</div>
+      <div class="v-why" id="vwhy">عبّي الحقول فوق</div>
+      <div class="v-stats">
+        <div><span id="sPrice">—</span><em>سعر البيع</em></div>
+        <div><span id="sProfit">—</span><em>الربح</em></div>
+        <div><span id="sMargin">—</span><em>الهامش</em></div>
+      </div>
+      <p class="caution" id="vcaution" hidden>قطعة مرتفعة القيمة — تحققي من بيعات فعلية على StockX أو RealReal قبل تثبيت السعر</p>
+    </section>
+
+    <section class="tag" id="tag" hidden>
+      <h2>سقف التفاوض</h2>
+      <div class="big" id="tMax">—<i>يوان</i></div>
+      <p id="tNote"></p>
+      <button id="tCopy" type="button">نسخ رسالة للمورد</button>
+    </section>
+
+    <details>
+      <summary>تفصيل التكلفة</summary>
+      <div class="rows" id="rows"></div>
+    </details>
+
+
+    <details id="ratesBox">
+      <summary>جدول النسب — من وين جت وكيف تعدّلينها</summary>
+      <div class="ref">
+        <p class="ref-lead">النسبة تعني: <b>كم يدفع سوق المستعمل مقابل هذي القطعة، كنسبة من سعرها جديدة</b>.
+        شنطة نسبتها 68% وسعرها الجديد 10,000 يوان → السوق يدفع لها ما يعادل 6,800 يوان.</p>
+        <div id="refTable"></div>
+        <p class="ref-note">
+          <b>موثّق</b> = مشتقّ من سعر نشرتِه فعلًا على bellasa.net بعد ما تحققنا منه من بيعات سوقية
+          (StockX · RealReal · 1stDibs · eBay · Collector Square). هذي أدق أرقامك.
+          <b>مقدّر</b> = موديل ما جرّبتِه بعد، والنسبة مستنتجة من موديلات قريبة — تعامليها بحذر.
+        </p>
+        <p class="ref-note">
+          لاحظي الفرق داخل الماركة الواحدة: <b>Dior 30 Montaigne يحتفظ بـ60%</b> بينما
+          <b>Dior Key بـ34% فقط</b> — الموديل يفرق أكثر من الماركة.
+        </p>
+        <p class="ref-note">
+          عدّلي النسبة من خانة <b>«نسبة البيع من التجزئة»</b> في الإعدادات متى ما عرفتِ رقمًا أدق.
+          لو لقيتِ بيعة فعلية للموديل، احسبيها: <span class="mono">سعر البيع ÷ سعر التجزئة × 100</span>.
+        </p>
+      </div>
+    </details>
+
+    <details>
+      <summary>الإعدادات</summary>
+      <div class="set">
+        <div><label for="pRate">نسبة البيع من التجزئة</label><input id="pRate" type="number" inputmode="decimal" step="1"></div>
+        <div><label for="pFx">سعر الصرف ريال/يوان</label><input id="pFx" type="number" inputmode="decimal" step="0.001" value="0.555"></div>
+        <div><label for="pMargin">أقل هامش %</label><input id="pMargin" type="number" inputmode="numeric" value="25"></div>
+        <div><label for="pProfit">أقل ربح بالريال</label><input id="pProfit" type="number" inputmode="numeric" value="700"></div>
+        <div><label for="pAuth">فحص أقل من الحد</label><input id="pAuth" type="number" inputmode="numeric" value="400"></div>
+        <div><label for="pAuthHi">فحص أعلى من الحد</label><input id="pAuthHi" type="number" inputmode="numeric" value="700"></div>
+        <div><label for="pThr">حد القيمة (يوان)</label><input id="pThr" type="number" inputmode="numeric" value="50000"></div>
+        <div><label for="pStaff">أجرة الموظفة (يوان)</label><input id="pStaff" type="number" inputmode="numeric" value="400"></div>
+        <div><label for="pShip">الشحن (ريال)</label><input id="pShip" type="number" inputmode="numeric" value="100"></div>
+        <div><label for="pCeil">سقف الشراء % من التجزئة</label><input id="pCeil" type="number" inputmode="numeric" value="35"></div>
+      </div>
+    </details>
+
+    <footer>
+      نسب البيع مبنية على بيعات فعلية من <b>StockX · RealReal · 1stDibs · eBay · Collector Square</b>.
+      كل ماركة تحتفظ بقيمتها بشكل مختلف — عدّلي النسبة لو عرفتِ رقمًا أدق للموديل.
+    </footer>
+  </main>
+</div>
+
+<script>
+/* rate = resale price as % of retail.  v = "موثّق" (from sales we found) | "مقدّر" (extrapolated) */
+/* rate = سعر البيع كنسبة من التجزئة.  الوسم 1 = مشتقّ من سعر منشور تحققنا منه سوقيًا، 0 = مقدّر */
+const BRANDS = {
+  "Dior": {avg:50, models:[
+    ["30 Montaigne",60,1],["Lady Dior",57,1],["Bobby",55,1],["Saddle",55,0],
+    ["Caro / Double",49,1],["CD Besace",46,1],["Key",34,1]]},
+  "Louis Vuitton": {avg:55, models:[
+    ["Capucines",62,0],["Dauphine",59,1],["Alma",50,0],
+    ["Speedy",45,1],["Neverfull",48,0],["Pochette / صغيرة",45,1]]},
+  "Chanel": {avg:58, models:[
+    ["Classic Flap",70,0],["Boy",62,0],["WOC",60,1],
+    ["فينتج (Frame · Cambon)",58,1],["19 / Gabrielle",55,0],["Sports Line",45,1]]},
+  "Gucci": {avg:44, models:[
+    ["Ophidia",52,1],["Jackie",50,0],["Marmont",45,1],["Blondie",44,1],
+    ["Horsebit 1955",44,1],["Dionysus",43,1],["Bamboo",38,1]]},
+  "Balenciaga": {avg:50, models:[
+    ["Hourglass",56,1],["Le Cagole",45,1],["Neo Classic",42,0],["City",35,0]]},
+  "Celine": {avg:50, models:[
+    ["Triomphe",55,0],["Triangle",53,1],["Luggage",50,0],["Belt Bag",48,0]]},
+  "LOEWE": {avg:45, models:[
+    ["Puzzle",50,0],["Gate",44,1],["Amazona",45,0],["Hammock",44,0]]},
+  "Saint Laurent": {avg:45, models:[
+    ["Loulou",48,0],["Kate",45,0],["Cassandre / Envelope",45,0],["Niki",42,0]]},
+  "ماركة أخرى": {avg:45, models:[]}
+};
+const CONDS = [
+  {k:"جديدة",  s:"لم تُستخدم", m:1.12},
+  {k:"99%",    s:"غير مستخدمة", m:1.08},
+  {k:"97-98%", s:"كالجديدة",   m:1.03},
+  {k:"95-96%", s:"ممتازة",     m:0.98},
+  {k:"90-94%", s:"جيدة جدًا",   m:0.88},
+  {k:"أقل",    s:"عيب ظاهر",   m:0.80}
+];
+
+const $ = id => document.getElementById(id);
+let condIdx = null;
+
+// build brand list
+const bSel = $("brand"), mSel = $("model"), mField = $("modelField");
+Object.keys(BRANDS).forEach(b=>{
+  const o=document.createElement("option"); o.value=b; o.textContent=b; bSel.appendChild(o);
+});
+
+// build condition segments
+const cWrap = $("cond");
+CONDS.forEach((c,i)=>{
+  const b=document.createElement("button");
+  b.type="button"; b.setAttribute("aria-pressed","false");
+  b.innerHTML = c.k + "<small>"+c.s+"</small>";
+  b.onclick = ()=>{
+    condIdx=i;
+    [...cWrap.children].forEach((x,j)=>x.setAttribute("aria-pressed", j===i?"true":"false"));
+    calc();
+  };
+  cWrap.appendChild(b);
+});
+
+const n  = v => { const x=parseFloat(v); return isNaN(x)?0:x; };
+const fm = v => Math.round(v).toLocaleString("en-US");
+
+bSel.onchange = ()=>{
+  const b = BRANDS[bSel.value];
+  mSel.innerHTML = "";
+  if(!b){ mField.hidden = true; calc(); return; }
+  b.models.forEach(([name,rate])=>{
+    const o=document.createElement("option");
+    o.value=rate; o.textContent=name+" · "+rate+"%"; mSel.appendChild(o);
+  });
+  const o=document.createElement("option");
+  o.value=b.avg; o.textContent="موديل آخر · متوسط "+b.avg+"%"; mSel.appendChild(o);
+  mField.hidden = b.models.length===0;
+  $("pRate").value = b.models.length ? b.models[0][1] : b.avg;
+  calc();
+};
+mSel.onchange = ()=>{ $("pRate").value = mSel.value; calc(); };
+["retail","cost","pRate","pFx","pMargin","pProfit","pAuth","pAuthHi","pThr","pStaff","pShip","pCeil"]
+  .forEach(id=>$(id).addEventListener("input",calc));
+
+let last = null;
+
+function calc(){
+  const retail = n($("retail").value);
+  const supply = n($("cost").value);
+  const rate   = n($("pRate").value)/100;
+  const fx     = n($("pFx").value);
+  const minMg  = n($("pMargin").value)/100;
+  const minPf  = n($("pProfit").value);
+  const staff  = n($("pStaff").value);
+  const ship   = n($("pShip").value);
+  const ceil   = n($("pCeil").value)/100;
+  const auth   = retail > n($("pThr").value) ? n($("pAuthHi").value) : n($("pAuth").value);
+  const cm     = condIdx===null ? null : CONDS[condIdx].m;
+
+  const ready = retail>0 && supply>0 && cm!==null && rate>0 && fx>0;
+
+  const costSAR  = (supply + auth + staff) * fx + ship;
+  const sell     = Math.round(retail * fx * rate * cm / 50) * 50;
+  const profit   = sell - costSAR;
+  const margin   = sell>0 ? profit/sell : 0;
+  const buyPct   = retail>0 ? supply/retail : 0;
+  // highest supplier price that still clears BOTH the margin and the profit floor
+  const capSAR   = Math.min(sell*(1-minMg), sell-minPf);
+  const maxSupply= Math.max(0, Math.floor(((capSAR - ship)/fx - auth - staff)/10)*10);
+
+  // cost breakdown
+  $("rows").innerHTML = !ready ? '<div class="row"><span style="font-family:var(--sans);font-weight:300">عبّي الحقول لعرض التفصيل</span></div>' : [
+    ["سعر المورد", fm(supply)+" يوان"],
+    ["رسوم الفحص", fm(auth)+" يوان"],
+    ["أجرة الموظفة", fm(staff)+" يوان"],
+    ["مجموع اليوان", fm(supply+auth+staff)+" يوان"],
+    ["بالريال ×"+fx, fm((supply+auth+staff)*fx)+" ريال"],
+    ["الشحن", fm(ship)+" ريال"],
+  ].map(r=>`<div class="row"><span style="font-family:var(--sans);font-weight:300">${r[0]}</span><span>${r[1]}</span></div>`).join("")
+   + `<div class="row total"><span style="font-family:var(--sans)">التكلفة الإجمالية</span><span>${fm(costSAR)} ريال</span></div>`
+   + `<div class="row ${buyPct>ceil?'warn':''}"><span style="font-family:var(--sans);font-weight:300">شراؤك من التجزئة</span><span>${Math.round(buyPct*100)}%${buyPct>ceil?' ⚠':''}</span></div>`;
+
+  const V=$("verdict"), W=$("vword"), Y=$("vwhy"), T=$("tag");
+  if(!ready){
+    V.classList.add("is-idle"); V.style.removeProperty("--tone");
+    W.textContent="—"; Y.textContent="عبّي الحقول فوق";
+    $("sPrice").textContent=$("sProfit").textContent=$("sMargin").textContent="—";
+    T.hidden=true; last=null; return;
+  }
+  V.classList.remove("is-idle");
+  $("sPrice").textContent  = fm(sell);
+  $("sProfit").textContent = fm(profit);
+  $("sMargin").textContent = Math.round(margin*100)+"%";
+  $("vcaution").hidden = sell < 8000;
+
+  let tone, word, why, showTag=false;
+  if(profit<=0){
+    tone="var(--stop)"; word="لا تشترين";
+    why="التكلفة أعلى من سعر البيع المتوقع — الصفقة خاسرة";
+    showTag = maxSupply>0;
+  } else if(margin>=minMg && profit>=minPf){
+    tone="var(--go)"; word="اشتري";
+    why = buyPct>ceil
+      ? `مربحة، لكن شراؤك ${Math.round(buyPct*100)}% من التجزئة — فوق سقفك`
+      : `ربح ${fm(profit)} ريال بهامش ${Math.round(margin*100)}%`;
+  } else {
+    tone="var(--wait)"; word="فاوضي";
+    why = profit<minPf
+      ? `الربح ${fm(profit)} ريال فقط — تحت حدّك (${fm(minPf)})`
+      : `الهامش ${Math.round(margin*100)}% — تحت هدفك (${Math.round(minMg*100)}%)`;
+    showTag=true;
+  }
+  V.style.setProperty("--tone",tone);
+  W.textContent=word; W.style.color=tone; Y.textContent=why;
+
+  if(showTag && maxSupply>0){
+    T.hidden=false;
+    $("tMax").innerHTML = fm(maxSupply)+'<i>يوان</i>';
+    $("tNote").textContent = `أعلى مبلغ تدفعينه وتبقين ضمن هدفك. اعرضه على المورد بدل ${fm(supply)}.`;
+    last = {maxSupply, supply};
+  } else T.hidden=true;
+}
+
+$("tCopy").onclick = async ()=>{
+  if(!last) return;
+  const msg = `你好，这个包我能出 ${last.maxSupply} 元，可以吗？\n\nHi, I can pay ${last.maxSupply} CNY for this bag. Is that possible?`;
+  const btn=$("tCopy"), old=btn.textContent;
+  try{ await navigator.clipboard.writeText(msg); btn.textContent="تم النسخ ✓"; }
+  catch(e){ btn.textContent="انسخيها يدويًا: "+last.maxSupply; }
+  setTimeout(()=>btn.textContent=old,2200);
+};
+
+// ---- rates reference ----
+$("refTable").innerHTML = Object.entries(BRANDS).filter(([,b])=>b.models.length)
+  .map(([brand,b])=>
+    `<h3>${brand} · متوسط ${b.avg}%</h3>` +
+    b.models.map(([nm,rate,ok])=>
+      `<div class="rrow"><span>${nm}<em>${ok?"موثّق":"مقدّر"}</em></span><b>${rate}%</b></div>`
+    ).join("")
+  ).join("");
+
+calc();
+</script>
+</body>
+</html>
