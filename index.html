@@ -883,7 +883,7 @@ function waLink(text){return `https://wa.me/${WHATSAPP}?text=${encodeURIComponen
 
 let ACTIVE_BRAND = "all";
 let SHOW_ALL = false;
-const PAGE_SIZE = 6;
+const PAGE_SIZE = 12;
 
 function brandList(){
   const seen = [];
@@ -1065,7 +1065,11 @@ function applyLang(){
   updateWaLinks();
 }
 
-function toggleLang(){ LANG = LANG==="en" ? "ar" : "en"; applyLang(); }
+function toggleLang(){
+  LANG = LANG==="en" ? "ar" : "en";
+  localStorage.setItem("bella_lang", LANG);
+  applyLang();
+}
 
 /* ============ WHATSAPP GENERAL LINKS ============ */
 function updateWaLinks(){
