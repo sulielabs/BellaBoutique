@@ -256,8 +256,8 @@ footer ul a:hover{color:var(--gold)}
 .foot-bottom{max-width:var(--maxw);margin:1.8rem auto 0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-size:.75rem;letter-spacing:.05em}
 
 /* --- whatsapp float --- */
-.wa-float{position:fixed;bottom:1.5rem;inset-inline-end:1.5rem;right:1.5rem;z-index:90;background:#25D366;color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 30px -8px rgba(37,211,102,.6);transition:transform .3s var(--ease)}
-html[lang="ar"] .wa-float{right:auto;left:1.5rem}
+.wa-float{position:fixed;bottom:1.5rem;right:1.5rem;left:auto;z-index:90;background:#25D366;color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 30px -8px rgba(37,211,102,.6);transition:transform .3s var(--ease)}
+html[lang="ar"] .wa-float{right:1.5rem;left:auto}
 .wa-float:hover{transform:scale(1.08)}
 .wa-float svg{width:28px;height:28px;fill:#fff}
 
