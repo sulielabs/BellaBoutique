@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8" />
 <meta name="color-scheme" content="light only" />
@@ -214,7 +214,7 @@ html,body{max-width:100%;overflow-x:hidden}
 
 <script>
 const WHATSAPP="966538382378";
-let LANG="en";
+let LANG = (function(){ try { return localStorage.getItem("bella_lang") || "ar"; } catch(e){ return "ar"; } })();
 
 const i18n={
   tag:{en:"Authentic Luxury",ar:"فخامة أصلية"},
@@ -274,7 +274,7 @@ function applyLang(){
     a.href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`; a.target="_blank"; a.rel="noopener";
   });
 }
-document.getElementById("langBtn").addEventListener("click",()=>{LANG=LANG==="en"?"ar":"en";applyLang();});
+document.getElementById("langBtn").addEventListener("click",()=>{LANG=LANG==="en"?"ar":"en";try{ localStorage.setItem("bella_lang", LANG); }catch(e){}applyLang();});
 applyLang();
 </script>
 </body>

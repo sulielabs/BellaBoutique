@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8" />
 <meta name="domain-verification" content="9e73f6b1b368a5658fcb4d5b2690ea57702b6a5fa8768e4d344c53f0a4e1952c">
@@ -636,6 +636,22 @@ src="https://www.facebook.com/tr?id=1027274056723662&ev=PageView&noscript=1"
   </div>
 </div>
 
+<!-- ================= FEATURED ================= -->
+<section class="featured reveal" id="featured">
+  <div class="wrap">
+    <div class="feat-head">
+      <div>
+        <span class="eyebrow" data-i18n="feat_eyebrow">Featured Bags</span>
+        <h2 class="title" data-i18n="feat_title">A selection worth carrying.</h2>
+      </div>
+      <a href="#contact" class="btn" data-i18n="feat_all">View Full Collection</a>
+    </div>
+    <div class="filters" id="brandFilters"></div>
+    <div class="grid-3" id="productGrid"></div>
+    <div class="more-wrap" id="moreWrap"></div>
+  </div>
+</section>
+
 <!-- ================= WHY ================= -->
 <section class="why reveal" id="why">
   <div class="wrap">
@@ -690,21 +706,7 @@ src="https://www.facebook.com/tr?id=1027274056723662&ev=PageView&noscript=1"
   </div>
 </section>
 
-<!-- ================= FEATURED ================= -->
-<section class="featured reveal" id="featured">
-  <div class="wrap">
-    <div class="feat-head">
-      <div>
-        <span class="eyebrow" data-i18n="feat_eyebrow">Featured Bags</span>
-        <h2 class="title" data-i18n="feat_title">A selection worth carrying.</h2>
-      </div>
-      <a href="#contact" class="btn" data-i18n="feat_all">View Full Collection</a>
-    </div>
-    <div class="filters" id="brandFilters"></div>
-    <div class="grid-3" id="productGrid"></div>
-    <div class="more-wrap" id="moreWrap"></div>
-  </div>
-</section>
+
 
 
 <!-- ================= FAQ ================= -->
@@ -876,7 +878,7 @@ const i18n = {
   foot_made:{en:"Riyadh · Kingdom of Saudi Arabia",ar:"الرياض · المملكة العربية السعودية"},
 };
 
-let LANG = "en";
+let LANG = (function(){ try { return localStorage.getItem("bella_lang") || "ar"; } catch(e){ return "ar"; } })();
 
 /* ============ RENDER PRODUCTS ============ */
 function waLink(text){return `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`;}
@@ -884,6 +886,8 @@ function waLink(text){return `https://wa.me/${WHATSAPP}?text=${encodeURIComponen
 let ACTIVE_BRAND = "all";
 let SHOW_ALL = false;
 const PAGE_SIZE = 12;
+// حقائب الإعلان — تظهر أولاً مهما كان ترتيب الإضافة
+const PINNED = ["lady-dior-grey", "lv-dauphine", "dior-bobby", "chanel-frame"];
 
 function brandList(){
   const seen = [];
@@ -923,7 +927,10 @@ function renderProducts(){
   const grid = document.getElementById("productGrid");
   const moreWrap = document.getElementById("moreWrap");
   const base = ACTIVE_BRAND === "all" ? products : products.filter(p => p.brand === ACTIVE_BRAND);
-  const list = base.slice().sort((a,b) => (a.sold?1:0) - (b.sold?1:0));
+  const rank = p => { const i = PINNED.indexOf(p.id); return i === -1 ? PINNED.length : i; };
+  const list = base.slice().map((p,i) => ({p,i}))
+    .sort((a,b) => (a.p.sold?1:0) - (b.p.sold?1:0) || rank(a.p) - rank(b.p) || a.i - b.i)
+    .map(x => x.p);
 
   if(!list.length){
     grid.innerHTML = `<p class="no-results">${i18n.no_results[LANG]}</p>`;
@@ -1067,7 +1074,7 @@ function applyLang(){
 
 function toggleLang(){
   LANG = LANG==="en" ? "ar" : "en";
-  localStorage.setItem("bella_lang", LANG);
+  try{ localStorage.setItem("bella_lang", LANG); }catch(e){}
   applyLang();
 }
 

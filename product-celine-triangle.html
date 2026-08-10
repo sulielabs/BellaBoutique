@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8" />
 <meta name="color-scheme" content="light only" />
@@ -443,7 +443,7 @@ src="https://www.facebook.com/tr?id=1027274056723662&ev=PageView&noscript=1"
 
 <script>
 const WHATSAPP="966538382378";
-let LANG="en";
+let LANG = (function(){ try { return localStorage.getItem("bella_lang") || "ar"; } catch(e){ return "ar"; } })();
 
 const i18n={
   tag:{en:"Authentic Luxury",ar:"فخامة أصلية"},
@@ -481,7 +481,7 @@ function applyLang(){
 }
 
 
-document.getElementById("langBtn").addEventListener("click",()=>{LANG=LANG==="en"?"ar":"en";applyLang();});
+document.getElementById("langBtn").addEventListener("click",()=>{LANG=LANG==="en"?"ar":"en";try{ localStorage.setItem("bella_lang", LANG); }catch(e){}applyLang();});
 applyLang();
 
 /* ---------- swipeable gallery ---------- */
