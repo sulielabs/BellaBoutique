@@ -82,6 +82,14 @@ footer nav a:hover{color:var(--gold-ink)}
 .copy{font-size:.68rem;color:var(--taupe);letter-spacing:.06em}
 
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* --- شريط طرق الدفع --- */
+.paybar{border-top:1px solid rgba(255,255,255,.10);margin-top:1.6rem;padding-top:1.3rem;text-align:center}
+.paybar .paylabel{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;opacity:.55;margin-bottom:.85rem}
+.paybar .payrow{display:flex;gap:.55rem;justify-content:center;align-items:center;flex-wrap:wrap}
+.paybar .payrow img{height:26px;width:auto;background:#fff;border-radius:5px;padding:4px 7px;box-sizing:content-box;opacity:.95}
+.paybar .paynote{font-size:.72rem;opacity:.5;margin-top:.85rem;line-height:1.7;max-width:34rem;margin-inline:auto}
+@media(max-width:520px){.paybar .payrow img{height:21px}}
 </style>
   <!-- seo -->
   <link rel="canonical" href="{{SITE_URL}}/privacy.html">
@@ -232,6 +240,18 @@ footer nav a:hover{color:var(--gold-ink)}
     <a href="shipping.html" data-i18n="f4">Shipping</a>
   </nav>
   <p class="copy" data-i18n="copy">© 2026 Bella Boutique · Riyadh, Kingdom of Saudi Arabia</p>
+  <div class="paybar">
+    <div class="paylabel" data-i18n="pay_label">Payment Methods</div>
+    <div class="payrow">
+      <img src="assets/pay/apple-pay.svg" alt="Apple Pay" loading="lazy" decoding="async">
+      <img src="assets/pay/mada.svg" alt="مدى mada" loading="lazy" decoding="async">
+      <img src="assets/pay/visa.svg" alt="Visa" loading="lazy" decoding="async">
+      <img src="assets/pay/mastercard.svg" alt="Mastercard" loading="lazy" decoding="async">
+      <img src="assets/pay/stcpay.svg" alt="stc pay" loading="lazy" decoding="async">
+      <img src="assets/pay/bank.svg" alt="تحويل بنكي" loading="lazy" decoding="async">
+    </div>
+    <div class="paynote" data-i18n="pay_note">A secure payment link is issued after your order is confirmed on WhatsApp. Bank transfer also available.</div>
+  </div>
 </footer>
 
 <script>
@@ -239,6 +259,8 @@ const WHATSAPP = "966538382378";
 let LANG = (function(){ try { return localStorage.getItem("bella_lang") || "ar"; } catch(e){ return "ar"; } })();
 
 const i18n={
+  pay_label:{en:"Payment Methods",ar:"طرق الدفع"},
+  pay_note:{en:"A secure payment link is issued after your order is confirmed on WhatsApp. Bank transfer also available.",ar:"يُرسل رابط دفع آمن بعد تأكيد الطلب عبر واتساب. والتحويل البنكي متاح أيضاً."},
   tag:{en:"Authentic Luxury",ar:"فخامة أصلية"},
   back:{en:"← Back to Home",ar:"→ العودة للرئيسية"},
   eyebrow:{en:"Privacy Policy",ar:"سياسة الخصوصية"},
