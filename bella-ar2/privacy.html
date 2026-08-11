@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="color-scheme" content="light only" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>سياسة الخصوصية | بيلا بوتيك</title>
+<meta name="description" content="كيف تتعامل بيلا بوتيك مع بياناتك — لا نخزّن عناوين IP ولا نستخدم كوكيز إعلانية. ما نجمعه ولماذا، ومدة الاحتفاظ، وحقوقك بموجب نظام حماية البيانات الشخصية السعودي.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600&family=Montserrat:wght@300;400;500;600&family=Cairo:wght@400;600;700&family=Tajawal:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --ivory:#FBF9F5;--beige:#F1EBE1;--taupe:#B8AB99;--gold:#C8A250;--gold-ink:#856419;
+  --black:#12100E;--ink:#2B2621;--white:#FFFFFF;
+  --serif:'Playfair Display',Georgia,serif;--sans:'Montserrat',system-ui,sans-serif;
+  --pad:clamp(1.25rem,5vw,6rem);--maxw:820px;--ease:cubic-bezier(.22,.61,.36,1);
+  color-scheme:light;
+}
+html[lang="ar"]{--serif:'Cairo',sans-serif;--sans:'Tajawal',sans-serif;}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--ivory);line-height:1.85;font-weight:300;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--serif);color:var(--black);font-weight:500;line-height:1.2}
+a{color:inherit;text-decoration:none}
+
+header{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+  padding:1rem var(--pad);background:rgba(251,249,245,.92);backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(184,171,153,.28)}
+.logo{font-family:var(--serif);font-size:1.15rem;color:var(--black);letter-spacing:.02em;line-height:1.1}
+.logo small{display:block;font-family:'Montserrat',sans-serif;font-size:.5rem;letter-spacing:.34em;
+  text-indent:.34em;color:var(--gold-ink);margin-top:.28rem;font-weight:400}
+html[lang="ar"] .logo small{letter-spacing:.06em;text-indent:0}
+nav{display:flex;align-items:center;gap:1.1rem}
+.back{font-size:.72rem;letter-spacing:.1em;color:var(--ink)}
+.back:hover{color:var(--gold-ink)}
+.lang-toggle{background:none;border:1px solid var(--taupe);color:var(--ink);font-family:var(--sans);
+  font-size:.68rem;letter-spacing:.1em;padding:.4rem .8rem;cursor:pointer;transition:all .3s var(--ease)}
+.lang-toggle:hover{border-color:var(--gold);color:var(--gold-ink)}
+.lang-toggle:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+.hero{text-align:center;padding:clamp(3rem,9vw,5.5rem) var(--pad) clamp(2rem,5vw,3rem);
+  max-width:var(--maxw);margin:0 auto}
+.seal{width:52px;height:52px;margin:0 auto 1.4rem;border:1px solid var(--gold);border-radius:50%;
+  display:grid;place-items:center;color:var(--gold-ink);font-size:1.1rem}
+.eyebrow{display:block;font-size:.6rem;letter-spacing:.34em;text-indent:.34em;color:var(--gold-ink);
+  text-transform:uppercase;margin-bottom:1rem}
+html[lang="ar"] .eyebrow{letter-spacing:.08em;text-indent:0}
+.hero h1{font-size:clamp(1.9rem,5.2vw,2.9rem);margin-bottom:1rem}
+.hero p{color:#5F584F;font-size:.95rem;max-width:52ch;margin:0 auto}
+.updated{margin-top:1.4rem;font-size:.68rem;letter-spacing:.08em;color:var(--taupe)}
+
+main{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad) clamp(3rem,8vw,5rem)}
+
+.step{display:flex;gap:1.4rem;padding:1.9rem 0;border-top:1px solid rgba(184,171,153,.34)}
+.step:first-of-type{border-top:none}
+.n{font-family:var(--serif);font-size:1.6rem;color:var(--gold);line-height:1;flex:0 0 auto;min-width:2.2rem}
+.step h2{font-size:1.12rem;margin-bottom:.6rem}
+.step p{font-size:.92rem;color:#4A443D;margin-bottom:.7rem}
+.step p:last-child{margin-bottom:0}
+.step ul{list-style:none;margin:.2rem 0 .7rem}
+.step li{font-size:.9rem;color:#4A443D;padding-inline-start:1.1rem;position:relative;margin-bottom:.45rem}
+.step li::before{content:"—";position:absolute;inset-inline-start:0;color:var(--gold)}
+
+.pledge{margin-top:2.4rem;padding:1.8rem;background:var(--beige);border-inline-start:2px solid var(--gold);text-align:center}
+.pledge strong{display:block;font-family:var(--serif);font-size:1.05rem;font-weight:500;color:var(--black);margin-bottom:.5rem}
+.pledge p{font-size:.88rem;color:#4A443D}
+
+.cta{text-align:center;margin-top:2.6rem}
+.btn{display:inline-block;background:var(--gold);color:var(--black);padding:.85rem 2rem;
+  font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;transition:opacity .3s var(--ease)}
+html[lang="ar"] .btn{letter-spacing:.03em;text-transform:none}
+.btn:hover{opacity:.88}
+.btn:focus-visible{outline:2px solid var(--black);outline-offset:3px}
+
+footer{border-top:1px solid rgba(184,171,153,.34);padding:2.2rem var(--pad);text-align:center;background:var(--white)}
+footer nav{justify-content:center;gap:1.4rem;flex-wrap:wrap;margin-bottom:1rem}
+footer nav a{font-size:.74rem;color:#5F584F}
+footer nav a:hover{color:var(--gold-ink)}
+.copy{font-size:.68rem;color:var(--taupe);letter-spacing:.06em}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+  <!-- seo -->
+  <link rel="canonical" href="{{SITE_URL}}/privacy.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Bella Boutique">
+  <meta property="og:locale" content="ar_SA">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:url" content="{{SITE_URL}}/privacy.html">
+  <meta property="og:title" content="سياسة الخصوصية | بيلا بوتيك">
+  <meta property="og:description" content="كيف تتعامل بيلا بوتيك مع بياناتك — لا نخزّن عناوين IP ولا نستخدم كوكيز إعلانية. ما نجمعه ولماذا، ومدة الاحتفاظ، وحقوقك بموجب نظام حماية البيانات الشخصية السعودي.">
+  <meta property="og:image" content="{{SITE_URL}}/assets/og/home.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="سياسة الخصوصية | بيلا بوتيك">
+  <meta name="twitter:description" content="كيف تتعامل بيلا بوتيك مع بياناتك — لا نخزّن عناوين IP ولا نستخدم كوكيز إعلانية. ما نجمعه ولماذا، ومدة الاحتفاظ، وحقوقك بموجب نظام حماية البيانات الشخصية السعودي.">
+  <meta name="twitter:image" content="{{SITE_URL}}/assets/og/home.jpg">
+  <meta name="theme-color" content="#12100E">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"سياسة الخصوصية | بيلا بوتيك","description":"كيف تتعامل بيلا بوتيك مع بياناتك — لا نخزّن عناوين IP ولا نستخدم كوكيز إعلانية. ما نجمعه ولماذا، ومدة الاحتفاظ، وحقوقك بموجب نظام حماية البيانات الشخصية السعودي.","url":"{{SITE_URL}}/privacy.html","inLanguage":["ar","en"],"publisher":{"@type":"Organization","name":"Bella Boutique","url":"{{SITE_URL}}/"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"بيلا بوتيك","item":"{{SITE_URL}}/"},{"@type":"ListItem","position":2,"name":"سياسة الخصوصية"}]}</script>
+  <!-- /seo -->
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">Bella Boutique<small data-i18n="tag">Authentic Luxury</small></a>
+  <nav>
+    <a href="index.html" class="back" data-i18n="back">← Back to Home</a>
+    <button class="lang-toggle" id="langBtn">العربية</button>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="seal">&#9733;</div>
+  <span class="eyebrow" data-i18n="eyebrow">Privacy Policy</span>
+  <h1 data-i18n="h1">Your Privacy, Respected</h1>
+  <p data-i18n="lede">We collect as little as possible. No accounts, no tracking pixels, no advertising networks — only what is needed to run the shop and answer your messages.</p>
+  <p class="updated" data-i18n="updated">Last updated: August 2026</p>
+</section>
+
+<main>
+
+  <div class="step">
+    <div class="n">01</div>
+    <div>
+      <h2 data-i18n="s1h">What We Collect</h2>
+      <p data-i18n="s1a">Browsing this site does not require an account, and we do not ask for your name, email or phone number to look around.</p>
+      <p data-i18n="s1b">Our server keeps aggregate visit counts only — how many pages were opened each day, and which pages. These are plain numbers.</p>
+      <p data-i18n="s1c">We do not store IP addresses, and we do not build a profile of you.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="n">02</div>
+    <div>
+      <h2 data-i18n="s2h">Cookies</h2>
+      <p data-i18n="s2a">We use two small cookies, and neither carries anything about you personally:</p>
+      <ul>
+        <li data-i18n="s2l1"><strong>bb_vid</strong> — a random identifier so a returning device is not counted twice. Contains no personal information.</li>
+        <li data-i18n="s2l2"><strong>bb_day</strong> — records today's date so a single device counts once per day.</li>
+      </ul>
+      <p data-i18n="s2b">No advertising or third-party tracking cookies are used on this site. You may block or delete these cookies in your browser at any time; the site will work normally.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="n">03</div>
+    <div>
+      <h2 data-i18n="s3h">When You Contact Us</h2>
+      <p data-i18n="s3a">Orders and enquiries are handled over WhatsApp. When you message us, we receive whatever you choose to send — usually your name, phone number and shipping address.</p>
+      <p data-i18n="s3b">We use this only to answer you, arrange the sale, and deliver the order. The conversation itself is held on WhatsApp and governed by its own privacy policy.</p>
+      <p data-i18n="s3c">Payment is arranged directly with you. This website does not process or store any card or bank details.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="n">04</div>
+    <div>
+      <h2 data-i18n="s4h">Who Else Is Involved</h2>
+      <p data-i18n="s4a">A few services are needed to put this site on your screen:</p>
+      <ul>
+        <li data-i18n="s4l1"><strong>Railway</strong> — hosts the site and delivers its pages.</li>
+        <li data-i18n="s4l2"><strong>Cloudflare</strong> — routes the domain and protects it.</li>
+        <li data-i18n="s4l3"><strong>Google Fonts and jsDelivr</strong> — supply the typefaces. Loading them means your browser contacts their servers.</li>
+        <li data-i18n="s4l4"><strong>WhatsApp</strong> — carries our conversation when you message us.</li>
+        <li data-i18n="s4l5"><strong>Saudi Business Center</strong> — supplies the verified-store seal shown at the bottom of the page.</li>
+      </ul>
+      <p data-i18n="s4b">We never sell, rent or trade your information, and we share it with no one beyond what delivering your order requires.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="n">05</div>
+    <div>
+      <h2 data-i18n="s5h">How Long We Keep Things</h2>
+      <p data-i18n="s5a">Visit counts are aggregate numbers with nothing personal in them, so they are kept as long as the shop runs.</p>
+      <p data-i18n="s5b">Order details are kept only as long as needed to complete the sale and honour any return, and to meet record-keeping duties under Saudi law.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="n">06</div>
+    <div>
+      <h2 data-i18n="s6h">Your Rights</h2>
+      <p data-i18n="s6a">Under the Saudi Personal Data Protection Law (PDPL) you may ask us to:</p>
+      <ul>
+        <li data-i18n="s6l1">tell you what information about you we hold;</li>
+        <li data-i18n="s6l2">correct anything inaccurate;</li>
+        <li data-i18n="s6l3">delete your information, where no legal duty requires us to keep it;</li>
+        <li data-i18n="s6l4">stop using it for any purpose you did not intend.</li>
+      </ul>
+      <p data-i18n="s6b">Message us on WhatsApp and we will respond. If you are not satisfied, you may raise the matter with the Saudi Data &amp; AI Authority (SDAIA).</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="n">07</div>
+    <div>
+      <h2 data-i18n="s7h">Children</h2>
+      <p data-i18n="s7a">This shop is intended for adults. We do not knowingly collect information from anyone under 18.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="n">08</div>
+    <div>
+      <h2 data-i18n="s8h">Changes to This Policy</h2>
+      <p data-i18n="s8a">If this policy changes, the revised version appears on this page with a new date above. Please check back from time to time.</p>
+    </div>
+  </div>
+
+  <div class="pledge">
+    <strong data-i18n="pledgeh">We ask for as little as possible.</strong>
+    <p data-i18n="pledgep">No accounts, no advertising networks, no profiles. Only what is needed to show you a bag and get it safely to your hands.</p>
+  </div>
+
+  <div class="cta">
+    <a href="#" class="btn wa-link" data-i18n="cta">Ask about privacy</a>
+  </div>
+
+</main>
+
+<footer>
+  <nav>
+    <a href="index.html" data-i18n="f1">Home</a>
+    <a href="index.html#featured" data-i18n="f2">Shop</a>
+    <a href="authenticity.html" data-i18n="f3">Authenticity</a>
+    <a href="shipping.html" data-i18n="f4">Shipping</a>
+  </nav>
+  <p class="copy" data-i18n="copy">© 2026 Bella Boutique · Riyadh, Kingdom of Saudi Arabia</p>
+</footer>
+
+<script>
+const WHATSAPP = "966538382378";
+let LANG = (function(){ try { return localStorage.getItem("bella_lang") || "ar"; } catch(e){ return "ar"; } })();
+
+const i18n={
+  tag:{en:"Authentic Luxury",ar:"فخامة أصلية"},
+  back:{en:"← Back to Home",ar:"→ العودة للرئيسية"},
+  eyebrow:{en:"Privacy Policy",ar:"سياسة الخصوصية"},
+  h1:{en:"Your Privacy, Respected",ar:"خصوصيتك محفوظة"},
+  lede:{en:"We collect as little as possible. No accounts, no tracking pixels, no advertising networks — only what is needed to run the shop and answer your messages.",
+        ar:"نجمع أقل ما يمكن. لا حسابات، ولا أدوات تتبّع، ولا شبكات إعلانية — فقط ما يلزم لتشغيل المتجر والرد على رسائلك."},
+  updated:{en:"Last updated: August 2026",ar:"آخر تحديث: أغسطس ٢٠٢٦"},
+
+  s1h:{en:"What We Collect",ar:"ما الذي نجمعه"},
+  s1a:{en:"Browsing this site does not require an account, and we do not ask for your name, email or phone number to look around.",
+       ar:"تصفّح الموقع لا يتطلب إنشاء حساب، ولا نطلب اسمك أو بريدك أو رقمك لمجرد الاطلاع."},
+  s1b:{en:"Our server keeps aggregate visit counts only — how many pages were opened each day, and which pages. These are plain numbers.",
+       ar:"يحتفظ السيرفر بأعداد زيارات مجمّعة فقط — كم صفحة فُتحت كل يوم، وأي الصفحات. مجرد أرقام."},
+  s1c:{en:"We do not store IP addresses, and we do not build a profile of you.",
+       ar:"لا نخزّن عناوين IP، ولا نبني ملفاً تعريفياً عنك."},
+
+  s2h:{en:"Cookies",ar:"ملفات الكوكيز"},
+  s2a:{en:"We use two small cookies, and neither carries anything about you personally:",
+       ar:"نستخدم كوكيزين صغيرين فقط، ولا يحمل أيٌّ منهما شيئاً عنك شخصياً:"},
+  s2l1:{en:"<strong>bb_vid</strong> — a random identifier so a returning device is not counted twice. Contains no personal information.",
+        ar:"<strong>bb_vid</strong> — معرّف عشوائي حتى لا يُحتسب الجهاز العائد مرتين. لا يحتوي أي بيانات شخصية."},
+  s2l2:{en:"<strong>bb_day</strong> — records today's date so a single device counts once per day.",
+        ar:"<strong>bb_day</strong> — يسجّل تاريخ اليوم ليُحتسب الجهاز مرة واحدة يومياً."},
+  s2b:{en:"No advertising or third-party tracking cookies are used on this site. You may block or delete these cookies in your browser at any time; the site will work normally.",
+       ar:"لا نستخدم أي كوكيز إعلانية أو تتبّع من طرف ثالث. يمكنك حظرهما أو حذفهما من متصفحك متى شئتِ، وسيعمل الموقع بشكل طبيعي."},
+
+  s3h:{en:"When You Contact Us",ar:"عند التواصل معنا"},
+  s3a:{en:"Orders and enquiries are handled over WhatsApp. When you message us, we receive whatever you choose to send — usually your name, phone number and shipping address.",
+       ar:"تتم الطلبات والاستفسارات عبر الواتساب. عند مراسلتنا نستلم ما تختارين إرساله — عادةً الاسم ورقم الجوال وعنوان الشحن."},
+  s3b:{en:"We use this only to answer you, arrange the sale, and deliver the order. The conversation itself is held on WhatsApp and governed by its own privacy policy.",
+       ar:"نستخدمها فقط للرد عليك وإتمام البيع وتوصيل الطلب. المحادثة نفسها تجري داخل الواتساب وتخضع لسياسة الخصوصية الخاصة به."},
+  s3c:{en:"Payment is arranged directly with you. This website does not process or store any card or bank details.",
+       ar:"يُرتَّب الدفع معك مباشرة. هذا الموقع لا يعالج ولا يخزّن أي بيانات بطاقات أو حسابات بنكية."},
+
+  s4h:{en:"Who Else Is Involved",ar:"الجهات الأخرى"},
+  s4a:{en:"A few services are needed to put this site on your screen:",
+       ar:"هناك خدمات قليلة يحتاجها الموقع ليظهر على شاشتك:"},
+  s4l1:{en:"<strong>Railway</strong> — hosts the site and delivers its pages.",
+        ar:"<strong>Railway</strong> — يستضيف الموقع ويقدّم صفحاته."},
+  s4l2:{en:"<strong>Cloudflare</strong> — routes the domain and protects it.",
+        ar:"<strong>Cloudflare</strong> — يوجّه النطاق ويحميه."},
+  s4l3:{en:"<strong>Google Fonts and jsDelivr</strong> — supply the typefaces. Loading them means your browser contacts their servers.",
+        ar:"<strong>خطوط جوجل و jsDelivr</strong> — تزوّد الموقع بالخطوط، وتحميلها يعني أن متصفحك يتصل بخوادمها."},
+  s4l4:{en:"<strong>WhatsApp</strong> — carries our conversation when you message us.",
+        ar:"<strong>واتساب</strong> — يحمل محادثتنا عند مراسلتنا."},
+  s4l5:{en:"<strong>Saudi Business Center</strong> — supplies the verified-store seal shown at the bottom of the page.",
+        ar:"<strong>المركز السعودي للأعمال</strong> — يزوّد الموقع بشارة المتجر الموثّق الظاهرة أسفل الصفحة."},
+  s4b:{en:"We never sell, rent or trade your information, and we share it with no one beyond what delivering your order requires.",
+       ar:"لا نبيع بياناتك ولا نؤجّرها ولا نتاجر بها، ولا نشاركها مع أحد خارج ما يتطلبه توصيل طلبك."},
+
+  s5h:{en:"How Long We Keep Things",ar:"مدة الاحتفاظ"},
+  s5a:{en:"Visit counts are aggregate numbers with nothing personal in them, so they are kept as long as the shop runs.",
+       ar:"أعداد الزيارات أرقام مجمّعة لا تحمل شيئاً شخصياً، لذا نحتفظ بها طوال عمل المتجر."},
+  s5b:{en:"Order details are kept only as long as needed to complete the sale and honour any return, and to meet record-keeping duties under Saudi law.",
+       ar:"تفاصيل الطلب تُحفظ بقدر ما يلزم لإتمام البيع وتغطية أي إرجاع، ولاستيفاء متطلبات حفظ السجلات وفق الأنظمة السعودية."},
+
+  s6h:{en:"Your Rights",ar:"حقوقك"},
+  s6a:{en:"Under the Saudi Personal Data Protection Law (PDPL) you may ask us to:",
+       ar:"بموجب نظام حماية البيانات الشخصية السعودي، يحق لك أن تطلبي منا:"},
+  s6l1:{en:"tell you what information about you we hold;",ar:"إخبارك بما لدينا من بيانات تخصك؛"},
+  s6l2:{en:"correct anything inaccurate;",ar:"تصحيح أي معلومة غير دقيقة؛"},
+  s6l3:{en:"delete your information, where no legal duty requires us to keep it;",ar:"حذف بياناتك ما لم يوجد التزام نظامي بحفظها؛"},
+  s6l4:{en:"stop using it for any purpose you did not intend.",ar:"التوقف عن استخدامها لأي غرض لم تقصديه."},
+  s6b:{en:"Message us on WhatsApp and we will respond. If you are not satisfied, you may raise the matter with the Saudi Data & AI Authority (SDAIA).",
+       ar:"راسلينا على الواتساب وسنرد عليك. وإن لم تكوني راضية عن الرد، يمكنك رفع الأمر إلى الهيئة السعودية للبيانات والذكاء الاصطناعي (سدايا)."},
+
+  s7h:{en:"Children",ar:"الأطفال"},
+  s7a:{en:"This shop is intended for adults. We do not knowingly collect information from anyone under 18.",
+       ar:"هذا المتجر موجّه للبالغين. لا نجمع عن قصد أي بيانات ممن هم دون الثامنة عشرة."},
+
+  s8h:{en:"Changes to This Policy",ar:"تحديثات هذه السياسة"},
+  s8a:{en:"If this policy changes, the revised version appears on this page with a new date above. Please check back from time to time.",
+       ar:"عند تغيّر هذه السياسة تُنشر النسخة المحدّثة في هذه الصفحة مع تاريخ جديد بالأعلى. نرجو مراجعتها من حين لآخر."},
+
+  pledgeh:{en:"We ask for as little as possible.",ar:"نطلب أقل ما يمكن."},
+  pledgep:{en:"No accounts, no advertising networks, no profiles. Only what is needed to show you a bag and get it safely to your hands.",
+           ar:"لا حسابات، ولا شبكات إعلانية، ولا ملفات تعريفية. فقط ما يلزم لعرض الحقيبة وإيصالها بأمان إلى يديك."},
+
+  cta:{en:"Ask about privacy",ar:"استفسري عن الخصوصية"},
+  f1:{en:"Home",ar:"الرئيسية"}, f2:{en:"Shop",ar:"المتجر"},
+  f3:{en:"Authenticity",ar:"إثبات الأصالة"}, f4:{en:"Shipping",ar:"الشحن"},
+  copy:{en:"© 2026 Bella Boutique · Riyadh, Kingdom of Saudi Arabia",ar:"© ٢٠٢٦ بيلا بوتيك · الرياض، المملكة العربية السعودية"},
+};
+
+function applyLang(){
+  const h=document.documentElement;
+  h.lang=LANG; h.dir=LANG==="ar"?"rtl":"ltr";
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const k=el.getAttribute("data-i18n"); if(i18n[k]) el.innerHTML=i18n[k][LANG];
+  });
+  document.getElementById("langBtn").textContent = LANG==="en" ? "العربية" : "English";
+  document.title = LANG==="ar" ? "سياسة الخصوصية — بيلا بوتيك" : "Privacy Policy — Bella Boutique";
+  const msg = LANG==="ar"
+    ? "مرحباً بيلا بوتيك، لدي استفسار بخصوص الخصوصية وبياناتي."
+    : "Hello Bella Boutique, I have a question about privacy and my data.";
+  document.querySelectorAll(".wa-link").forEach(a=>{
+    a.href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`; a.target="_blank"; a.rel="noopener";
+  });
+}
+document.getElementById("langBtn").addEventListener("click",()=>{LANG=LANG==="en"?"ar":"en";try{ localStorage.setItem("bella_lang", LANG); }catch(e){}applyLang();});
+applyLang();
+</script>
+</body>
+</html>
