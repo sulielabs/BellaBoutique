@@ -912,8 +912,6 @@ function waLink(text){return `https://wa.me/${WHATSAPP}?text=${encodeURIComponen
 let ACTIVE_BRAND = "all";
 let SHOW_ALL = false;
 const PAGE_SIZE = 12;
-// حقائب الإعلان — تظهر أولاً مهما كان ترتيب الإضافة
-const PINNED = ["lady-dior-grey", "lv-dauphine", "dior-bobby", "chanel-frame"];
 
 function brandList(){
   const seen = [];
@@ -953,9 +951,9 @@ function renderProducts(){
   const grid = document.getElementById("productGrid");
   const moreWrap = document.getElementById("moreWrap");
   const base = ACTIVE_BRAND === "all" ? products : products.filter(p => p.brand === ACTIVE_BRAND);
-  const rank = p => { const i = PINNED.indexOf(p.id); return i === -1 ? PINNED.length : i; };
+  // ترتيب العرض: الأحدث إضافةً أولاً (المصفوفة مرتّبة كذلك)، والمباعة دائماً في الآخر
   const list = base.slice().map((p,i) => ({p,i}))
-    .sort((a,b) => (a.p.sold?1:0) - (b.p.sold?1:0) || rank(a.p) - rank(b.p) || a.i - b.i)
+    .sort((a,b) => (a.p.sold?1:0) - (b.p.sold?1:0) || a.i - b.i)
     .map(x => x.p);
 
   if(!list.length){
@@ -968,7 +966,7 @@ function renderProducts(){
   const shown  = SHOW_ALL ? list : list.slice(0, PAGE_SIZE);
 
   grid.innerHTML = shown.map(p=>{
-    const name = p.name[LANG], cond = p.cond[LANG], tag = p.tag[LANG];
+    const name = p.name[LANG], cond = p.cond[LANG], tag = p.tag ? p.tag[LANG] : "";
     const msg = LANG==="ar"
       ? `مرحباً بيلا بوتيك، أرغب في الاستفسار عن حقيبة ${p.brand} ${name} (${p.price}).`
       : `Hello Bella Boutique, I'm interested in the ${p.brand} ${name} (${p.price}).`;
