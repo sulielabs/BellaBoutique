@@ -503,7 +503,7 @@ function applyLang(){
   const msg=LANG==="ar"
     ? "مرحباً بيلا بوتيك، أرغب في طلب حقيبة Fendi سن شاين صغيرة (أزرق ضبابي) — الحالة ٩٨٪ كالجديدة — السعر 8,000 ريال."
     : "Hello Bella Boutique, I'd like to order the Fendi Sunshine Small (Misty Blue) — 98% near new — 8,000 SAR.";
-  document.getElementById("waBtn").href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`;
+  var _wb=document.getElementById("waBtn"); _wb.href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`; _wb.removeAttribute("target");
 }
 
 

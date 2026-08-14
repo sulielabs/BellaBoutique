@@ -990,7 +990,7 @@ function renderProducts(){
       : `<span class="mono">${p.mono}</span>`;
     const cta = p.page
       ? `<a class="view" href="${p.page}">${i18n.view_details[LANG]} ${arrow}</a>`
-      : `<a class="view" href="${waLink(msg)}" target="_blank" rel="noopener">${i18n.order_wa[LANG]} ${arrow}</a>`;
+      : `<a class="view" href="${waLink(msg)}">${i18n.order_wa[LANG]} ${arrow}</a>`;
     const wrapOpen = p.page ? `<a href="${p.page}" style="display:block">` : "";
     const wrapClose = p.page ? `</a>` : "";
     return `<article class="card${p.sold ? " is-sold" : ""}">
@@ -1058,7 +1058,7 @@ function bindCardGalleries(){
       if(x0===null) return;
       const dx=e.changedTouches[0].clientX-x0;
       if(lock && Math.abs(dx)>40){ go(dx<0 ? i+1 : i-1); }
-      x0=null;lock=false;
+      x0=null;lock=false;moved=false;
     }, {passive:true});
     // a horizontal swipe should not follow the product link
     const link = ph.closest("a");
@@ -1111,7 +1111,7 @@ function toggleLang(){
 /* ============ WHATSAPP GENERAL LINKS ============ */
 function updateWaLinks(){
   const msg = LANG==="ar" ? "مرحباً بيلا بوتيك، أرغب في الاستفسار عن حقائبكم." : "Hello Bella Boutique, I'd like to ask about your handbags.";
-  document.querySelectorAll(".wa-link").forEach(a=>{a.href = waLink(msg); a.target="_blank"; a.rel="noopener";});
+  document.querySelectorAll(".wa-link").forEach(a=>{a.href = waLink(msg); a.removeAttribute("target");});
 }
 
 /* ============ CONTACT FORM → WHATSAPP ============ */
@@ -1121,7 +1121,7 @@ document.getElementById("contactForm").addEventListener("submit",e=>{
   const msg = LANG==="ar"
     ? `مرحباً بيلا بوتيك،\nالاسم: ${n}\nالبريد: ${em}\nالرسالة: ${m}`
     : `Hello Bella Boutique,\nName: ${n}\nEmail: ${em}\nMessage: ${m}`;
-  window.open(waLink(msg), "_blank", "noopener");
+  location.href = waLink(msg);
 });
 
 /* ============ HEADER / MENU / SCROLL ============ */
