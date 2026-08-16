@@ -427,7 +427,7 @@ src="https://www.facebook.com/tr?id=1027274056723662&ev=PageView&noscript=1"
     </div>
 
     <div class="order">
-      <a class="btn btn--wa" id="waBtn" target="_blank" rel="noopener">
+      <a class="btn btn--wa" id="waBtn" rel="noopener">
         <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.6.1-.2.3-.7 1-.9 1.1-.2.2-.3.2-.6.1-1.7-.8-2.8-1.5-3.9-3.4-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.1-.6-1.5-.8-2.1-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 2 3 4.8 4.2 1.8.8 2.5.8 3.4.7.5-.1 1.7-.7 1.9-1.4.2-.6.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 00-8.6 15l-1.3 4.7 4.9-1.3A10 10 0 1012 2z"/></svg>
         <span data-i18n="order">Order via WhatsApp</span>
       </a>
@@ -437,8 +437,8 @@ src="https://www.facebook.com/tr?id=1027274056723662&ev=PageView&noscript=1"
     <div class="verify">
       <div class="seal">✓</div>
       <div>
-        <h4 data-i18n="v_title">Verified before listing</h4>
-        <p data-i18n="v_body">Inspected by an independent third-party specialist in luxury authentication, with an official authenticity certificate issued for this piece.</p>
+        <h4 data-i18n="v_title">Authenticated before dispatch</h4>
+        <p data-i18n="v_body">Once your order is confirmed, the piece is inspected by an independent third-party specialist in luxury authentication. It ships to you together with the authenticity certificate issued for it.</p>
       </div>
     </div>
   </div>
@@ -487,8 +487,8 @@ const i18n={
   s_colour:{en:"Colour",ar:"اللون"}, s_colour_v:{en:"Black with bronze patina",ar:"أسود بلمسات برونزية"},
   order:{en:"Order via WhatsApp",ar:"اطلبي عبر واتساب"},
   assure:{en:"Authenticity guaranteed · Secure delivery across the Kingdom",ar:"الأصالة مضمونة · توصيل آمن داخل المملكة"},
-  v_title:{en:"Verified before listing",ar:"موثّقة قبل العرض"},
-  v_body:{en:"Inspected by an independent third-party specialist in luxury authentication, with an official authenticity certificate issued for this piece.",ar:"موثّقة بشهادة، مركز تقييم السلع الفاخرة المستقل، مع شهادة أصالة صادرة لهذه القطعة."},
+  v_title:{en:"Authenticated before dispatch",ar:"تُفحص قبل الشحن"},
+  v_body:{en:"Once your order is confirmed, the piece is inspected by an independent third-party specialist in luxury authentication. It ships to you together with the authenticity certificate issued for it.",ar:"بعد تأكيد طلبك، تُفحص القطعة من جهة مستقلة متخصصة في توثيق السلع الفاخرة، وتصلك ومعها شهادة الأصالة الصادرة لها."},
   f_auth:{en:"Authenticity",ar:"إثبات الأصالة"}, f_ship:{en:"Shipping",ar:"سياسة الشحن"}, f_priv:{en:"Privacy",ar:"الخصوصية"},
   copy:{en:"© 2026 Bella Boutique · Riyadh, Kingdom of Saudi Arabia",ar:"© ٢٠٢٦ بيلا بوتيك · الرياض، المملكة العربية السعودية"},
 };
@@ -502,7 +502,7 @@ function applyLang(){
   const msg=LANG==="ar"
     ? "مرحباً بيلا بوتيك، أرغب في طلب حقيبة Chanel فينتاج سبورتس لاين الأسطوانية (سوداء بلمسات برونزية) — الحالة جيدة جداً ٩٠٪ — السعر 3,500 ريال."
     : "Hello Bella Boutique, I'd like to order the Chanel Vintage Sports Line Barrel Bag (Black patina) — Very Good 90% — 3,500 SAR.";
-  document.getElementById("waBtn").href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`;
+  var _wb=document.getElementById("waBtn"); _wb.href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`; _wb.removeAttribute("target");
 }
 
 
@@ -807,14 +807,34 @@ applyLang();
   }
 
   /* ViewContent — product pages only, on load */
+  /* انتظري تحميل بكسل تيك توك فعليًا.
+     داخل متصفح تيك توك يتأخر events.js، وأي حدث يُوضع في الطابور قبل وصوله يضيع
+     عند مغادرة الصفحة. */
+  function whenReady(cb){
+    try{
+      if(typeof ttq !== "undefined" && typeof ttq.ready === "function"){ ttq.ready(cb); return; }
+    }catch(e){}
+    var tries = 0;
+    (function poll(){
+      var up = (typeof ttq !== "undefined") && !Array.isArray(ttq);
+      if(up || ++tries > 40) return cb();
+      setTimeout(poll, 150);
+    })();
+  }
+
   var prod = fromLD();
-  if(prod) fire("ViewContent", prod);
+  if(prod) whenReady(function(){ fire("ViewContent", prod); });
 
   /* Contact — delegated, so it also catches cards rendered after page load */
   document.addEventListener("click", function(e){
     var a = e.target.closest ? e.target.closest('a[href*="wa.me"]') : null;
     if(!a) return;
+    if(a.getAttribute("data-sent") === "1") return;   /* النقرة الحقيقية الثانية */
+    e.preventDefault();
     fire("Contact", fromCard(a) || fromLD());
+    a.setAttribute("data-sent","1");
+    var href = a.href;
+    setTimeout(function(){ location.href = href; }, 400);
   }, true);
 
   /* the contact form opens WhatsApp via window.open, so it needs its own hook */

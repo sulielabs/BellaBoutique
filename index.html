@@ -816,11 +816,12 @@ src="https://www.facebook.com/tr?id=1027274056723662&ev=PageView&noscript=1"
 const WHATSAPP = "966538382378"; // 0538382378 in international format
 
 const products = [
+  {id:"loewe-amazona-23", brand:"LOEWE", name:{en:"Amazona 23 — Anagram Jacquard",ar:"أمازونا ٢٣ — جاكار أناغرام"}, cond:{en:"98% · Excellent",ar:"٩٨٪ · ممتازة"}, price:"6,000", img:"assets/loewe-amazona-23/1.jpg", gallery:["assets/loewe-amazona-23/1.jpg","assets/loewe-amazona-23/2.jpg","assets/loewe-amazona-23/3.jpg","assets/loewe-amazona-23/4.jpg","assets/loewe-amazona-23/5.jpg","assets/loewe-amazona-23/6.jpg","assets/loewe-amazona-23/7.jpg"], page:"product-loewe-amazona-23.html"},
+  {id:"lv-cannes", brand:"Louis Vuitton", name:{en:"Cannes — Monogram Reverse",ar:"كان — مونوغرام ريفرس"}, cond:{en:"97% · Very Good",ar:"٩٧٪ · جيدة جداً"}, price:"6,800", img:"assets/lv-cannes/1.jpg", gallery:["assets/lv-cannes/1.jpg","assets/lv-cannes/2.jpg","assets/lv-cannes/3.jpg","assets/lv-cannes/4.jpg","assets/lv-cannes/5.jpg","assets/lv-cannes/6.jpg","assets/lv-cannes/7.jpg","assets/lv-cannes/8.jpg"], page:"product-lv-cannes.html", tag:{en:"Discontinued",ar:"مقطوعة من الإنتاج"}},
+  {id:"ysl-manhattan-croc", brand:"Saint Laurent", name:{en:"Manhattan Medium — Croc-Embossed",ar:"مانهاتن ميديوم — كروكو مضغوط"}, cond:{en:"98% · Excellent",ar:"٩٨٪ · ممتازة"}, price:"7,200", img:"assets/ysl-manhattan-croc/1.jpg", gallery:["assets/ysl-manhattan-croc/1.jpg","assets/ysl-manhattan-croc/2.jpg","assets/ysl-manhattan-croc/3.jpg","assets/ysl-manhattan-croc/4.jpg","assets/ysl-manhattan-croc/5.jpg","assets/ysl-manhattan-croc/6.jpg","assets/ysl-manhattan-croc/7.jpg","assets/ysl-manhattan-croc/8.jpg","assets/ysl-manhattan-croc/9.jpg"], page:"product-ysl-manhattan-croc.html", tag:{en:"New Arrival",ar:"وصل حديثاً"}},
   {id:"fendi-sunshine-camel", brand:"Fendi", name:{en:"Sunshine Medium — Camel",ar:"سن شاين ميديوم — جملي"}, cond:{en:"98% · Near New",ar:"٩٨٪ · كالجديدة"}, price:"7,500", img:"assets/fendi-sunshine-camel/front.jpg", gallery:["assets/fendi-sunshine-camel/front.jpg","assets/fendi-sunshine-camel/angle.jpg","assets/fendi-sunshine-camel/side.jpg","assets/fendi-sunshine-camel/back.jpg","assets/fendi-sunshine-camel/handles.jpg","assets/fendi-sunshine-camel/interior.jpg","assets/fendi-sunshine-camel/base.jpg"], page:"product-fendi-sunshine-camel.html"},
   {id:"fendi-sunshine-blue", brand:"Fendi", name:{en:"Sunshine Small — Misty Blue",ar:"سن شاين صغيرة — أزرق ضبابي"}, cond:{en:"98% · Near New",ar:"٩٨٪ · كالجديدة"}, price:"8,000", img:"assets/fendi-sunshine-blue/front.jpg", gallery:["assets/fendi-sunshine-blue/front.jpg","assets/fendi-sunshine-blue/angle.jpg","assets/fendi-sunshine-blue/side.jpg","assets/fendi-sunshine-blue/back.jpg","assets/fendi-sunshine-blue/strap.jpg","assets/fendi-sunshine-blue/interior.jpg","assets/fendi-sunshine-blue/base.jpg"], page:"product-fendi-sunshine-blue.html"},
   {id:"fendi-baguette", brand:"Fendi", name:{en:"Baguette — Fuchsia & Black",ar:"باغيت — فوشيا وأسود"}, cond:{en:"Excellent · Like New",ar:"ممتازة · كالجديدة"}, price:"7,500", img:"assets/fendi-baguette/front.jpg", gallery:["assets/fendi-baguette/front.jpg","assets/fendi-baguette/angle.jpg","assets/fendi-baguette/side.jpg","assets/fendi-baguette/back.jpg","assets/fendi-baguette/flap.jpg","assets/fendi-baguette/interior.jpg","assets/fendi-baguette/base.jpg"], page:"product-fendi-baguette.html"},
-  {id:"gucci-ophidia-dome", brand:"Gucci", name:{en:"Ophidia Dome — Small",ar:"أوفيديا دوم — صغيرة"}, cond:{en:"98% · Near New",ar:"٩٨٪ · شبه جديدة"}, price:"3,500", img:"assets/ophidia-dome/front.jpg", gallery:["assets/ophidia-dome/front.jpg","assets/ophidia-dome/strap.jpg","assets/ophidia-dome/angle.jpg","assets/ophidia-dome/side.jpg","assets/ophidia-dome/top.jpg","assets/ophidia-dome/interior.jpg","assets/ophidia-dome/base.jpg"], page:"product-ophidia-dome.html"},
-  {id:"gucci-dionysus-denim", brand:"Gucci", name:{en:"Dionysus Small — GG Denim",ar:"ديونيسوس سمول — دينم"}, cond:{en:"99% · Like New",ar:"٩٩٪ · كالجديدة"}, price:"6,200", img:"assets/dionysus-denim/front.jpg", gallery:["assets/dionysus-denim/front.jpg","assets/dionysus-denim/side.jpg","assets/dionysus-denim/side2.jpg","assets/dionysus-denim/back.jpg","assets/dionysus-denim/flap.jpg","assets/dionysus-denim/interior.jpg","assets/dionysus-denim/base.jpg"], page:"product-dionysus-denim.html", tag:{en:"Discontinued",ar:"مقطوعة من الإنتاج"}},
   {id:"dior-bobby-oblique", brand:"Dior", name:{en:"Bobby Medium — Oblique",ar:"بوبي ميديوم — أوبليك"}, cond:{en:"98% · Like New",ar:"٩٨٪ · كالجديدة"}, price:"7,700", img:"assets/dior-bobby-oblique/front.jpg", gallery:["assets/dior-bobby-oblique/front.jpg","assets/dior-bobby-oblique/angle.jpg","assets/dior-bobby-oblique/angle2.jpg","assets/dior-bobby-oblique/open.jpg","assets/dior-bobby-oblique/interior.jpg","assets/dior-bobby-oblique/base.jpg"], page:"product-dior-bobby-oblique.html", tag:{en:"Opening Price",ar:"سعر افتتاحي"}},
   {id:"dior-caro-grey", brand:"Dior", name:{en:"Caro Medium — Haze Blue Grey",ar:"كارو ميديوم — رمادي مزرق"}, cond:{en:"90% · Very Good",ar:"٩٠٪ · جيدة جداً"}, price:"10,500", img:"assets/dior-caro-grey/front.jpg", gallery:["assets/dior-caro-grey/front.jpg","assets/dior-caro-grey/angle.jpg","assets/dior-caro-grey/back.jpg","assets/dior-caro-grey/open.jpg","assets/dior-caro-grey/interior.jpg"], page:"product-dior-caro-grey.html", tag:{en:"New Arrival",ar:"وصل حديثاً"}},
   {id:"lady-dior-vanity-black", brand:"Dior", name:{en:"Lady Dior Micro Vanity — Black",ar:"ليدي ديور مايكرو فانيتي — أسود"}, cond:{en:"98% · Like New",ar:"٩٨٪ · شبه جديدة"}, price:"5,200", img:"assets/lady-dior-vanity-black/front.jpg", gallery:["assets/lady-dior-vanity-black/front.jpg","assets/lady-dior-vanity-black/angle.jpg","assets/lady-dior-vanity-black/angle2.jpg","assets/lady-dior-vanity-black/side.jpg","assets/lady-dior-vanity-black/back.jpg"], page:"product-lady-dior-vanity-black.html", tag:{en:"New Arrival",ar:"وصل حديثاً"}},
@@ -1246,22 +1247,42 @@ applyLang();
     });
   }
 
-  /* ViewContent — product pages only, on load */
-  var prod = fromLD();
-  if(prod) fire("ViewContent", prod);
+  /* wait until the TikTok pixel has actually finished loading.
+     inside the TikTok in-app browser events.js is slow, and anything
+     queued before it lands is lost when the page navigates away. */
+  function whenReady(cb){
+    try{
+      if(typeof ttq !== "undefined" && typeof ttq.ready === "function"){ ttq.ready(cb); return; }
+    }catch(e){}
+    var tries = 0;
+    (function poll(){
+      var up = (typeof ttq !== "undefined") && !Array.isArray(ttq);
+      if(up || ++tries > 40) return cb();
+      setTimeout(poll, 150);
+    })();
+  }
 
-  /* Contact — delegated, so it also catches cards rendered after page load */
+  /* ViewContent — product pages only, once the pixel is live */
+  var prod = fromLD();
+  if(prod) whenReady(function(){ fire("ViewContent", prod); });
+
+  /* Contact — hold navigation ~400ms so the beacon actually leaves */
   document.addEventListener("click", function(e){
     var a = e.target.closest ? e.target.closest('a[href*="wa.me"]') : null;
     if(!a) return;
+    if(a.getAttribute("data-sent") === "1") return;   /* second, real click */
+    e.preventDefault();
     fire("Contact", fromCard(a) || fromLD());
+    a.setAttribute("data-sent","1");
+    var href = a.href;
+    setTimeout(function(){ location.href = href; }, 400);
   }, true);
 
   /* the contact form opens WhatsApp via window.open, so it needs its own hook */
   document.addEventListener("DOMContentLoaded", function(){
     var f = document.getElementById("contactForm");
     if(f) f.addEventListener("submit", function(){
-      fire("Contact", { content_id:"contact-form", content_name:"Contact form" });
+      try{ fire("Contact", { content_id:"contact-form", content_name:"Contact form" }); }catch(e){}
     });
   });
 })();
